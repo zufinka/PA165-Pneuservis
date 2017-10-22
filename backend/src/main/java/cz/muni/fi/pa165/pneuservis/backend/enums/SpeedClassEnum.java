@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.muni.fi.pa165.pneuservis.backend.entity.tire;
+package cz.muni.fi.pa165.pneuservis.backend.enums;
 
 /***
  * @author Jakub Palenik, 422453@mail.muni.cz
  */
-public enum SpeedClass {
+public enum SpeedClassEnum {
     B(50),
     C(60),
     D(65),
@@ -32,6 +32,6 @@ public enum SpeedClass {
     Y(300);
     
     private final int speed;
-    SpeedClass(int speed){this.speed = speed;}
+    SpeedClassEnum(int speed){this.speed = speed;}
     public int getValue() {return speed;} 
 }

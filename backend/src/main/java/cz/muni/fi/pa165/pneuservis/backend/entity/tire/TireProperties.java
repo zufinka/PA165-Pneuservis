@@ -5,6 +5,9 @@
  */
 package cz.muni.fi.pa165.pneuservis.backend.entity.tire;
 
+import cz.muni.fi.pa165.pneuservis.backend.enums.SeasonEnum;
+import cz.muni.fi.pa165.pneuservis.backend.enums.TireVehicleTypeEnum;
+import cz.muni.fi.pa165.pneuservis.backend.enums.SpeedClassEnum;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -37,7 +40,7 @@ public class TireProperties {
     
     @NotNull
     @Enumerated
-    private TireVehicleType tireVehicleType;
+    private TireVehicleTypeEnum tireVehicleType;
     
     @NotNull
     private int width;
@@ -53,11 +56,11 @@ public class TireProperties {
     
     @NotNull
     @Enumerated
-    private SpeedClass speedClass;
+    private SpeedClassEnum speedClass;
     
     @NotNull
     @Enumerated
-    private Season season;
+    private SeasonEnum season;
     
     /*
     @OneToMany
@@ -66,7 +69,7 @@ public class TireProperties {
 
     public TireProperties() {}
 
-    public TireProperties(TireVehicleType tireVehicleType, int width, int aspectRatio, int diameter, int loadIndex, SpeedClass speedClass, Season season) {
+    public TireProperties(TireVehicleTypeEnum tireVehicleType, int width, int aspectRatio, int diameter, int loadIndex, SpeedClassEnum speedClass, SeasonEnum season) {
         this.tireVehicleType = tireVehicleType;
         this.width = width;
         this.aspectRatio = aspectRatio;
@@ -85,11 +88,11 @@ public class TireProperties {
         return internal_id;
     }
         
-    public TireVehicleType getTireVehicleType() {
+    public TireVehicleTypeEnum getTireVehicleType() {
         return tireVehicleType;
     }
 
-    public void setTireVehicleType(TireVehicleType tireVehicleType) {
+    public void setTireVehicleType(TireVehicleTypeEnum tireVehicleType) {
         this.tireVehicleType = tireVehicleType;
         this.internal_id = this.hashCode();
     }
@@ -142,20 +145,20 @@ public class TireProperties {
         this.internal_id = this.hashCode();
     }
 
-    public SpeedClass getSpeedClass() {
+    public SpeedClassEnum getSpeedClass() {
         return speedClass;
     }
 
-    public void setSpeedClass(SpeedClass speedClass) {
+    public void setSpeedClass(SpeedClassEnum speedClass) {
         this.speedClass = speedClass;
         this.internal_id = this.hashCode();
     }
 
-    public Season getSeason() {
+    public SeasonEnum getSeason() {
         return season;
     }
 
-    public void setSeason(Season season) {
+    public void setSeason(SeasonEnum season) {
         this.season = season;
         this.internal_id = this.hashCode();
     }
