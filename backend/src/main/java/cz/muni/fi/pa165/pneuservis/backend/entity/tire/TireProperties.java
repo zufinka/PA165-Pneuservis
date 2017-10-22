@@ -33,10 +33,6 @@ public class TireProperties {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-
-    @NotNull
-    @Column(nullable=false,unique=true)
-    private long internal_id;
     
     @NotNull
     @Enumerated
@@ -77,24 +73,18 @@ public class TireProperties {
         this.loadIndex = loadIndex;
         this.speedClass = speedClass;
         this.season = season;
-        this.internal_id = this.hashCode();
     }
 
     public long getId() {
         return id;
     }
     
-    public long getInternal_id() {
-        return internal_id;
-    }
-        
     public TireVehicleTypeEnum getTireVehicleType() {
         return tireVehicleType;
     }
 
     public void setTireVehicleType(TireVehicleTypeEnum tireVehicleType) {
         this.tireVehicleType = tireVehicleType;
-        this.internal_id = this.hashCode();
     }
 
     public int getWidth() {
@@ -106,7 +96,6 @@ public class TireProperties {
             throw new IllegalArgumentException("cannot be negative");
         }
         this.width = width;
-        this.internal_id = this.hashCode();
     }
 
     public int getAspectRatio() {
@@ -118,7 +107,6 @@ public class TireProperties {
             throw new IllegalArgumentException("cannot be negative");
         }
         this.aspectRatio = aspectRatio;
-        this.internal_id = this.hashCode();
     }
 
     public int getDiameter() {
@@ -130,7 +118,6 @@ public class TireProperties {
             throw new IllegalArgumentException("cannot be negative");
         }
         this.diameter = diameter;
-        this.internal_id = this.hashCode();
     }
 
     public int getLoadIndex() {
@@ -142,7 +129,6 @@ public class TireProperties {
             throw new IllegalArgumentException("cannot be negative");
         }
         this.loadIndex = loadIndex;
-        this.internal_id = this.hashCode();
     }
 
     public SpeedClassEnum getSpeedClass() {
@@ -151,7 +137,6 @@ public class TireProperties {
 
     public void setSpeedClass(SpeedClassEnum speedClass) {
         this.speedClass = speedClass;
-        this.internal_id = this.hashCode();
     }
 
     public SeasonEnum getSeason() {
@@ -160,7 +145,6 @@ public class TireProperties {
 
     public void setSeason(SeasonEnum season) {
         this.season = season;
-        this.internal_id = this.hashCode();
     }
     
     /*
@@ -202,7 +186,7 @@ public class TireProperties {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (!(obj instanceof TireProperties)) {
             return false;
         }
         final TireProperties other = (TireProperties) obj;

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
@@ -26,12 +27,11 @@ public class Tire {
     private long id;
     
     @NotNull
-    @Column(nullable=false,unique=true)
-    private long internal_id;
+    private String name;
     
     @ManyToOne
     @NotNull
-    private Manufacturer manufacturer;
+    private TireManufacturer manufacturer;
      
     @ManyToOne
     @NotNull
@@ -44,33 +44,40 @@ public class Tire {
     @DecimalMin("0.0")
     private BigDecimal price;
     
-    private String image_url;
+    private String imageUrl;
     
     private String description;
 
     public Tire(){}
 
-    public Tire(Manufacturer manufacturer, TireProperties tireProperties, int onStock, BigDecimal price) {
+    public Tire(String name, TireManufacturer manufacturer, TireProperties tireProperties, int onStock, BigDecimal price) {
+        this.name = name;
         this.manufacturer = manufacturer;
         //manufacturer.addTire(this);
         this.tireProperties = tireProperties;
         //tireProperties.addTire(this);
         this.onStock = onStock;
         this.price = price;
-        this.internal_id = this.hashCode();
     }
 
-    public long getInternal_id() {
-        return internal_id;
+    public long getId() {
+        return id;
     }
-        
-    public Manufacturer getManufacturer() {
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+            
+    public TireManufacturer getTireManufacturer() {
         return manufacturer;
     }
 
-    public void setManufacturer(Manufacturer manufacturer) {
+    public void setTireManufacturer(TireManufacturer manufacturer) {
         this.manufacturer = manufacturer;
-        this.internal_id = this.hashCode();
     }
 
     public TireProperties getTireProperties() {
@@ -79,7 +86,6 @@ public class Tire {
 
     public void setTireProperties(TireProperties tireProperties) {
         this.tireProperties = tireProperties;
-        this.internal_id = this.hashCode();
         
     }
 
@@ -89,7 +95,6 @@ public class Tire {
 
     public void setOnStock(int onStock) {
         this.onStock = onStock;
-        this.internal_id = this.hashCode();
     }
 
     public BigDecimal getPrice() {
@@ -98,15 +103,14 @@ public class Tire {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-        this.internal_id = this.hashCode();
     }
 
     public String getImage_url() {
-        return image_url;
+        return imageUrl;
     }
 
     public void setImage_url(String image_url) {
-        this.image_url = image_url;
+        this.imageUrl = image_url;
     }
 
     public String getDescription() {
@@ -117,6 +121,16 @@ public class Tire {
         this.description = decription;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -135,7 +149,7 @@ public class Tire {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (! (obj instanceof Tire) ) {
             return false;
         }
         final Tire other = (Tire) obj;

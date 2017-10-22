@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
  * @author Jakub Palenik, 422453@mail.muni.cz
  */
 @Entity
-public class Manufacturer {
+public class TireManufacturer {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -38,13 +38,13 @@ public class Manufacturer {
     private Set<Tire> tires = new HashSet<>();
     */
 
-    public Manufacturer() {}
+    public TireManufacturer() {}
 
     public long getId() {
         return id;
     }
     
-    public Manufacturer(String name) {
+    public TireManufacturer(String name) {
         this.name = name;
     }
 
@@ -89,10 +89,10 @@ public class Manufacturer {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (!(obj instanceof TireManufacturer)) {
             return false;
         }
-        final Manufacturer other = (Manufacturer) obj;
+        final TireManufacturer other = (TireManufacturer) obj;
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }

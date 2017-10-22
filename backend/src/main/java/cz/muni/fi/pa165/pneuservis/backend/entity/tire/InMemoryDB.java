@@ -15,7 +15,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 /**
  *
- * @author Kubo
+ * @author Jakub Palenik, 422453@mail.muni.cz
  */
 @Configuration
 public class InMemoryDB {
