@@ -6,12 +6,12 @@ import cz.muni.fi.pa165.pneuservis.backend.entity.annotations.TireOrService;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
  * @author Martin Zilak, 433372@mail.muni.cz
  */
+
 @Entity
 @TireOrService
 public class OrderItem {
@@ -65,21 +65,6 @@ public class OrderItem {
 
     public void setService(Service service) {
         this.service = service;
-    }
-
-    public BigDecimal calculatePrice() {
-        /*BigDecimal price = new BigDecimal(0);
-
-        if (service == null) {
-            price = price.add(tire.getPrice().multiply(new BigDecimal(quantity)));
-        } else if (tire == null) {
-            price = price.add(service.getPrice().multiply(new BigDecimal(quantity)));
-        }
-
-        return price;
-        */
-
-        throw new UnsupportedOperationException("Not implemented yet");
     }
 
     @Override

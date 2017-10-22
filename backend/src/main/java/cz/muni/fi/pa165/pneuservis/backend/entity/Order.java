@@ -4,7 +4,6 @@ import com.google.common.base.MoreObjects;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -12,7 +11,9 @@ import java.util.Objects;
 /**
  * @author Martin Zilak, 433372@mail.muni.cz
  */
+
 @Entity
+@Table(name = "OrderTable")
 public class Order {
 
     @Id
@@ -69,16 +70,6 @@ public class Order {
 
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
-    }
-
-    public BigDecimal calculatePrice() {
-        BigDecimal price = new BigDecimal(0);
-
-        for (OrderItem orderItem : orderItems) {
-            price = price.add(orderItem.calculatePrice());
-        }
-
-        return price;
     }
 
     @Override
