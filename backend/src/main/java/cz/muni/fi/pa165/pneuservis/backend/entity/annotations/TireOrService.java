@@ -4,6 +4,10 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
+/**
+ * @author Martin Zilak, 433372@mail.muni.cz
+ */
+
 @Documented
 @Constraint(validatedBy = OrderItemValidator.class)
 @Target({ElementType.TYPE})

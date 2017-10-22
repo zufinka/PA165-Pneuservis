@@ -5,6 +5,10 @@ import cz.muni.fi.pa165.pneuservis.backend.entity.OrderItem;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/**
+ * @author Martin Zilak, 433372@mail.muni.cz
+ */
+
 public class OrderItemValidator implements ConstraintValidator<TireOrService, OrderItem> {
     @Override
     public void initialize(TireOrService tireOrService) {
