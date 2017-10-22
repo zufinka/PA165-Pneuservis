@@ -42,6 +42,9 @@ public class TryOut {
         
         tm.deleteTire(t2);
         
+        //tm.deleteCategory(new Manufacturer("Continental"));
+        System.out.println(tm.retrieveAllTires());
+        
         em.close();
         emf.close();
         

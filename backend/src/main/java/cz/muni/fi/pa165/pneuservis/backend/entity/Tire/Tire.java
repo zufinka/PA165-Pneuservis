@@ -2,12 +2,15 @@ package cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
@@ -49,11 +52,12 @@ public class Tire {
 
     public Tire(Manufacturer manufacturer, TireProperties tireProperties, int onStock, BigDecimal price) {
         this.manufacturer = manufacturer;
+        //manufacturer.addTire(this);
         this.tireProperties = tireProperties;
+        //tireProperties.addTire(this);
         this.onStock = onStock;
         this.price = price;
         this.internal_id = this.hashCode();
-        
     }
 
     public long getInternal_id() {
@@ -112,8 +116,6 @@ public class Tire {
     public void setDescription(String decription) {
         this.description = decription;
     }
-    
-    
 
     @Override
     public int hashCode() {

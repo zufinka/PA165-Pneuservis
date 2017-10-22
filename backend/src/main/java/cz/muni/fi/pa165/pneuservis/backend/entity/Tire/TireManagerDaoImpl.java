@@ -5,7 +5,6 @@
  */
 package cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -131,6 +130,22 @@ public class TireManagerDaoImpl implements TireManagerDao {
     @Override
     public boolean deleteCategory(Manufacturer manufacturer) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        /*
+        em.getTransaction().begin();
+        Manufacturer m;
+        try{
+            m = em.createQuery("SELECT m FROM Manufacturer m WHERE m.name like :nameM", Manufacturer.class)
+                .setParameter("nameM", manufacturer.getName()).getSingleResult();
+        }catch(NoResultException nre){
+            return false;
+            
+        }
+        
+        
+        em.remove(m);
+        em.getTransaction().commit();
+        return true;
+        */
     }
 
     @Override

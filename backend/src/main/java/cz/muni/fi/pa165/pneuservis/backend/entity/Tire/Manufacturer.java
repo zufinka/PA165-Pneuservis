@@ -5,15 +5,19 @@
  */
 package cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
-import org.hibernate.annotations.Cascade;
 
 /***
  * @author Jakub Palenik, 422453@mail.muni.cz
@@ -28,6 +32,11 @@ public class Manufacturer {
     @NotNull
     @Column(nullable=false,unique=true)
     private String name;
+   
+    /*
+    @OneToMany
+    private Set<Tire> tires = new HashSet<>();
+    */
 
     public Manufacturer() {}
 
@@ -46,6 +55,24 @@ public class Manufacturer {
     public void setName(String name) {
         this.name = name;
     }
+    
+    /*
+    public void addTire(Tire t){
+        tires.add(t);
+    }
+    
+    public void removeTire(Tire t){
+        tires.remove(t);
+    }
+
+    public Set<Tire> getTires() {
+        return Collections.unmodifiableSet(tires);
+    }
+
+    public void setTires(Set<Tire> tires) {
+        this.tires = tires;
+    }
+*/
 
     @Override
     public int hashCode() {

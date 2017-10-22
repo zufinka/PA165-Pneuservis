@@ -5,13 +5,19 @@
  */
 package cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -53,7 +59,11 @@ public class TireProperties {
     @Enumerated
     private Season season;
     
-    
+    /*
+    @OneToMany
+    private Set<Tire> tires = new HashSet<>();
+    */
+
     public TireProperties() {}
 
     public TireProperties(TireVehicleType tireVehicleType, int width, int aspectRatio, int diameter, int loadIndex, SpeedClass speedClass, Season season) {
@@ -149,6 +159,24 @@ public class TireProperties {
         this.season = season;
         this.internal_id = this.hashCode();
     }
+    
+    /*
+    public void addTire(Tire t){
+        tires.add(t);
+    }
+    
+    public void removeTire(Tire t){
+        tires.remove(t);
+    }
+
+    public Set<Tire> getTires() {
+        return Collections.unmodifiableSet(tires);
+    }
+
+    public void setTires(Set<Tire> tires) {
+        this.tires = tires;
+    }
+    */
 
     @Override
     public int hashCode() {
