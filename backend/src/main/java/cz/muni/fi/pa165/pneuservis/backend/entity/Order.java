@@ -8,9 +8,9 @@ import java.util.List;
 /***
  * @author Martin Zilak, 433372@mail.muni.cz
  */
-@Entity
+//@Entity
 public class Order {
-
+/*
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,5 +27,5 @@ public class Order {
 
     @ManyToMany
     @JoinTable
-    private List<Service> services;
+    private List<Service> services;*/
 }
