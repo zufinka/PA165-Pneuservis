@@ -1,11 +1,6 @@
 package cz.muni.fi.pa165.pneuservis.backend.dao;
 
-import cz.muni.fi.pa165.pneuservis.backend.entity.tire.TireManufacturer;
-import cz.muni.fi.pa165.pneuservis.backend.entity.tire.TireManufacturer;
 import cz.muni.fi.pa165.pneuservis.backend.entity.tire.Tire;
-import cz.muni.fi.pa165.pneuservis.backend.entity.tire.Tire;
-import cz.muni.fi.pa165.pneuservis.backend.entity.tire.TireProperties;
-import cz.muni.fi.pa165.pneuservis.backend.entity.tire.TireProperties;
 import java.util.List;
 
 /***
@@ -47,7 +42,7 @@ public interface TireManagerDao {
     
     /**
      * Method updated values of tire in db. It is expected that this object is 
-     * already * bind.
+     * already bind.
      * @param tire
      * @return true on success
      * @throws IllegalArgumentException on tire == null
