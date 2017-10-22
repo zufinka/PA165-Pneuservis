@@ -31,7 +31,7 @@ public enum SpeedClass {
     W(270),
     Y(300);
     
-    private final int id;
-    SpeedClass(int id){this.id = id;}
-    public int getValue() {return id;} 
+    private final int speed;
+    SpeedClass(int speed){this.speed = speed;}
+    public int getValue() {return speed;} 
 }

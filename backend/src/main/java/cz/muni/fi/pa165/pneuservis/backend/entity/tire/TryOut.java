@@ -5,6 +5,7 @@
  */
 package cz.muni.fi.pa165.pneuservis.backend.entity.tire;
 
+import cz.muni.fi.pa165.pneuservis.backend.dao.TireManagerDaoImpl;
 import java.math.BigDecimal;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
