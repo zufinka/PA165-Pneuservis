@@ -3,7 +3,6 @@ package cz.muni.fi.pa165.pneuservis.backend.entity;
 import com.google.common.base.MoreObjects;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -24,10 +23,6 @@ public class Order {
     private LocalDateTime date;
 
     @NotNull
-    @DecimalMin("0.0")
-    private BigDecimal priceTotal;
-
-    @NotNull
     @ManyToOne
     private Customer customer;
 
@@ -38,9 +33,8 @@ public class Order {
     public Order() {
     }
 
-    public Order(LocalDateTime date, BigDecimal priceTotal, Customer customer, List<OrderItem> orderItems) {
+    public Order(LocalDateTime date, Customer customer, List<OrderItem> orderItems) {
         this.date = date;
-        this.priceTotal = priceTotal;
         this.customer = customer;
         this.orderItems = orderItems;
     }
@@ -51,10 +45,6 @@ public class Order {
 
     public LocalDateTime getDate() {
         return date;
-    }
-
-    public BigDecimal getPriceTotal() {
-        return priceTotal;
     }
 
     public Customer getCustomer() {
@@ -73,16 +63,22 @@ public class Order {
         this.date = date;
     }
 
-    public void setPriceTotal(BigDecimal priceTotal) {
-        this.priceTotal = priceTotal;
-    }
-
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public BigDecimal calculatePrice() {
+        BigDecimal price = new BigDecimal(0);
+
+        for (OrderItem orderItem : orderItems) {
+            price = price.add(orderItem.calculatePrice());
+        }
+
+        return price;
     }
 
     @Override
@@ -92,14 +88,13 @@ public class Order {
         Order order = (Order) o;
         return Objects.equals(id, order.id) &&
                 Objects.equals(date, order.date) &&
-                Objects.equals(priceTotal, order.priceTotal) &&
                 Objects.equals(customer, order.customer) &&
                 Objects.equals(orderItems, order.orderItems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, priceTotal, customer, orderItems);
+        return Objects.hash(id, date, customer, orderItems);
     }
 
     @Override
@@ -107,7 +102,6 @@ public class Order {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
                 .add("date", date)
-                .add("priceTotal", priceTotal)
                 .add("customer", customer)
                 .add("orderItems", orderItems)
                 .toString();
