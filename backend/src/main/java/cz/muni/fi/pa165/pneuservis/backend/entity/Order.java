@@ -1,6 +1,5 @@
 package cz.muni.fi.pa165.pneuservis.backend.entity;
 
-import cz.muni.fi.pa165.pneuservis.backend.entity.Tire.Tire;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
