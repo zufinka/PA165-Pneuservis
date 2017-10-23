@@ -2,6 +2,6 @@ package cz.muni.fi.pa165.pneuservis.backend.entity;
 
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Service {
 }
