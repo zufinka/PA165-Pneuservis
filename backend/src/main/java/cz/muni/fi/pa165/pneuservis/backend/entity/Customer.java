@@ -19,13 +19,26 @@ public class Customer {
     private Long id;
 
     @NotNull
+    private String email;
+
+    @NotNull
     private String name;
 
     @NotNull
-    private String address;
+    private String surname;
 
     @NotNull
-    @Size (min = 9)
+    private String city;
+
+    @NotNull
+    private String street;
+
+    @NotNull
+    @Size (min = 5, max = 5)
+    private Integer psc;
+
+    @NotNull
+    @Size (min = 9, max = 9)
     private Integer phoneNumber;
 
     @OneToMany
@@ -36,9 +49,14 @@ public class Customer {
 
     public Customer(){}
 
-    public Customer(String name, String address, Integer phoneNumber){
+    public Customer(String name, String surname, String city, String street, Integer psc,
+                    String email, Integer phoneNumber){
         this.name = name;
-        this.address = address;
+        this.surname = surname;
+        this.city = city;
+        this.street = street;
+        this.psc = psc;
+        this.email = email;
         this.phoneNumber = phoneNumber;
     }
 
@@ -54,12 +72,44 @@ public class Customer {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public Integer getPsc() {
+        return psc;
+    }
+
+    public void setPsc(Integer psc) {
+        this.psc = psc;
     }
 
     public Integer getPhoneNumber() {
@@ -93,24 +143,23 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        if (!getName().equals(customer.getName())) return false;
-        if (!getAddress().equals(customer.getAddress())) return false;
-        return getPhoneNumber().equals(customer.getPhoneNumber());
+        return getEmail().equals(customer.getEmail());
     }
 
     @Override
     public int hashCode() {
-        int result = getName().hashCode();
-        result = 31 * result + getAddress().hashCode();
-        result = 31 * result + getPhoneNumber().hashCode();
-        return result;
+        return getEmail().hashCode();
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", psc=" + psc +
                 ", phoneNumber=" + phoneNumber +
                 ", typesOfCar=" + typesOfCar +
                 '}';
