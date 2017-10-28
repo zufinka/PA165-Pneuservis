@@ -1,6 +1,6 @@
 package cz.muni.fi.pa165.pneuservis.backend.entity;
 
-import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfCar;
+import cz.muni.fi.pa165.pneuservis.backend.enums.VehicleTypeEnum;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -29,7 +29,7 @@ public class Customer {
     private Integer phoneNumber;
 
     @OneToMany
-    private Set<TypeOfCar> typesOfCar;
+    private Set<VehicleTypeEnum> typesOfCar;
 
     @OneToMany
     private Set<Order> orders;
@@ -70,11 +70,11 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<TypeOfCar> getTypesOfCar() {
+    public Set<VehicleTypeEnum> getTypesOfCar() {
         return typesOfCar;
     }
 
-    public void setTypeOfCar(TypeOfCar typeOfCar) {
+    public void setTypeOfCar(VehicleTypeEnum typeOfCar) {
         typesOfCar.add(typeOfCar);
     }
 
