@@ -1,5 +1,5 @@
 
-package cz.muni.fi.pa165.pneuservis.backend.entity.tire;
+package cz.muni.fi.pa165.pneuservis.backend.entity;
 
 import java.util.Collections;
 import java.util.HashSet;

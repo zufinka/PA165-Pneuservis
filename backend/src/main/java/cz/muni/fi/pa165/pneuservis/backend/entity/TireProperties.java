@@ -1,5 +1,5 @@
 
-package cz.muni.fi.pa165.pneuservis.backend.entity.tire;
+package cz.muni.fi.pa165.pneuservis.backend.entity;
 
 import cz.muni.fi.pa165.pneuservis.backend.enums.SeasonEnum;
 import cz.muni.fi.pa165.pneuservis.backend.enums.TireVehicleTypeEnum;
