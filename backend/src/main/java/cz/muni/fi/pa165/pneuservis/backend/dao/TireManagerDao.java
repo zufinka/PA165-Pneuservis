@@ -1,6 +1,6 @@
 package cz.muni.fi.pa165.pneuservis.backend.dao;
 
-import cz.muni.fi.pa165.pneuservis.backend.entity.tire.Tire;
+import cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
 import java.util.List;
 
 /***

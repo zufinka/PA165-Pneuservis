@@ -1,9 +1,9 @@
 
 package cz.muni.fi.pa165.pneuservis.backend.dao;
 
-import cz.muni.fi.pa165.pneuservis.backend.entity.tire.TireManufacturer;
-import cz.muni.fi.pa165.pneuservis.backend.entity.tire.Tire;
-import cz.muni.fi.pa165.pneuservis.backend.entity.tire.TireProperties;
+import cz.muni.fi.pa165.pneuservis.backend.entity.TireManufacturer;
+import cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
+import cz.muni.fi.pa165.pneuservis.backend.entity.TireProperties;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

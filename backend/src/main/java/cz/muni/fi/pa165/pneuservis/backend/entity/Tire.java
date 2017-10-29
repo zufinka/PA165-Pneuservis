@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.pneuservis.backend.entity.tire;
+package cz.muni.fi.pa165.pneuservis.backend.entity;
 
 import java.math.BigDecimal;
 import java.util.Objects;

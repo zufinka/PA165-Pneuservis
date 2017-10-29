@@ -1,5 +1,5 @@
 
-package cz.muni.fi.pa165.pneuservis.backend.entity.tire;
+package cz.muni.fi.pa165.pneuservis.backend;
 
 import javax.sql.DataSource;
 
