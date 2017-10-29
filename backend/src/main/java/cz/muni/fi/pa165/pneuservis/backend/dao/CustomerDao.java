@@ -42,18 +42,19 @@ public interface CustomerDao {
      * @return Customer with given telephone number or null if there was no customer with this number in the database.
      * @throws IllegalArgumentException if given telephone number is null
      */
-    Customer findByPhone(Integer phoneNumber);
+    Customer findByPhone(String phoneNumber);
 
     /**
      * Find Customer according to given address.
      * @param city
      * @param street
-     * @param psc
+     * @param zipCode
+     * @param country
      * @return Set of founded customers with given address or null if there was no customer with this
      *         adress in the database.
      * @throws IllegalArgumentException if given city, street or psč is null
      */
-    List<Customer> findByAddress(String city, String street, Integer psc);
+    List<Customer> findByAddress(String city, String street, String country, String zipCode);
 
     /**
      * Find all customers in the database.

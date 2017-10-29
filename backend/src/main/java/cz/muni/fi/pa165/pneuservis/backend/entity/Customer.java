@@ -4,7 +4,7 @@ import cz.muni.fi.pa165.pneuservis.backend.enums.VehicleTypeEnum;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+//import javax.validation.constraints.Size;
 import java.util.Set;
 
 /**
@@ -35,12 +35,13 @@ public class Customer {
     private String street;
 
     @NotNull
-    @Size (min = 5, max = 5)
-    private Integer psc;
+    private String country;
 
     @NotNull
-    @Size (min = 9, max = 9)
-    private Integer phoneNumber;
+    private String zipCode;
+
+    @NotNull
+    private String phoneNumber;
 
     @OneToMany
     private Set<VehicleTypeEnum> typesOfCar;
@@ -50,13 +51,14 @@ public class Customer {
 
     public Customer(){}
 
-    public Customer(String name, String surname, String city, String street, Integer psc,
-                    String email, Integer phoneNumber){
+    public Customer(String name, String surname, String city, String street, String zipCode, String country,
+                    String email, String phoneNumber){
         this.name = name;
         this.surname = surname;
         this.city = city;
         this.street = street;
-        this.psc = psc;
+        this.zipCode = zipCode;
+        this.country = country;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
@@ -105,19 +107,19 @@ public class Customer {
         this.street = street;
     }
 
-    public Integer getPsc() {
-        return psc;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setPsc(Integer psc) {
-        this.psc = psc;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -135,6 +137,14 @@ public class Customer {
 
     public void setOrder(Order order) {
         orders.add(order);
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override
@@ -160,8 +170,9 @@ public class Customer {
                 ", surname='" + surname + '\'' +
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
-                ", psc=" + psc +
-                ", phoneNumber=" + phoneNumber +
+                ", zipCode=" + zipCode + '\'' +
+                ", country=" + country + '\'' +
+                ", phoneNumber=" + phoneNumber + '\'' +
                 ", typesOfCar=" + typesOfCar +
                 '}';
     }

@@ -44,7 +44,7 @@ public class CustomerDaoImpl implements CustomerDao{
     }
 
     @Override
-    public Customer findByPhone(Integer phoneNumber) {
+    public Customer findByPhone(String phoneNumber) {
         if (phoneNumber == null){
             throw new IllegalArgumentException("Telephone number is null.");
         }
@@ -54,11 +54,12 @@ public class CustomerDaoImpl implements CustomerDao{
     }
 
     @Override
-    public List<Customer> findByAddress(String city, String street, Integer psc) {
-        if (city == null || street == null || psc == null){
-            throw new IllegalArgumentException("City, street or psc is null.");
+    public List<Customer> findByAddress(String city, String street, String country, String zipCode) {
+        if (city == null || street == null || country == null || zipCode == null){
+            throw new IllegalArgumentException("City, street, country or zipCode is null.");
         }
-        return em.createQuery("SELECT c FROM CustomerTable c WHERE c.city=:city AND c.street=:street AND c.psc=:psc",
+        return em.createQuery("SELECT c FROM CustomerTable c WHERE c.city=:city AND c.street=:street " +
+                        "AND c.country=:country AND c.zipCode=:zipCode",
                 Customer.class).getResultList();
     }
 
