@@ -103,5 +103,6 @@ public class CustomerDaoImpl implements CustomerDao{
         em.remove(customerToDelete);
         em.getTransaction( ).commit( );
         em.close( );
+        return customerToDelete;
     }
 }
