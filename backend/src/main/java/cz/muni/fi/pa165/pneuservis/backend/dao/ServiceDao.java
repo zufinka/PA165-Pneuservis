@@ -3,6 +3,7 @@ package cz.muni.fi.pa165.pneuservis.backend.dao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
 import cz.muni.fi.pa165.pneuservis.backend.enums.typeOfServiceEnum;
 import java.math.BigDecimal;
+import java.util.List;
 
 
 /***
@@ -38,7 +39,7 @@ public interface ServiceDao {
      * @param price
      * @return
      */
-    Service findByPrice(BigDecimal price);
+    List<Service> findByPrice(BigDecimal price);
     /**
      * Returns service with same type of service stored id db
      * @param serviceType
@@ -51,7 +52,16 @@ public interface ServiceDao {
      * already bind.
      * @param service
      */
+    
+    
     void updateService(Service service) throws IllegalArgumentException;
+    
+    /**
+     * Method returns list of all services in database;
+     * @return 
+     */
+    
+    List<Service> retrieveAllServices();
     
     /**
      * Method deletes service with values matching filter. If filter is null

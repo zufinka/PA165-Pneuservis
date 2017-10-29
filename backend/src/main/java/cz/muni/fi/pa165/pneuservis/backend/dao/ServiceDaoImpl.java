@@ -4,6 +4,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
 import cz.muni.fi.pa165.pneuservis.backend.enums.typeOfServiceEnum;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -33,6 +34,7 @@ public class ServiceDaoImpl implements ServiceDao{
         return em.find(Service.class, id);
     }
 
+    @Override
     public Service findByName(String name) {
         if (name == null){
             throw new IllegalArgumentException("Name is null.");
@@ -42,15 +44,17 @@ public class ServiceDaoImpl implements ServiceDao{
         return fservice;
     }
     
-    public Service findByPrice(BigDecimal price) {
+    @Override
+    public List<Service> findByPrice(BigDecimal price) {
         if (price == null){
             throw new IllegalArgumentException("Price is null.");
         }
-        Service fservice =  em.createQuery("SELECT s FROM Service s " +
-                "WHERE s.price = :price", Service.class).getSingleResult();
+        List<Service> fservice =  em.createQuery("SELECT s FROM Service s " +
+                "WHERE s.price = :price", Service.class).getResultList();
         return fservice;
     }
     
+    @Override
     public Service findByTypeofService(typeOfServiceEnum serviceType) {
         if (serviceType == null){
             throw new IllegalArgumentException("service type is null.");
@@ -58,6 +62,14 @@ public class ServiceDaoImpl implements ServiceDao{
         Service fservice =  em.createQuery("SELECT s FROM Service s " +
                 "WHERE s.serviceType = :serviceType", Service.class).getSingleResult();
         return fservice;
+    }
+    
+    @Override
+    public List<Service> retrieveAllServices() {
+        em.getTransaction().begin();
+        List<Service> services = em.createQuery("SELECT s FROM Service s", Service.class).getResultList();
+        em.getTransaction().commit();
+        return services;
     }
 
     @Override
