@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.pneuservis.backend.dao;
 
 import cz.muni.fi.pa165.pneuservis.backend.entity.OrderItem;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,7 +12,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * @author Martin Zilak, 433372@mail.muni.cz
  */
-
+@Repository
 public class OrderItemDaoImpl implements OrderItemDao {
 
     @PersistenceContext
