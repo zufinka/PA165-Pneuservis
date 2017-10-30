@@ -7,7 +7,10 @@ import cz.muni.fi.pa165.pneuservis.backend.enums.SeasonEnum;
 import cz.muni.fi.pa165.pneuservis.backend.enums.SpeedClassEnum;
 import cz.muni.fi.pa165.pneuservis.backend.enums.VehicleTypeEnum;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -23,12 +26,14 @@ import java.math.BigDecimal;
  */
 
 @ContextConfiguration(classes = PersistenceApplicationContext.class)
+@TestExecutionListeners(TransactionalTestExecutionListener.class)
+@Transactional
 public class TireManagerDaoTest extends AbstractTestNGSpringContextTests {
 
     @Inject
     private TireManagerDao tireManagerDao;
 
-    @PersistenceContext(type = PersistenceContextType.EXTENDED)
+    @PersistenceContext
     private EntityManager entityManager;
 
     private TireManufacturer tireManufacturer;
