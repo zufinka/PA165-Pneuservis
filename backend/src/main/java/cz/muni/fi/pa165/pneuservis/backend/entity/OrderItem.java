@@ -20,10 +20,10 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @ManyToOne
     private Tire tire;
 
-    @OneToMany
+    @ManyToOne
     private Service service;
 
     @NotNull
@@ -65,6 +65,10 @@ public class OrderItem {
 
     public void setService(Service service) {
         this.service = service;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
     }
 
     @Override

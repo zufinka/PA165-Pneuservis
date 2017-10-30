@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 
 @Entity
-@Table(name = "OrderTable")
+@Table(name = "Orders")
 public class Order {
 
     @Id

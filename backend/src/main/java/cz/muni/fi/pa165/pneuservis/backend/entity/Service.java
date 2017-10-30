@@ -11,8 +11,6 @@ import javax.persistence.GenerationType;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
-
-
 /***
  * @author Róbert Ivan , 461468@mail.muni.cz
  */

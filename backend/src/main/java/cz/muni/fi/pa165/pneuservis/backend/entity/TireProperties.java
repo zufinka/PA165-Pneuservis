@@ -2,7 +2,7 @@
 package cz.muni.fi.pa165.pneuservis.backend.entity;
 
 import cz.muni.fi.pa165.pneuservis.backend.enums.SeasonEnum;
-import cz.muni.fi.pa165.pneuservis.backend.enums.TireVehicleTypeEnum;
+import cz.muni.fi.pa165.pneuservis.backend.enums.VehicleTypeEnum;
 import cz.muni.fi.pa165.pneuservis.backend.enums.SpeedClassEnum;
 import java.util.Collections;
 import java.util.HashSet;
@@ -32,7 +32,7 @@ public class TireProperties {
     
     @NotNull
     @Enumerated
-    private TireVehicleTypeEnum tireVehicleType;
+    private VehicleTypeEnum vehicleType;
     
     @NotNull
     private int width;
@@ -61,8 +61,8 @@ public class TireProperties {
 
     public TireProperties() {}
 
-    public TireProperties(TireVehicleTypeEnum tireVehicleType, int width, int aspectRatio, int diameter, int loadIndex, SpeedClassEnum speedClass, SeasonEnum season) {
-        this.tireVehicleType = tireVehicleType;
+    public TireProperties(VehicleTypeEnum vehicleType, int width, int aspectRatio, int diameter, int loadIndex, SpeedClassEnum speedClass, SeasonEnum season) {
+        this.vehicleType = vehicleType;
         this.width = width;
         this.aspectRatio = aspectRatio;
         this.diameter = diameter;
@@ -75,12 +75,12 @@ public class TireProperties {
         return id;
     }
     
-    public TireVehicleTypeEnum getTireVehicleType() {
-        return tireVehicleType;
+    public VehicleTypeEnum getVehicleType() {
+        return vehicleType;
     }
 
-    public void setTireVehicleType(TireVehicleTypeEnum tireVehicleType) {
-        this.tireVehicleType = tireVehicleType;
+    public void setVehicleType(VehicleTypeEnum vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
     public int getWidth() {
@@ -164,7 +164,7 @@ public class TireProperties {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.tireVehicleType);
+        hash = 97 * hash + Objects.hashCode(this.vehicleType);
         hash = 97 * hash + this.width;
         hash = 97 * hash + this.aspectRatio;
         hash = 97 * hash + this.diameter;
@@ -198,7 +198,7 @@ public class TireProperties {
         if (this.loadIndex != other.loadIndex) {
             return false;
         }
-        if (this.tireVehicleType != other.tireVehicleType) {
+        if (this.vehicleType != other.vehicleType) {
             return false;
         }
         if (this.speedClass != other.speedClass) {
@@ -212,7 +212,7 @@ public class TireProperties {
 
     @Override
     public String toString() {
-        return "TireProperties{" + "tireVehicleType=" + tireVehicleType + ", width=" + width + ", aspectRatio=" + aspectRatio + ", diameter=" + diameter + ", loadIndex=" + loadIndex + ", speedClass=" + speedClass + ", season=" + season + '}';
+        return "TireProperties{" + "vehicleType=" + vehicleType + ", width=" + width + ", aspectRatio=" + aspectRatio + ", diameter=" + diameter + ", loadIndex=" + loadIndex + ", speedClass=" + speedClass + ", season=" + season + '}';
     }
 
 }
