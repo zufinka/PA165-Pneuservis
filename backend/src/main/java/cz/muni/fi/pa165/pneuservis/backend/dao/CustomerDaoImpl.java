@@ -2,6 +2,7 @@ package cz.muni.fi.pa165.pneuservis.backend.dao;
 
 import cz.muni.fi.pa165.pneuservis.backend.entity.Customer;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,14 +14,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author Zuzana Žufanová, zufinka@mail.muni.cz
  */
 @Repository
+@Transactional
 public class CustomerDaoImpl implements CustomerDao{
 
     @PersistenceContext
     private EntityManager em;
-
-    public CustomerDaoImpl (EntityManager em){
-        this.em = em;
-    }
 
     @Override
     public Customer findById(Long id) {
