@@ -38,9 +38,9 @@ public class CustomerDaoTest extends AbstractTestNGSpringContextTests{
     
     @BeforeMethod
     public void prepareCustomers() {
-        custumer1 = new Customer("TestName","TestSurname","Testcity","Teststreet","TestzipCode","Testcountry","Testemail","TestphoneNumber");
-        custumer2 = new Customer("TestName","TestSurname","Testcity","Teststreet","TestzipCode","Testcountry","Testemail","TestphoneNumber");
-        custumer3 = new Customer("TestName","TestSurname","Testcity","Teststreet","TestzipCode","Testcountry","Testemail","TestphoneNumber");
+        custumer1 = new Customer("TestName1","TestSurname1","Testcity1","Teststreet1","TestzipCode1","Testcountry1","Testemail1","TestphoneNumber1");
+        custumer2 = new Customer("TestName2","TestSurname2","Testcity2","Teststreet2","TestzipCode2","Testcountry2","Testemail2","TestphoneNumber2");
+        custumer3 = new Customer("TestName3","TestSurname3","Testcity3","Teststreet3","TestzipCode3","Testcountry3","Testemail3","TestphoneNumber3");
     }
     
     @Test
