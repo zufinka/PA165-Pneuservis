@@ -29,7 +29,7 @@ public class CustomerDaoImpl implements CustomerDao{
         if (name == null || surname == null){
             throw new IllegalArgumentException("Fist name or surname is null.");
         }
-        return em.createQuery("SELECT c FROM CustomerTable c WHERE c.name = :name AND c.surname = :surname",
+        return em.createQuery("SELECT c FROM Customer c WHERE c.name = :name AND c.surname = :surname",
                 Customer.class).getResultList();
     }
 
@@ -38,7 +38,7 @@ public class CustomerDaoImpl implements CustomerDao{
         if (email == null){
             throw new IllegalArgumentException("Email is null.");
         }
-        Customer foundCustomer =  em.createQuery("SELECT c FROM CustomerTable c " +
+        Customer foundCustomer =  em.createQuery("SELECT c FROM Customer c " +
                 "WHERE c.email = :email", Customer.class).getSingleResult();
         return foundCustomer;
     }
@@ -48,7 +48,7 @@ public class CustomerDaoImpl implements CustomerDao{
         if (phoneNumber == null){
             throw new IllegalArgumentException("Telephone number is null.");
         }
-        Customer foundCustomer =  em.createQuery("SELECT c FROM CustomerTable c " +
+        Customer foundCustomer =  em.createQuery("SELECT c FROM Customer c " +
                 "WHERE c.phoneNumber = :phoneNumber", Customer.class).getSingleResult();
         return foundCustomer;
     }
@@ -58,14 +58,14 @@ public class CustomerDaoImpl implements CustomerDao{
         if (city == null || street == null || country == null || zipCode == null){
             throw new IllegalArgumentException("City, street, country or zipCode is null.");
         }
-        return em.createQuery("SELECT c FROM CustomerTable c WHERE c.city=:city AND c.street=:street " +
+        return em.createQuery("SELECT c FROM Customer c WHERE c.city=:city AND c.street=:street " +
                         "AND c.country=:country AND c.zipCode=:zipCode",
                 Customer.class).getResultList();
     }
 
     @Override
     public List<Customer> findAll() {
-        return em.createQuery("SELECT c from CustomerTable c", Customer.class).getResultList();
+        return em.createQuery("SELECT c FROM Customer c", Customer.class).getResultList();
     }
 
     @Override

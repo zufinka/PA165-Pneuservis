@@ -13,6 +13,7 @@ import java.util.List;
  */
 
 @Entity
+@Table
 public class Customer {
 
     @Id
@@ -46,7 +47,7 @@ public class Customer {
     @OneToMany
     private Set<VehicleTypeEnum> typesOfCar;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private Set<Order> orders;
 
     public Customer(){}
@@ -176,6 +177,4 @@ public class Customer {
                 ", typesOfCar=" + typesOfCar +
                 '}';
     }
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
 }
