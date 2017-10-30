@@ -44,7 +44,7 @@ public class Customer {
     @NotNull
     private String phoneNumber;
 
-    @OneToMany
+    @ElementCollection
     private Set<VehicleTypeEnum> typesOfCar;
 
     @OneToMany(mappedBy = "customer")
