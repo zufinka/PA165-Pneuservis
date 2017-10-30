@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.pneuservis.backend.dao;
 
 import cz.muni.fi.pa165.pneuservis.backend.entity.Order;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,11 +12,15 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * @author Martin Zilak, 433372@mail.muni.cz
  */
-
+@Repository
 public class OrderDaoImpl implements OrderDao {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    public OrderDaoImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     @Override
     public Order getById(Long id) {
@@ -25,7 +30,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public List<Order> getAll() {
-        return entityManager.createQuery("SELECT o FROM OrderTable o", Order.class).getResultList();
+        return entityManager.createQuery("SELECT o FROM Order o", Order.class).getResultList();
     }
 
     @Override

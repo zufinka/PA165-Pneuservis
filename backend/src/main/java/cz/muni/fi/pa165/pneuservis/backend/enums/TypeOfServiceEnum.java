@@ -9,7 +9,7 @@ package cz.muni.fi.pa165.pneuservis.backend.enums;
  * @author Róbert Ivan , 461468@mail.muni.cz
  */
 
-public enum typeOfServiceEnum {
+public enum TypeOfServiceEnum {
     TIRECHANGE("Tire change"),
     BRAKECALIBRATION("Brake calibration"),
     CLEANING("Cleaning"),
@@ -19,6 +19,6 @@ public enum typeOfServiceEnum {
     EXHAUSTSYSTEMREPAIR("Exhaust system repair");
     
     private final String id;
-    typeOfServiceEnum(String id){this.id = id;}
+    TypeOfServiceEnum(String id){this.id = id;}
     public String getValue() {return id;} 
 }

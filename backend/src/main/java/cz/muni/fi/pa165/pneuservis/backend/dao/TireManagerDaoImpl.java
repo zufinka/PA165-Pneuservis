@@ -4,6 +4,8 @@ package cz.muni.fi.pa165.pneuservis.backend.dao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.TireManufacturer;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
 import cz.muni.fi.pa165.pneuservis.backend.entity.TireProperties;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -14,6 +16,7 @@ import javax.persistence.Query;
  *
  * @author Jakub Palenik, 422453@mail.muni.cz
  */
+@Repository
 public class TireManagerDaoImpl implements TireManagerDao {
 
     @PersistenceContext
@@ -172,14 +175,14 @@ public class TireManagerDaoImpl implements TireManagerDao {
                     + "AND t.loadIndex = :li "
                     + "AND t.season = :s "
                     + "AND t.speedClass = :sc "
-                    + "AND t.tireVehicleType = :twt "
+                    + "AND t.vehicleType = :twt "
                     + "AND t.width = :w", TireProperties.class)
                     .setParameter("ar", tireProperties.getAspectRatio())
                     .setParameter("d", tireProperties.getDiameter())
                     .setParameter("li", tireProperties.getLoadIndex())
                     .setParameter("s", tireProperties.getSeason())
                     .setParameter("sc", tireProperties.getSpeedClass())
-                    .setParameter("twt", tireProperties.getTireVehicleType())
+                    .setParameter("twt", tireProperties.getVehicleType())
                     .setParameter("w", tireProperties.getWidth()).getSingleResult();
         } catch (NoResultException nre) {
         }

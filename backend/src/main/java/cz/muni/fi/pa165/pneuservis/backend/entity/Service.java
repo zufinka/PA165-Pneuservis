@@ -1,6 +1,6 @@
 package cz.muni.fi.pa165.pneuservis.backend.entity;
 
-import cz.muni.fi.pa165.pneuservis.backend.enums.typeOfServiceEnum;
+import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
 import java.math.BigDecimal;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
-
-
 
 /***
  * @author Róbert Ivan , 461468@mail.muni.cz
@@ -31,14 +29,13 @@ public class Service {
     @DecimalMin("0.0")
     private BigDecimal price;
     
-    @ManyToOne
     @NotNull
-    private typeOfServiceEnum serviceType;
+    private TypeOfServiceEnum serviceType;
   
     public Service() {
     }
     
-    public Service(String name, typeOfServiceEnum serviceType) {
+    public Service(String name, TypeOfServiceEnum serviceType) {
         this.name = name;
         this.serviceType = serviceType;
     }
@@ -55,11 +52,11 @@ public class Service {
         this.name = name;
     }
     
-    public typeOfServiceEnum getServiceType() {
+    public TypeOfServiceEnum getServiceType() {
         return serviceType;
     }
 
-    public void setServiceType(typeOfServiceEnum serviceType) {
+    public void setServiceType(TypeOfServiceEnum serviceType) {
         this.serviceType = serviceType;
     }
         
