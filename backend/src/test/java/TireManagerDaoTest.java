@@ -1,14 +1,13 @@
 import cz.muni.fi.pa165.pneuservis.backend.PersistenceApplicationContext;
 import cz.muni.fi.pa165.pneuservis.backend.dao.TireManagerDao;
-import cz.muni.fi.pa165.pneuservis.backend.entity.*;
+import cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
+import cz.muni.fi.pa165.pneuservis.backend.entity.TireManufacturer;
+import cz.muni.fi.pa165.pneuservis.backend.entity.TireProperties;
 import cz.muni.fi.pa165.pneuservis.backend.enums.SeasonEnum;
 import cz.muni.fi.pa165.pneuservis.backend.enums.SpeedClassEnum;
 import cz.muni.fi.pa165.pneuservis.backend.enums.VehicleTypeEnum;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,6 +15,7 @@ import org.testng.annotations.Test;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import java.math.BigDecimal;
 
 /**
@@ -23,15 +23,15 @@ import java.math.BigDecimal;
  */
 
 @ContextConfiguration(classes = PersistenceApplicationContext.class)
-@TestExecutionListeners(TransactionalTestExecutionListener.class)
-@Transactional
 public class TireManagerDaoTest extends AbstractTestNGSpringContextTests {
 
     @Inject
     private TireManagerDao tireManagerDao;
 
-    @PersistenceContext
+    @PersistenceContext(type = PersistenceContextType.EXTENDED)
     private EntityManager entityManager;
+
+    private TireManufacturer tireManufacturer;
 
     private Tire tire1;
     private Tire tire2;
@@ -39,12 +39,12 @@ public class TireManagerDaoTest extends AbstractTestNGSpringContextTests {
 
     @BeforeMethod
     public void prepareTires() {
-        tire1 = new Tire("T1", new TireManufacturer("Continental"), new TireProperties(VehicleTypeEnum.P, 165, 95, 16, 95,  SpeedClassEnum.H, SeasonEnum.WINTER), 10, new BigDecimal(10.568));
-        tire2 = new Tire("T2", new TireManufacturer("Continental"), new TireProperties(VehicleTypeEnum.P, 170, 95, 16, 95,  SpeedClassEnum.H, SeasonEnum.WINTER), 10, new BigDecimal(11.568));
-        tire3 = new Tire("T3", new TireManufacturer("Continental"), new TireProperties(VehicleTypeEnum.P, 165, 95, 16, 95,  SpeedClassEnum.H, SeasonEnum.WINTER), 8, new BigDecimal(50.568));
-        entityManager.persist(tire1);
-        entityManager.persist(tire2);
-        entityManager.persist(tire3);
+        tireManufacturer = new TireManufacturer("Continental");
+        entityManager.persist(tireManufacturer);
+
+        tire1 = new Tire("T1", tireManufacturer, new TireProperties(VehicleTypeEnum.P, 165, 95, 16, 95,  SpeedClassEnum.H, SeasonEnum.WINTER), 10, new BigDecimal(10.568));
+        tire2 = new Tire("T2", tireManufacturer, new TireProperties(VehicleTypeEnum.P, 170, 95, 16, 95,  SpeedClassEnum.H, SeasonEnum.WINTER), 10, new BigDecimal(11.568));
+        tire3 = new Tire("T3", tireManufacturer, new TireProperties(VehicleTypeEnum.P, 165, 95, 16, 95,  SpeedClassEnum.H, SeasonEnum.WINTER), 8, new BigDecimal(50.568));
     }
 
     @Test
