@@ -15,7 +15,7 @@ public interface CustomerDao {
      * Find Customer according to given ID.
      * @param id
      * @return Founded Customer or null if there was no customer with this ID in the database.
-     * @throws NullPointerException if given id is null
+     * @throws IllegalArgumentException if given id is null
      */
     Customer findById(Long id);
 
@@ -24,7 +24,7 @@ public interface CustomerDao {
      * @param name First name
      * @param surname
      * @return Set of founded Customers with given name or null if there was no customer with this name in the database.
-     * @throws NullPointerException if given name or surname is null
+     * @throws IllegalArgumentException if given name or surname is null
      */
     List<Customer> findByName(String name, String surname);
 
@@ -32,7 +32,7 @@ public interface CustomerDao {
      * Find Customer according to given email.
      * @param email
      * @return Customer with given email or null if there was no customer with this email in the database.
-     * @throws NullPointerException if given email is null
+     * @throws IllegalArgumentException if given email is null
      */
     Customer findByEmail(String email);
 
@@ -40,7 +40,7 @@ public interface CustomerDao {
      * Find Customer according to given telephone number.
      * @param phoneNumber
      * @return Customer with given telephone number or null if there was no customer with this number in the database.
-     * @throws NullPointerException if given telephone number is null
+     * @throws IllegalArgumentException if given telephone number is null
      */
     Customer findByPhone(String phoneNumber);
 
@@ -52,7 +52,7 @@ public interface CustomerDao {
      * @param country
      * @return Set of founded customers with given address or null if there was no customer with this
      *         adress in the database.
-     * @throws NullPointerException if given city, street or psč is null
+     * @throws IllegalArgumentException if given city, street or psč is null
      */
     List<Customer> findByAddress(String city, String street, String country, String zipCode);
 
@@ -65,7 +65,7 @@ public interface CustomerDao {
     /**
      * Insert customer to the database.
      * @param customer to be inserted to the database
-     * @throws NullPointerException if given customer is null
+     * @throws IllegalArgumentException if given customer is null
      * @throws javax.persistence.EntityExistsException if given customer already exists in the database
      */
     void createCustomer(Customer customer);
@@ -73,16 +73,14 @@ public interface CustomerDao {
     /**
      * Update information about customer that already is in the database.
      * @param customer to be updated
-     * @throws IllegalArgumentException if the customer is not present in the database
-     * @throws NullPointerException if given customer is null
+     * @throws IllegalArgumentException if the customer is null or is not present in the database
      */
     void updateCustomer(Customer customer);
 
     /**
      * Delete customer from database.
      * @param customer to be deleted
-     * @throws IllegalArgumentException if the customer is not present in the database
-     * @throws NullPointerException if given customer is null
+     * @throws IllegalArgumentException if the customer is null or is not present in the database
      */
     void deleteCustomer(Customer customer);
 }
