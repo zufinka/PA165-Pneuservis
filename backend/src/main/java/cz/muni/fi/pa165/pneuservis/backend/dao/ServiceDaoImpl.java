@@ -7,11 +7,14 @@ import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /***
  * @author Róbert Ivan , 461468@mail.muni.cz
  */
-
+@Repository
+@Transactional
 public class ServiceDaoImpl implements ServiceDao{
 
     @PersistenceContext
@@ -66,10 +69,7 @@ public class ServiceDaoImpl implements ServiceDao{
     
     @Override
     public List<Service> retrieveAllServices() {
-        em.getTransaction().begin();
-        List<Service> services = em.createQuery("SELECT s FROM Service s", Service.class).getResultList();
-        em.getTransaction().commit();
-        return services;
+        return em.createQuery("SELECT s FROM Service s", Service.class).getResultList();
     }
 
     @Override
