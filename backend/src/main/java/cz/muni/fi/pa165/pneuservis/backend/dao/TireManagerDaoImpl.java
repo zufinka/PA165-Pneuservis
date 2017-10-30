@@ -44,8 +44,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
             return false;
         }
 
-        //em.getTransaction().begin();
-
         TireManufacturer tmf = findTireManuf(tire.getTireManufacturer());
         if (tmf == null) {
             em.persist(tire.getTireManufacturer());
@@ -61,7 +59,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
         }
 
         em.persist(tire);
-        //em.getTransaction().commit();
 
         return true;
     }
@@ -91,8 +88,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
             throw new IllegalArgumentException("tire properties in tire is null");
         }
 
-        //em.getTransaction().begin();
-
         TireManufacturer tm = findTireManuf(tire.getTireManufacturer());
         TireProperties tp = findTireProps(tire.getTireProperties());
         if (tm == null || tp == null) {
@@ -115,7 +110,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
                     .getSingleResult();
         } catch (NoResultException nre) {
         }
-        //em.getTransaction().commit();
         return t;
 
     }
@@ -126,18 +120,14 @@ public class TireManagerDaoImpl implements TireManagerDao {
             throw new IllegalArgumentException("tire is null");
         }
 
-        //em.getTransaction().begin();
         em.persist(tire);
-        //em.getTransaction().commit();
 
         return true;
     }
 
     @Override
     public List<Tire> retrieveAllTires() {
-        //em.getTransaction().begin();
         List<Tire> tires = em.createQuery("SELECT t FROM Tire t", Tire.class).getResultList();
-        //em.getTransaction().commit();
         return tires;
     }
 
@@ -147,9 +137,7 @@ public class TireManagerDaoImpl implements TireManagerDao {
             throw new IllegalArgumentException("tire is null");
         }
 
-        //em.getTransaction().begin();
         em.remove(tire);
-        //em.getTransaction().commit();
 
         return true;
     }
@@ -162,12 +150,10 @@ public class TireManagerDaoImpl implements TireManagerDao {
                     .setParameter("manName", tireManufacturer.getName()).getSingleResult();
         } catch (NoResultException nre) {
         }
-        //em.getTransaction().commit();
         return tm;
     }
 
     private TireProperties findTireProps(TireProperties tireProperties) {
-        //em.getTransaction().begin();
         TireProperties tp = null;
         try {
             tp = em.createQuery("SELECT t FROM TireProperties t where "
@@ -187,7 +173,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
                     .setParameter("w", tireProperties.getWidth()).getSingleResult();
         } catch (NoResultException nre) {
         }
-        //em.getTransaction().commit();
         return tp;
     }
 }
