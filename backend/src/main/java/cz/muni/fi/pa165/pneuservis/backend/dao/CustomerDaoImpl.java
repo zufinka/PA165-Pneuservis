@@ -1,15 +1,21 @@
 package cz.muni.fi.pa165.pneuservis.backend.dao;
 
 import cz.muni.fi.pa165.pneuservis.backend.entity.Customer;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
-import java.util.Set;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * @author Zuzana Žufanová, zufinka@mail.muni.cz
  */
+@Repository
 public class CustomerDaoImpl implements CustomerDao{
+
+    @PersistenceContext
     private EntityManager em;
 
     public CustomerDaoImpl (EntityManager em){
@@ -18,26 +24,21 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public Customer findById(Long id) {
-        if (id == null){
-            throw new IllegalArgumentException("ID is null.");
-        }
+        checkNotNull(id);
         return em.find(Customer.class, id);
     }
 
     @Override
     public List<Customer> findByName(String name, String surname) {
-        if (name == null || surname == null){
-            throw new IllegalArgumentException("Fist name or surname is null.");
-        }
+        checkNotNull(name);
+        checkNotNull(surname);
         return em.createQuery("SELECT c FROM Customer c WHERE c.name = :name AND c.surname = :surname",
                 Customer.class).getResultList();
     }
 
     @Override
     public Customer findByEmail(String email) {
-        if (email == null){
-            throw new IllegalArgumentException("Email is null.");
-        }
+        checkNotNull(email);
         Customer foundCustomer =  em.createQuery("SELECT c FROM Customer c " +
                 "WHERE c.email = :email", Customer.class).getSingleResult();
         return foundCustomer;
@@ -45,9 +46,7 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public Customer findByPhone(String phoneNumber) {
-        if (phoneNumber == null){
-            throw new IllegalArgumentException("Telephone number is null.");
-        }
+        checkNotNull(phoneNumber);
         Customer foundCustomer =  em.createQuery("SELECT c FROM Customer c " +
                 "WHERE c.phoneNumber = :phoneNumber", Customer.class).getSingleResult();
         return foundCustomer;
@@ -55,9 +54,10 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public List<Customer> findByAddress(String city, String street, String country, String zipCode) {
-        if (city == null || street == null || country == null || zipCode == null){
-            throw new IllegalArgumentException("City, street, country or zipCode is null.");
-        }
+        checkNotNull(city);
+        checkNotNull(street);
+        checkNotNull(country);
+        checkNotNull(zipCode);
         return em.createQuery("SELECT c FROM Customer c WHERE c.city=:city AND c.street=:street " +
                         "AND c.country=:country AND c.zipCode=:zipCode",
                 Customer.class).getResultList();
@@ -70,39 +70,19 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public void createCustomer(Customer customer) {
-        if (customer == null){
-            throw new IllegalArgumentException("Customer is null.");
-        }
-
-        em.getTransaction( ).begin( );
-        em.persist( customer );
-        em.getTransaction( ).commit( );
-        em.close( );
+        checkNotNull(customer);
+        em.persist(customer);
     }
 
     @Override
     public void updateCustomer(Customer customer) {
-        if (customer == null){
-            throw new IllegalArgumentException("Customer is null.");
-        }
-
-        em.getTransaction( ).begin( );
+        checkNotNull(customer);
         em.merge(customer);
-        em.getTransaction( ).commit( );
-        em.close();
     }
 
     @Override
-    public Customer deleteCustomer(Customer customer) {
-        if (customer == null){
-            throw new IllegalArgumentException("Customer is null.");
-        }
-
-        em.getTransaction( ).begin( );
-        Customer customerToDelete = em.find(Customer.class, customer.getId());
-        em.remove(customerToDelete);
-        em.getTransaction( ).commit( );
-        em.close( );
-        return customerToDelete;
+    public void deleteCustomer(Customer customer) {
+        checkNotNull(customer);
+        em.remove(customer);
     }
 }
