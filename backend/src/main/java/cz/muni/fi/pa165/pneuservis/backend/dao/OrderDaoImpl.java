@@ -20,10 +20,6 @@ public class OrderDaoImpl implements OrderDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public OrderDaoImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
     @Override
     public Order getById(Long id) {
         checkNotNull(id);
