@@ -1,3 +1,5 @@
+package cz.muni.fi.pa165.pneuservis.backend.dao;
+
 import cz.muni.fi.pa165.pneuservis.backend.PersistenceApplicationContext;
 import cz.muni.fi.pa165.pneuservis.backend.dao.ServiceDao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
