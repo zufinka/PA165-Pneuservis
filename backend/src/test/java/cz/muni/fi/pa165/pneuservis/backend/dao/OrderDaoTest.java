@@ -32,7 +32,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Kubo
+ * @author Jakub Palenik, 422453@mail.muni.cz
  */
 @ContextConfiguration(classes = PersistenceApplicationContext.class)
 @TestExecutionListeners(TransactionalTestExecutionListener.class)

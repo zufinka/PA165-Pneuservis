@@ -21,12 +21,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
 
     @PersistenceContext
     private EntityManager em;
-/*
-    public TireManagerDaoImpl(EntityManager em) {
-        this.em = em;
-
-    }
-*/
 
     @Override
     public boolean createTire(Tire tire) throws IllegalArgumentException {
@@ -91,7 +85,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
         TireManufacturer tm = findTireManuf(tire.getTireManufacturer());
         TireProperties tp = findTireProps(tire.getTireProperties());
         if (tm == null || tp == null) {
-            //em.getTransaction().commit();
             return null;
         }
 
@@ -106,7 +99,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
                     .setParameter("n", tire.getName())
                     .setParameter("tp", tp)
                     .setParameter("tm", tm)
-                    //.setParameter("p", tire.getPrice())
                     .getSingleResult();
         } catch (NoResultException nre) {
         }
@@ -143,7 +135,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
     }
 
     private TireManufacturer findTireManuf(TireManufacturer tireManufacturer) {
-        //em.getTransaction().begin();
         TireManufacturer tm = null;
         try {
             tm = em.createQuery("SELECT m FROM TireManufacturer m where m.name = :manName", TireManufacturer.class)
