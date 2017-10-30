@@ -44,10 +44,10 @@ public class ServiceDaoTest extends AbstractTestNGSpringContextTests {
         service.setPrice(BigDecimal.valueOf(2500));
         service.setServiceType(TypeOfServiceEnum.TIRECHANGE);
 
-        service = new Service();
-        service.setName("lek");
-        service.setPrice(BigDecimal.valueOf(500));
-        service.setServiceType(TypeOfServiceEnum.OILCHANGE);
+        service2 = new Service();
+        service2.setName("lek");
+        service2.setPrice(BigDecimal.valueOf(500));
+        service2.setServiceType(TypeOfServiceEnum.OILCHANGE);
     }
 
     @Test(expectedExceptions = NullPointerException.class)
