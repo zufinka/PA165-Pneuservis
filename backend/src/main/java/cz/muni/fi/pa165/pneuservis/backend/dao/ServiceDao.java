@@ -1,7 +1,7 @@
 package cz.muni.fi.pa165.pneuservis.backend.dao;
 
 import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
-import cz.muni.fi.pa165.pneuservis.backend.enums.typeOfServiceEnum;
+import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -45,7 +45,7 @@ public interface ServiceDao {
      * @param serviceType
      * @return
      */
-    Service findByTypeofService(typeOfServiceEnum serviceType);
+    Service findByTypeofService(TypeOfServiceEnum serviceType);
     
     /**
      * Method updated values of service in db. It is expected that this object is 

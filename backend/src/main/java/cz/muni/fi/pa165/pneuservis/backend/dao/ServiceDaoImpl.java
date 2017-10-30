@@ -2,7 +2,7 @@ package cz.muni.fi.pa165.pneuservis.backend.dao;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
-import cz.muni.fi.pa165.pneuservis.backend.enums.typeOfServiceEnum;
+import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -55,7 +55,7 @@ public class ServiceDaoImpl implements ServiceDao{
     }
     
     @Override
-    public Service findByTypeofService(typeOfServiceEnum serviceType) {
+    public Service findByTypeofService(TypeOfServiceEnum serviceType) {
         if (serviceType == null){
             throw new IllegalArgumentException("service type is null.");
         }
