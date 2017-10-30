@@ -21,11 +21,12 @@ public class TireManagerDaoImpl implements TireManagerDao {
 
     @PersistenceContext
     private EntityManager em;
-
+/*
     public TireManagerDaoImpl(EntityManager em) {
         this.em = em;
 
     }
+*/
 
     @Override
     public boolean createTire(Tire tire) throws IllegalArgumentException {
@@ -43,7 +44,7 @@ public class TireManagerDaoImpl implements TireManagerDao {
             return false;
         }
 
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
 
         TireManufacturer tmf = findTireManuf(tire.getTireManufacturer());
         if (tmf == null) {
@@ -60,7 +61,7 @@ public class TireManagerDaoImpl implements TireManagerDao {
         }
 
         em.persist(tire);
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
 
         return true;
     }
@@ -90,12 +91,12 @@ public class TireManagerDaoImpl implements TireManagerDao {
             throw new IllegalArgumentException("tire properties in tire is null");
         }
 
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
 
         TireManufacturer tm = findTireManuf(tire.getTireManufacturer());
         TireProperties tp = findTireProps(tire.getTireProperties());
         if (tm == null || tp == null) {
-            em.getTransaction().commit();
+            //em.getTransaction().commit();
             return null;
         }
 
@@ -114,7 +115,7 @@ public class TireManagerDaoImpl implements TireManagerDao {
                     .getSingleResult();
         } catch (NoResultException nre) {
         }
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
         return t;
 
     }
@@ -125,18 +126,18 @@ public class TireManagerDaoImpl implements TireManagerDao {
             throw new IllegalArgumentException("tire is null");
         }
 
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
         em.persist(tire);
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
 
         return true;
     }
 
     @Override
     public List<Tire> retrieveAllTires() {
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
         List<Tire> tires = em.createQuery("SELECT t FROM Tire t", Tire.class).getResultList();
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
         return tires;
     }
 
@@ -146,9 +147,9 @@ public class TireManagerDaoImpl implements TireManagerDao {
             throw new IllegalArgumentException("tire is null");
         }
 
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
         em.remove(tire);
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
 
         return true;
     }
