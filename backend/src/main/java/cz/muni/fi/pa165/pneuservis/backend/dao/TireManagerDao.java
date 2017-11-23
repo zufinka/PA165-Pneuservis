@@ -1,6 +1,9 @@
 package cz.muni.fi.pa165.pneuservis.backend.dao;
 
 import cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
+import cz.muni.fi.pa165.pneuservis.backend.entity.TireManufacturer;
+import cz.muni.fi.pa165.pneuservis.backend.entity.TireProperties;
+
 import java.util.List;
 
 /***
@@ -38,7 +41,8 @@ public interface TireManagerDao {
      * @return
      * @throws IllegalArgumentException on rite or tire.attribute == null
      */
-    Tire findTireByAttrs(Tire tire) throws IllegalArgumentException;
+    //Probably should be private method
+    //Tire findTireByAttrs(Tire tire) throws IllegalArgumentException;
     
     /**
      * Method updated values of tire in db. It is expected that this object is 
@@ -62,5 +66,11 @@ public interface TireManagerDao {
      * @return 
      */
     boolean deleteTire(Tire tire);
+
+    List<Tire> findTiresByProperties(TireManufacturer tireManufacturer, List<TireProperties> tireProperties);
+
+
+    List<TireManufacturer> retrieveAllTireManufacturers();
+    List<TireProperties> retrieveAllTireProperties();
     
 }
