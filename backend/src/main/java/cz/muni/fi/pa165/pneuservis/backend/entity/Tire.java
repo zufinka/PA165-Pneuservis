@@ -53,9 +53,7 @@ public class Tire {
     public Tire(String name, TireManufacturer manufacturer, TireProperties tireProperties, int onStock, BigDecimal price) {
         this.name = name;
         this.manufacturer = manufacturer;
-        //manufacturer.addTire(this);
         this.tireProperties = tireProperties;
-        //tireProperties.addTire(this);
         this.onStock = onStock;
         this.price = price;
     }
@@ -129,8 +127,6 @@ public class Tire {
         this.imageUrl = imageUrl;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 7;

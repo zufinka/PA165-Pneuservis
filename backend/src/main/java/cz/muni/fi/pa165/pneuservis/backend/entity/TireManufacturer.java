@@ -28,11 +28,6 @@ public class TireManufacturer {
     @NotNull
     @Column(nullable=false,unique=true)
     private String name;
-   
-    /*
-    @OneToMany
-    private Set<Tire> tires = new HashSet<>();
-    */
 
     public TireManufacturer() {}
 
@@ -51,24 +46,7 @@ public class TireManufacturer {
     public void setName(String name) {
         this.name = name;
     }
-    
-    /*
-    public void addTire(Tire t){
-        tires.add(t);
-    }
-    
-    public void removeTire(Tire t){
-        tires.remove(t);
-    }
 
-    public Set<Tire> getTires() {
-        return Collections.unmodifiableSet(tires);
-    }
-
-    public void setTires(Set<Tire> tires) {
-        this.tires = tires;
-    }
-*/
 
     @Override
     public int hashCode() {
