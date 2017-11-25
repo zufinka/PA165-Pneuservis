@@ -1,8 +1,7 @@
-import api.TireFacade;
+import facade.TireFacade;
 import config.DozerConfiguration;
 import config.MainConfig;
 import config.TireDataConfig;
-import dto.TireManufacturerDTO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

@@ -1,7 +1,5 @@
-package api;
+package facade;
 
-import cz.muni.fi.pa165.pneuservis.backend.entity.TireManufacturer;
-import cz.muni.fi.pa165.pneuservis.backend.entity.TireProperties;
 import dto.TireDTO;
 import dto.TireManufacturerDTO;
 import dto.TirePropertiesDTO;

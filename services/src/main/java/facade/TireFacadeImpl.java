@@ -1,7 +1,5 @@
-package fascadeImpl;
+package facade;
 
-import api.TireFacade;
-import cz.muni.fi.pa165.pneuservis.backend.dao.TireManagerDao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
 import cz.muni.fi.pa165.pneuservis.backend.entity.TireManufacturer;
 import cz.muni.fi.pa165.pneuservis.backend.entity.TireProperties;
