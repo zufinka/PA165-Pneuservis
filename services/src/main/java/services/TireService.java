@@ -17,25 +17,26 @@ import java.util.Set;
 public interface TireService {
 
     /**
-     * Self explanatory
+     * Returns list of all tires stored in db
      * @return
      */
     List<Tire> getAllTires();
 
     /**
-     * Self explanatory
+     * Returns set of all tire manufacturers
      * @return
      */
     Set<TireManufacturer> getAllTireManufacturers();
 
     /**
-     * Self explanatory
+     * Returns set of all existing tire properties in db
      * @return
      */
     Set<TireProperties> getAllTireProperties();
 
     /**
-     * Self explanatory
+     * If there are enough pieces on stock of tire T specified by id. Method will decrease the availible
+     * number of T by noPneus.
      * @param tireID
      * @param noPneus
      * @return
@@ -43,8 +44,8 @@ public interface TireService {
     boolean purchaseTire(Long tireID, int noPneus);
 
     /**
-     * Self explanatory
-     * @param manufacturer
+     * Method find all tires matching values in manufacturer and tireProperties
+     * @param manufacturer has to be class with valid ID
      * @param tireProperties
      * @return
      */

@@ -75,7 +75,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
         }
     }
 
-    //@Override
     private Tire findTireByAttrs(Tire tire) throws IllegalArgumentException {
         if (tire == null) {
             throw new IllegalArgumentException("name is null");

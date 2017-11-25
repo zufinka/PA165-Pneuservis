@@ -14,7 +14,7 @@ import java.util.List;
 public interface MappingService {
 
     /**
-     * Self explanatory
+     * Maps collection of objects to collection of objects
      * @param objects
      * @param mapToClass
      * @param <T>
@@ -23,7 +23,7 @@ public interface MappingService {
     <T> List<T> mapTo(Collection<?> objects, Class<T> mapToClass);
 
     /**
-     * Self explanatory
+     * Maps object to object
      * @param u
      * @param mapToClass
      * @param <T>

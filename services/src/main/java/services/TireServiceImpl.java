@@ -95,7 +95,7 @@ public class TireServiceImpl implements TireService{
         }
         if (tp.size() == 0) tp = null;
 
-        return tireManagerDao.findTiresByProperties(manufacturer, tp);
+        return Collections.unmodifiableList(tireManagerDao.findTiresByProperties(manufacturer, tp));
     }
 
 }
