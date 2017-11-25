@@ -34,7 +34,11 @@ public class TireManufacturer {
     public long getId() {
         return id;
     }
-    
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public TireManufacturer(String name) {
         this.name = name;
     }
