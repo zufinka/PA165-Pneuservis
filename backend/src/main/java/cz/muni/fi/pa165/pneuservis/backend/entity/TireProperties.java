@@ -69,7 +69,12 @@ public class TireProperties {
     public long getId() {
         return id;
     }
-    
+
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public VehicleTypeEnum getVehicleType() {
         return vehicleType;
     }

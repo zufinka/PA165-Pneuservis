@@ -15,15 +15,39 @@ import java.util.Set;
 
 public interface TireFacade {
 
+    /**
+     * Self explanatory
+     * @return
+     */
     List<TireDTO> getAllTires();
 
+    /**
+     * Self explanatory
+     * @return
+     */
     Set<TireManufacturerDTO> getAllTireManufacturers();
 
+    /**
+     * Self explanatory
+     * @return
+     */
     Set<TirePropertiesDTO> getAllTireProperties();
 
-    //Tu by to chcelo nejaky normalnu navratovu spravu
+    /**
+     * Self explanatory
+     * @param tireID
+     * @param noPneus
+     * @return
+     */
+    //TODO Create class for return type in next iteration
     boolean purchaseTire(Long tireID, int noPneus);
 
-    List<TireDTO> findByProperties(TireManufacturerDTO manufacturer, TirePropertiesDTO tireProperties);
+    /**
+     * Self explanatory
+     * @param manufacturer
+     * @param tireProperties
+     * @return
+     */
+    List<TireDTO> findTireByProperties(TireManufacturerDTO manufacturer, TirePropertiesDTO tireProperties);
 
 }

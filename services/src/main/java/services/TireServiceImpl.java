@@ -63,7 +63,7 @@ public class TireServiceImpl implements TireService{
     }
 
     @Override
-    public List<Tire> findByProperties(TireManufacturer manufacturer, TirePropertiesDTO tireProperties) {
+    public List<Tire> findTireByProperties(TireManufacturer manufacturer, TirePropertiesDTO tireProperties) {
 
         List<TireProperties> tp = new ArrayList<>();
 

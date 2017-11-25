@@ -16,10 +16,38 @@ import java.util.Set;
  */
 public interface TireService {
 
+    /**
+     * Self explanatory
+     * @return
+     */
     List<Tire> getAllTires();
+
+    /**
+     * Self explanatory
+     * @return
+     */
     Set<TireManufacturer> getAllTireManufacturers();
+
+    /**
+     * Self explanatory
+     * @return
+     */
     Set<TireProperties> getAllTireProperties();
+
+    /**
+     * Self explanatory
+     * @param tireID
+     * @param noPneus
+     * @return
+     */
     boolean purchaseTire(Long tireID, int noPneus);
-    List<Tire> findByProperties(TireManufacturer manufacturer, TirePropertiesDTO tireProperties);
+
+    /**
+     * Self explanatory
+     * @param manufacturer
+     * @param tireProperties
+     * @return
+     */
+    List<Tire> findTireByProperties(TireManufacturer manufacturer, TirePropertiesDTO tireProperties);
 
 }

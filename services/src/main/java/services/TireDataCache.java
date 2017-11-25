@@ -5,6 +5,8 @@ import cz.muni.fi.pa165.pneuservis.backend.entity.TireProperties;
 
 import java.util.Set;
 /***
+ * This class provides Cache for TireProperties and TireManufacturer which are immutable and loaded on start.
+ *
  * @author Jakub Palenik, 422453@mail.muni.cz
  */
 public class TireDataCache {

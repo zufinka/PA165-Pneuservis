@@ -1,7 +1,6 @@
 package fascadeImpl;
 
 import api.TireFacade;
-import cz.muni.fi.pa165.pneuservis.backend.dao.TireManagerDao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
 import cz.muni.fi.pa165.pneuservis.backend.entity.TireManufacturer;
 import cz.muni.fi.pa165.pneuservis.backend.entity.TireProperties;
@@ -33,12 +32,10 @@ public class TireFacadeImpl implements TireFacade {
     @Inject
     private MappingService mappingService;
 
-
     @Override
     public List<TireDTO> getAllTires() {
         List<Tire> l = tireService.getAllTires();
-        List<TireDTO> l2 = mappingService.mapTo(l, TireDTO.class); //TODO odstranit zle mapovanie
-        return l2;
+        return mapTireToDTO(l);
     }
 
     @Override
@@ -50,7 +47,8 @@ public class TireFacadeImpl implements TireFacade {
     @Override
     public Set<TirePropertiesDTO> getAllTireProperties() {
         List<TireProperties> l = new ArrayList<>(tireService.getAllTireProperties());
-        return new HashSet<>(mappingService.mapTo(l, TirePropertiesDTO.class));
+        HashSet<TirePropertiesDTO> tpd = new HashSet<>(mappingService.mapTo(l, TirePropertiesDTO.class));
+        return tpd;
     }
 
     @Override
@@ -59,8 +57,20 @@ public class TireFacadeImpl implements TireFacade {
     }
 
     @Override
-    public List<TireDTO> findByProperties(TireManufacturerDTO manufacturer, TirePropertiesDTO tireProperties) {
-        TireManufacturer tm = mappingService.mapTo(manufacturer, TireManufacturer.class); //TODO zle mapovanie
-        return mappingService.mapTo(tireService.findByProperties(tm, tireProperties), TireDTO.class);
+    public List<TireDTO> findTireByProperties(TireManufacturerDTO manufacturer, TirePropertiesDTO tireProperties) {
+        if (manufacturer == null && tireProperties == null) return getAllTires();
+        TireManufacturer tm = mappingService.mapTo(manufacturer, TireManufacturer.class);
+        return mapTireToDTO(tireService.findTireByProperties(tm, tireProperties));
+    }
+
+    //Aux
+    private List<TireDTO> mapTireToDTO(List<Tire> tires){
+        List<TireDTO> l2 = new ArrayList<>();
+        for(Tire t: tires){
+            TireDTO dto = mappingService.mapTo(t, TireDTO.class);
+            dto.setTirePropertiesDTO(mappingService.mapTo(t.getTireProperties(), TirePropertiesDTO.class));
+            l2.add(dto);
+        }
+        return l2;
     }
 }
