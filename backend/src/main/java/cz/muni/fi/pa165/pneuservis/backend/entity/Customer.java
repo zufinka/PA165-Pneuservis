@@ -44,13 +44,17 @@ public class Customer {
     @NotNull
     private String phoneNumber;
 
+    private boolean vip;
+
     @ElementCollection
     private Set<VehicleTypeEnum> typesOfCar;
 
     @OneToMany(mappedBy = "customer")
     private Set<Order> orders;
 
-    public Customer(){}
+    public Customer(){
+        vip = false;
+    }
 
     public Customer(String name, String surname, String city, String street, String zipCode, String country,
                     String email, String phoneNumber){
@@ -148,6 +152,14 @@ public class Customer {
         this.country = country;
     }
 
+    public boolean isVip() {
+        return vip;
+    }
+
+    public void setVip(boolean vip) {
+        this.vip = vip;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -155,12 +167,19 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        return getEmail().equals(customer.getEmail());
+        if (!getEmail().equals(customer.getEmail())) return false;
+        if (!getName().equals(customer.getName())) return false;
+        if (!getSurname().equals(customer.getSurname())) return false;
+        return getPhoneNumber().equals(customer.getPhoneNumber());
     }
 
     @Override
     public int hashCode() {
-        return getEmail().hashCode();
+        int result = getEmail().hashCode();
+        result = 31 * result + getName().hashCode();
+        result = 31 * result + getSurname().hashCode();
+        result = 31 * result + getPhoneNumber().hashCode();
+        return result;
     }
 
     @Override
@@ -171,9 +190,10 @@ public class Customer {
                 ", surname='" + surname + '\'' +
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
-                ", zipCode=" + zipCode + '\'' +
-                ", country=" + country + '\'' +
-                ", phoneNumber=" + phoneNumber + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", country='" + country + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", vip=" + vip +
                 ", typesOfCar=" + typesOfCar +
                 '}';
     }
