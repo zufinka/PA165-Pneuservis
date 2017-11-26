@@ -2,6 +2,7 @@ package cz.muni.fi.pa165.pneuservis.backend.entity;
 
 import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -31,6 +32,9 @@ public class Service {
     
     @NotNull
     private TypeOfServiceEnum serviceType;
+    
+    @NotNull
+    private Duration processingTime;
   
     public Service() {
     }
@@ -67,6 +71,14 @@ public class Service {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+    
+    public Duration getProcessingTime(){
+        return processingTime;
+    }
+    
+    public void setProcessingTime(Duration time){
+        this.processingTime= time;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -76,12 +88,13 @@ public class Service {
         return Objects.equals(id, service.id) &&
                 Objects.equals(name, service.name) &&
                 Objects.equals(serviceType, service.serviceType) &&
-                Objects.equals(price, service.price);
+                Objects.equals(price, service.price) &&
+                Objects.equals(processingTime, service.processingTime);
     }   
     
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, serviceType, price);
+        return Objects.hash(id, name, serviceType, price, processingTime);
     }
     
     @Override
@@ -90,6 +103,7 @@ public class Service {
                 "name='" + name + '\'' +
                 ", serviceType='" + serviceType + '\'' +
                 ", price=" + price +
+                ", processingTime=" + processingTime +
                 '}';
     }
 }
