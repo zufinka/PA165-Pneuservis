@@ -70,6 +70,10 @@ public class OrderItem {
         }
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setTire(Tire tire) {
         this.tire = tire;
     }
