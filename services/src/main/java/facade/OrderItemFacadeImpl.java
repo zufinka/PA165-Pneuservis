@@ -34,6 +34,27 @@ public class OrderItemFacadeImpl implements OrderItemFacade {
     }
 
     @Override
+    public void create(OrderItemDTO orderItem) {
+        checkNotNull(orderItem);
+        OrderItem o = mappingService.mapTo(orderItem, OrderItem.class);
+        orderItemService.create(o);
+    }
+
+    @Override
+    public void update(OrderItemDTO orderItem) {
+        checkNotNull(orderItem);
+        OrderItem o = mappingService.mapTo(orderItem, OrderItem.class);
+        orderItemService.update(o);
+    }
+
+    @Override
+    public void delete(OrderItemDTO orderItem) {
+        checkNotNull(orderItem);
+        OrderItem o = mappingService.mapTo(orderItem, OrderItem.class);
+        orderItemService.delete(o);
+    }
+
+    @Override
     public List<OrderItemDTO> getAllOrderItems() {
         List<OrderItem> orderItems = orderItemService.getAllOrderItems();
         return mappingService.mapTo(orderItems, OrderItemDTO.class);

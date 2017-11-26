@@ -28,6 +28,24 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
+    public void create(OrderItem orderItem) {
+        checkNotNull(orderItem);
+        orderItemDao.create(orderItem);
+    }
+
+    @Override
+    public void update(OrderItem orderItem) {
+        checkNotNull(orderItem);
+        orderItemDao.update(orderItem);
+    }
+
+    @Override
+    public void delete(OrderItem orderItem) {
+        checkNotNull(orderItem);
+        orderItemDao.delete(orderItem);
+    }
+
+    @Override
     public List<OrderItem> getAllOrderItems() {
         return orderItemDao.getAll();
     }

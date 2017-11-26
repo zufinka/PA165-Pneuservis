@@ -1,7 +1,9 @@
 package services;
 
 import cz.muni.fi.pa165.pneuservis.backend.dao.OrderDao;
+import cz.muni.fi.pa165.pneuservis.backend.entity.Customer;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Order;
+import cz.muni.fi.pa165.pneuservis.backend.entity.OrderItem;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,9 +32,47 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public void create(Order order) {
+        checkNotNull(order);
+        orderDao.create(order);
+    }
+
+    @Override
+    public void update(Order order) {
+        checkNotNull(order);
+        orderDao.update(order);
+    }
+
+    @Override
+    public void delete(Order order) {
+        checkNotNull(order);
+        orderDao.delete(order);
+    }
+
+    @Override
     public List<Order> findOrders(Order search) {
         List<Order> orders = orderDao.getAll();
         return filterOrders(orders, search);
+    }
+
+    @Override
+    public List<Order> findAllOrdersOfCustomer(Customer search) {
+        checkNotNull(search);
+        Order filter = new Order();
+        filter.setCustomer(search);
+        return findOrders(filter);
+    }
+
+    @Override
+    public List<Order> findAllOrdersContainingOrderItem(OrderItem search) {
+        checkNotNull(search);
+        List<Order> orders = new ArrayList<>();
+        for (Order order : getAllOrders()) {
+            if (order.getOrderItems().contains(search)) {
+                orders.add(order);
+            }
+        }
+        return orders;
     }
 
     @Override

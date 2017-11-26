@@ -12,7 +12,6 @@ import services.MappingService;
 import services.OrderService;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -39,6 +38,27 @@ public class OrderFacadeImpl implements OrderFacade {
     }
 
     @Override
+    public void create(OrderDTO order) {
+        checkNotNull(order);
+        Order o = mappingService.mapTo(order, Order.class);
+        orderService.create(o);
+    }
+
+    @Override
+    public void update(OrderDTO order) {
+        checkNotNull(order);
+        Order o = mappingService.mapTo(order, Order.class);
+        orderService.update(o);
+    }
+
+    @Override
+    public void delete(OrderDTO order) {
+        checkNotNull(order);
+        Order o = mappingService.mapTo(order, Order.class);
+        orderService.delete(o);
+    }
+
+    @Override
     public List<OrderDTO> findOrders(OrderDTO search) {
         checkNotNull(search);
         Order filter = mappingService.mapTo(search, Order.class);
@@ -49,9 +69,8 @@ public class OrderFacadeImpl implements OrderFacade {
     @Override
     public List<OrderDTO> findAllOrdersOfCustomer(CustomerDTO search) {
         checkNotNull(search);
-        Order filter = new Order();
-        filter.setCustomer(mappingService.mapTo(search, Customer.class));
-        List<Order> orders = orderService.findOrders(filter);
+        Customer filter = mappingService.mapTo(search, Customer.class);
+        List<Order> orders = orderService.findAllOrdersOfCustomer(filter);
         return mappingService.mapTo(orders, OrderDTO.class);
     }
 
@@ -59,12 +78,7 @@ public class OrderFacadeImpl implements OrderFacade {
     public List<OrderDTO> findAllOrdersContainingOrderItem(OrderItemDTO search) {
         checkNotNull(search);
         OrderItem filter = mappingService.mapTo(search, OrderItem.class);
-        List<Order> orders = new ArrayList<>();
-        for (Order order : orderService.getAllOrders()) {
-            if (order.getOrderItems().contains(filter)) {
-                orders.add(order);
-            }
-        }
+        List<Order> orders = orderService.findAllOrdersContainingOrderItem(filter);
         return mappingService.mapTo(orders, OrderDTO.class);
     }
 

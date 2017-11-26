@@ -14,6 +14,21 @@ public interface OrderItemFacade {
     OrderItemDTO getOrderItem(long id);
 
     /**
+     * Creates a new order item.
+     */
+    void create(OrderItemDTO orderItem);
+
+    /**
+     * Modifies the specified order item.
+     */
+    void update(OrderItemDTO orderItem);
+
+    /**
+     * Removes the specified order item.
+     */
+    void delete(OrderItemDTO orderItem);
+
+    /**
      * Retrieves all order items.
      */
     List<OrderItemDTO> getAllOrderItems();
