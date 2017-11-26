@@ -14,6 +14,21 @@ public interface OrderItemService {
     OrderItem getOrderItem(long id);
 
     /**
+     * Creates a new order item.
+     */
+    void create(OrderItem orderItem);
+
+    /**
+     * Modifies the specified order item.
+     */
+    void update(OrderItem orderItem);
+
+    /**
+     * Removes the specified order item.
+     */
+    void delete(OrderItem orderItem);
+
+    /**
      * Retrieves all order items.
      */
     List<OrderItem> getAllOrderItems();
