@@ -67,7 +67,7 @@ public interface TireManagerDao {
      */
     boolean deleteTire(Tire tire);
 
-    List<Tire> findTiresByProperties(TireManufacturer tireManufacturer, List<TireProperties> tireProperties);
+    List<Tire> findTiresByProperties(TireManufacturer tireManufacturer, TireProperties tireProperties);
 
 
     List<TireManufacturer> retrieveAllTireManufacturers();

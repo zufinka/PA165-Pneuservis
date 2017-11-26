@@ -17,7 +17,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
- *
  * @author Jakub Palenik, 422453@mail.muni.cz
  */
 @Repository
@@ -95,11 +94,11 @@ public class TireManagerDaoImpl implements TireManagerDao {
         Tire t = null;
         try {
             t = em.createQuery("SELECT t FROM Tire t WHERE "
-                    + "t.manufacturer = :tm "
-                    + "AND t.tireProperties = :tp "
-                    + "AND t.name = :n "
+                            + "t.manufacturer = :tm "
+                            + "AND t.tireProperties = :tp "
+                            + "AND t.name = :n "
                     //+ "AND t.price = :p"
-                    ,Tire.class)
+                    , Tire.class)
                     .setParameter("n", tire.getName())
                     .setParameter("tp", tp)
                     .setParameter("tm", tm)
@@ -139,23 +138,10 @@ public class TireManagerDaoImpl implements TireManagerDao {
     }
 
     @Override
-    public List<Tire> findTiresByProperties(TireManufacturer tireManufacturer, List<TireProperties> tireProperties) {
+    public List<Tire> findTiresByProperties(TireManufacturer tireManufacturer, TireProperties tireProperties) {
         if (tireManufacturer != null && tireProperties == null) return findTireByManufacturer(tireManufacturer);
-        if (tireManufacturer == null && tireProperties != null){
-            Set<Tire> set = new HashSet<>();
-            for(TireProperties tp : tireProperties){
-                set.addAll(findTireByTireProperties(tp));
-            }
-            return new ArrayList<>(set);
-        }
-        if (tireManufacturer != null && tireProperties != null){
-            Set<Tire> set = new HashSet<>();
-            for(TireProperties tp : tireProperties){
-                set.addAll(findTireByTirePropertiesandTireManufacturer(tireManufacturer, tp));
-            }
-            return new ArrayList<>(set);
-        }
-
+        if (tireManufacturer == null && tireProperties != null) return (findTireByTireProperties(tireProperties));
+        if (tireManufacturer != null && tireProperties != null) return (findTireByTirePropertiesandTireManufacturer(tireManufacturer, tireProperties));
         return null;
     }
 
@@ -171,18 +157,17 @@ public class TireManagerDaoImpl implements TireManagerDao {
         return tireProperties;
     }
 
-    //TODO REPAIR QUERRY
-    private List<Tire> findTireByManufacturer(TireManufacturer tireManufacturer){
+    private List<Tire> findTireByManufacturer(TireManufacturer tireManufacturer) {
         return em.createQuery("SELECT t FROM Tire t where t.manufacturer = :m", Tire.class)
                 .setParameter("m", tireManufacturer).getResultList();
     }
 
-    private List<Tire> findTireByTireProperties(TireProperties tireProperties){
+    private List<Tire> findTireByTireProperties(TireProperties tireProperties) {
         return em.createQuery("SELECT t FROM Tire t where t.tireProperties = :tp", Tire.class)
                 .setParameter("tp", tireProperties).getResultList();
     }
 
-    private List<Tire> findTireByTirePropertiesandTireManufacturer(TireManufacturer tireManufacturer, TireProperties tireProperties){
+    private List<Tire> findTireByTirePropertiesandTireManufacturer(TireManufacturer tireManufacturer, TireProperties tireProperties) {
         return em.createQuery("SELECT t FROM Tire t where t.tireProperties = :tpid AND t.manufacturer = :tmid", Tire.class)
                 .setParameter("tmid", tireManufacturer)
                 .setParameter("tpid", tireProperties).getResultList();
