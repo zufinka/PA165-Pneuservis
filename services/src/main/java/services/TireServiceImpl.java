@@ -63,7 +63,7 @@ public class TireServiceImpl implements TireService{
     }
 
     @Override
-    public List<Tire> findByProperties(TireManufacturer manufacturer, TirePropertiesDTO tireProperties) {
+    public List<Tire> findTireByProperties(TireManufacturer manufacturer, TirePropertiesDTO tireProperties) {
 
         List<TireProperties> tp = new ArrayList<>();
 
@@ -95,7 +95,7 @@ public class TireServiceImpl implements TireService{
         }
         if (tp.size() == 0) tp = null;
 
-        return tireManagerDao.findTiresByProperties(manufacturer, tp);
+        return Collections.unmodifiableList(tireManagerDao.findTiresByProperties(manufacturer, tp));
     }
 
 }

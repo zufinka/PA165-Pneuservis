@@ -1,8 +1,5 @@
 package dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -17,7 +14,7 @@ public class TireDTO {
 
     private String name;
 
-    private TireManufacturerDTO manufacturer;
+    private TireManufacturerDTO manufacturerDTO;
 
     private TirePropertiesDTO tirePropertiesDTO;
 
@@ -31,9 +28,9 @@ public class TireDTO {
 
     public TireDTO(){}
 
-    public TireDTO(String name, TireManufacturerDTO manufacturer, TirePropertiesDTO tirePropertiesDTO, int onStock, BigDecimal price) {
+    public TireDTO(String name, TireManufacturerDTO manufacturerDTO, TirePropertiesDTO tirePropertiesDTO, int onStock, BigDecimal price) {
         this.name = name;
-        this.manufacturer = manufacturer;
+        this.manufacturerDTO = manufacturerDTO;
         this.tirePropertiesDTO = tirePropertiesDTO;
         this.onStock = onStock;
         this.price = price;
@@ -47,8 +44,8 @@ public class TireDTO {
         this.id = id;
     }
 
-    public void setManufacturer(TireManufacturerDTO manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setManufacturerDTO(TireManufacturerDTO manufacturerDTO) {
+        this.manufacturerDTO = manufacturerDTO;
     }
 
     public String getName() {
@@ -60,11 +57,15 @@ public class TireDTO {
     }
             
     public TireManufacturerDTO getTireManufacturer() {
-        return manufacturer;
+        return manufacturerDTO;
     }
 
     public void setTireManufacturer(TireManufacturerDTO manufacturer) {
-        this.manufacturer = manufacturer;
+        this.manufacturerDTO = manufacturer;
+    }
+
+    public TireManufacturerDTO getManufacturerDTO() {
+        return manufacturerDTO;
     }
 
     public TirePropertiesDTO getTirePropertiesDTO() {
@@ -119,7 +120,7 @@ public class TireDTO {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.manufacturer);
+        hash = 79 * hash + Objects.hashCode(this.manufacturerDTO);
         hash = 79 * hash + Objects.hashCode(this.tirePropertiesDTO);
         hash = 79 * hash + this.onStock;
         hash = 79 * hash + Objects.hashCode(this.price);
@@ -141,7 +142,7 @@ public class TireDTO {
         if (this.onStock != other.onStock) {
             return false;
         }
-        if (!Objects.equals(this.manufacturer, other.manufacturer)) {
+        if (!Objects.equals(this.manufacturerDTO, other.manufacturerDTO)) {
             return false;
         }
         if (!Objects.equals(this.tirePropertiesDTO, other.tirePropertiesDTO)) {
@@ -155,7 +156,7 @@ public class TireDTO {
 
     @Override
     public String toString() {
-        return "TireDTO{" + "manufacturer=" + manufacturer + ", tirePropertiesDTO=" + tirePropertiesDTO + ", onStock=" + onStock + ", price=" + price + '}';
+        return "TireDTO{" + "manufacturerDTO=" + manufacturerDTO + ", tirePropertiesDTO=" + tirePropertiesDTO + ", onStock=" + onStock + ", price=" + price + '}' + '\n';
     }
     
     

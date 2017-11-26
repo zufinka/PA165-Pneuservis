@@ -75,7 +75,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
         }
     }
 
-    //@Override
     private Tire findTireByAttrs(Tire tire) throws IllegalArgumentException {
         if (tire == null) {
             throw new IllegalArgumentException("name is null");
@@ -141,7 +140,6 @@ public class TireManagerDaoImpl implements TireManagerDao {
 
     @Override
     public List<Tire> findTiresByProperties(TireManufacturer tireManufacturer, List<TireProperties> tireProperties) {
-        if (tireManufacturer == null && tireProperties == null) return retrieveAllTires();
         if (tireManufacturer != null && tireProperties == null) return findTireByManufacturer(tireManufacturer);
         if (tireManufacturer == null && tireProperties != null){
             Set<Tire> set = new HashSet<>();
@@ -185,7 +183,7 @@ public class TireManagerDaoImpl implements TireManagerDao {
     }
 
     private List<Tire> findTireByTirePropertiesandTireManufacturer(TireManufacturer tireManufacturer, TireProperties tireProperties){
-        return em.createQuery("SELECT t FROM Tire t where t.tireProperties = :tmid AND t.manufacturer = :tpid", Tire.class)
+        return em.createQuery("SELECT t FROM Tire t where t.tireProperties = :tpid AND t.manufacturer = :tmid", Tire.class)
                 .setParameter("tmid", tireManufacturer)
                 .setParameter("tpid", tireProperties).getResultList();
     }

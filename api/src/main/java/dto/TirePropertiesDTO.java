@@ -167,7 +167,15 @@ public class TirePropertiesDTO {
 
     @Override
     public String toString() {
-        return "TirePropertiesDTO{" + "vehicleType=" + vehicleType + ", width=" + width + ", aspectRatio=" + aspectRatio + ", diameter=" + diameter + ", loadIndex=" + loadIndex + ", speedClass=" + speedClass + ", season=" + season + '}';
+        return "TirePropertiesDTO{" +
+                "id=" + id +
+                ", vehicleType=" + vehicleType +
+                ", width=" + width +
+                ", aspectRatio=" + aspectRatio +
+                ", diameter=" + diameter +
+                ", loadIndex=" + loadIndex +
+                ", speedClass=" + speedClass +
+                ", season=" + season +
+                '}';
     }
-
 }
