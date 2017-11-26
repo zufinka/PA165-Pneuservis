@@ -49,6 +49,6 @@ public interface TireService {
      * @param tireProperties
      * @return
      */
-    List<Tire> findTireByProperties(TireManufacturer manufacturer, TirePropertiesDTO tireProperties);
+    List<Tire> findTireByProperties(TireManufacturer manufacturer, List<TireProperties> tireProperties);
 
 }

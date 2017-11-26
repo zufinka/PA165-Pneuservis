@@ -59,7 +59,39 @@ public class TireFacadeImpl implements TireFacade {
     public List<TireDTO> findTireByProperties(TireManufacturerDTO manufacturer, TirePropertiesDTO tireProperties) {
         if (manufacturer == null && tireProperties == null) return getAllTires();
         TireManufacturer tm = mappingService.mapTo(manufacturer, TireManufacturer.class);
-        return mapTireToDTO(tireService.findTireByProperties(tm, tireProperties));
+
+        List<TireProperties> l = new ArrayList<>(tireService.getAllTireProperties());
+        List<TireProperties> tp = new ArrayList<>();
+
+        if (tireProperties != null) {
+            for (TireProperties tirProp : l) {
+                if (tireProperties.getVehicleType() != null) {
+                    if (tireProperties.getVehicleType() != tirProp.getVehicleType()) continue;
+                }
+                if (tireProperties.getWidth() != 0) {
+                    if (tireProperties.getWidth() != tirProp.getWidth()) continue;
+                }
+                if (tireProperties.getAspectRatio() != 0) {
+                    if (tireProperties.getAspectRatio() != tirProp.getAspectRatio()) continue;
+                }
+                if (tireProperties.getDiameter() != 0) {
+                    if (tireProperties.getDiameter() != tirProp.getDiameter()) continue;
+                }
+                if (tireProperties.getLoadIndex() != 0) {
+                    if (tireProperties.getLoadIndex() != tirProp.getLoadIndex()) continue;
+                }
+                if (tireProperties.getSpeedClass() != null) {
+                    if (tireProperties.getSpeedClass() != tirProp.getSpeedClass()) continue;
+                }
+                if (tireProperties.getSeason() != null) {
+                    if (tireProperties.getSeason() != tirProp.getSeason()) continue;
+                }
+                tp.add(tirProp);
+            }
+        }
+        if (tp.size() == 0) tp = null;
+
+        return mapTireToDTO(tireService.findTireByProperties(tm, tp));
     }
 
     //Aux

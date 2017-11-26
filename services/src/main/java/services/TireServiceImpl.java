@@ -63,39 +63,8 @@ public class TireServiceImpl implements TireService{
     }
 
     @Override
-    public List<Tire> findTireByProperties(TireManufacturer manufacturer, TirePropertiesDTO tireProperties) {
-
-        List<TireProperties> tp = new ArrayList<>();
-
-        if (tireProperties != null) {
-            for (TireProperties tirProp : tdc.getAllTireProperties()) {
-                if (tireProperties.getVehicleType() != null) {
-                    if (tireProperties.getVehicleType() != tirProp.getVehicleType()) continue;
-                }
-                if (tireProperties.getWidth() != 0) {
-                    if (tireProperties.getWidth() != tirProp.getWidth()) continue;
-                }
-                if (tireProperties.getAspectRatio() != 0) {
-                    if (tireProperties.getAspectRatio() != tirProp.getAspectRatio()) continue;
-                }
-                if (tireProperties.getDiameter() != 0) {
-                    if (tireProperties.getDiameter() != tirProp.getDiameter()) continue;
-                }
-                if (tireProperties.getLoadIndex() != 0) {
-                    if (tireProperties.getLoadIndex() != tirProp.getLoadIndex()) continue;
-                }
-                if (tireProperties.getSpeedClass() != null) {
-                    if (tireProperties.getSpeedClass() != tirProp.getSpeedClass()) continue;
-                }
-                if (tireProperties.getSeason() != null) {
-                    if (tireProperties.getSeason() != tirProp.getSeason()) continue;
-                }
-                tp.add(tirProp);
-            }
-        }
-        if (tp.size() == 0) tp = null;
-
-        return Collections.unmodifiableList(tireManagerDao.findTiresByProperties(manufacturer, tp));
+    public List<Tire> findTireByProperties(TireManufacturer manufacturer, List<TireProperties> tireProperties) {
+        return Collections.unmodifiableList(tireManagerDao.findTiresByProperties(manufacturer, tireProperties));
     }
 
 }
