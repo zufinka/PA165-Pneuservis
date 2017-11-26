@@ -77,14 +77,16 @@ public interface CustomerFacade {
     /**
      * Update information about customer that already is in the database.
      * @param customer to be updated
-     * @throws IllegalArgumentException if the customer is null or is not present in the database
+     * @throws IllegalArgumentException if the customer is null
+     * @throws javax.persistence.EntityExistsException if the customer is not present in the database
      */
     void changeCustomer(CustomerDTO customer);
 
     /**
      * Delete customer from database.
      * @param customer to be deleted
-     * @throws IllegalArgumentException if the customer is null or is not present in the database
+     * @throws IllegalArgumentException if the customer is null
+     * @throws javax.persistence.EntityExistsException if the customer is not present in the database
      */
     void deleteCustomer(CustomerDTO customer);
 }

@@ -77,11 +77,21 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public void updateCustomer(Customer customer) {
-        customerDao.updateCustomer(customer);
+        try {
+            customerDao.updateCustomer(customer);
+        }catch (IllegalArgumentException e){
+            throw new NoSuchObjectInDatabaseException("This customer in not database.");
+        }
+
     }
 
     @Override
     public void deleteCustomer(Customer customer) {
-        customerDao.deleteCustomer(customer);
+        try {
+            customerDao.deleteCustomer(customer);
+        }catch (IllegalArgumentException e){
+            throw new NoSuchObjectInDatabaseException("This customer in not database.");
+        }
+
     }
 }
