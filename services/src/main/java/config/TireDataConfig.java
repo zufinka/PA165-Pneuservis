@@ -8,9 +8,12 @@ import cz.muni.fi.pa165.pneuservis.backend.entity.TireProperties;
 import cz.muni.fi.pa165.pneuservis.backend.enums.SeasonEnum;
 import cz.muni.fi.pa165.pneuservis.backend.enums.SpeedClassEnum;
 import cz.muni.fi.pa165.pneuservis.backend.enums.VehicleTypeEnum;
+import facade.FacadePackageMarker;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import services.ServicePackageMarker;
 import services.TireDataCache;
 
 import javax.inject.Inject;
@@ -23,6 +26,7 @@ import java.util.HashSet;
 
 @Configuration
 @Import(PersistenceApplicationContext.class)
+@ComponentScan(basePackageClasses = {ServicePackageMarker.class})
 public class TireDataConfig {
 
     @Inject

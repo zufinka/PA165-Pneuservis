@@ -25,11 +25,11 @@ import static org.junit.Assert.assertEquals;
 
 public class TireServiceTest {
 
-    static TireService ts;
+    private static TireService ts;
 
     @BeforeClass
     public static void init() {
-        ApplicationContext apx = new AnnotationConfigApplicationContext(TestConfig.class, TireDataTestConfig.class, TireServiceTestConfig.class);
+        ApplicationContext apx = new AnnotationConfigApplicationContext(TireServiceTestConfig.class, TireDataTestConfig.class, TestConfig.class);
         ts = apx.getBean(TireService.class);
     }
 

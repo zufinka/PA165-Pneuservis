@@ -19,7 +19,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @Configuration
-@ComponentScan(basePackageClasses = {TireServiceTest.class})
 public class TestConfig {
 
     @Bean

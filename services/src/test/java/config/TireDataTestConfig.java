@@ -12,7 +12,6 @@ import javax.inject.Inject;
 import java.util.HashSet;
 
 @Configuration
-@ComponentScan(basePackageClasses = {TireServiceTest.class})
 @Import(TestConfig.class)
 public class TireDataTestConfig {
 
