@@ -4,6 +4,7 @@ import com.google.common.base.MoreObjects;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -54,6 +55,14 @@ public class Order {
 
     public List<OrderItem> getOrderItems() {
         return orderItems;
+    }
+
+    public BigDecimal getPrice() {
+        BigDecimal price = BigDecimal.valueOf(0);
+        for (OrderItem orderItem : orderItems) {
+            price = price.add(orderItem.getPrice());
+        }
+        return price;
     }
 
     public void setId(Long id) {
