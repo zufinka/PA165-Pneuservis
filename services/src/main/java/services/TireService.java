@@ -6,6 +6,7 @@ import cz.muni.fi.pa165.pneuservis.backend.entity.TireProperties;
 import dto.TireDTO;
 import dto.TireManufacturerDTO;
 import dto.TirePropertiesDTO;
+import exceptions.NoSuchObjectInDatabaseException;
 
 import java.util.List;
 import java.util.Set;
@@ -41,7 +42,7 @@ public interface TireService {
      * @param noPneus
      * @return
      */
-    boolean purchaseTire(Long tireID, int noPneus);
+    boolean purchaseTire(Long tireID, int noPneus) throws NoSuchObjectInDatabaseException;
 
     /**
      * Method find all tires matching values in manufacturer and tireProperties
