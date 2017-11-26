@@ -53,15 +53,21 @@ public class Tire {
     public Tire(String name, TireManufacturer manufacturer, TireProperties tireProperties, int onStock, BigDecimal price) {
         this.name = name;
         this.manufacturer = manufacturer;
-        //manufacturer.addTire(this);
         this.tireProperties = tireProperties;
-        //tireProperties.addTire(this);
         this.onStock = onStock;
         this.price = price;
     }
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setManufacturer(TireManufacturer manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public String getName() {
@@ -129,8 +135,6 @@ public class Tire {
         this.imageUrl = imageUrl;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 7;

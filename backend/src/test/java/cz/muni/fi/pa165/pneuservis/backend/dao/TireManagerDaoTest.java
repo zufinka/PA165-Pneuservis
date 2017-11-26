@@ -1,3 +1,5 @@
+package cz.muni.fi.pa165.pneuservis.backend.dao;
+
 import cz.muni.fi.pa165.pneuservis.backend.PersistenceApplicationContext;
 import cz.muni.fi.pa165.pneuservis.backend.dao.TireManagerDao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Tire;

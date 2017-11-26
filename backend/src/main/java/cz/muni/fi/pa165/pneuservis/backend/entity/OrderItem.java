@@ -6,6 +6,7 @@ import cz.muni.fi.pa165.pneuservis.backend.entity.annotations.TireOrService;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -57,6 +58,16 @@ public class OrderItem {
 
     public Long getQuantity() {
         return quantity;
+    }
+
+    public BigDecimal getPrice() {
+        if (this.service != null) {
+            return this.service.getPrice().multiply(BigDecimal.valueOf(quantity));
+        } else if (this.tire != null) {
+            return this.tire.getPrice().multiply(BigDecimal.valueOf(quantity));
+        } else {
+            return BigDecimal.ZERO;
+        }
     }
 
     public void setTire(Tire tire) {

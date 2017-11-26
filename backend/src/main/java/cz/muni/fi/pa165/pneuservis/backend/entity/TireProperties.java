@@ -53,11 +53,6 @@ public class TireProperties {
     @NotNull
     @Enumerated
     private SeasonEnum season;
-    
-    /*
-    @OneToMany
-    private Set<Tire> tires = new HashSet<>();
-    */
 
     public TireProperties() {}
 
@@ -74,7 +69,12 @@ public class TireProperties {
     public long getId() {
         return id;
     }
-    
+
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public VehicleTypeEnum getVehicleType() {
         return vehicleType;
     }
@@ -142,24 +142,6 @@ public class TireProperties {
     public void setSeason(SeasonEnum season) {
         this.season = season;
     }
-    
-    /*
-    public void addTire(Tire t){
-        tires.add(t);
-    }
-    
-    public void removeTire(Tire t){
-        tires.remove(t);
-    }
-
-    public Set<Tire> getTires() {
-        return Collections.unmodifiableSet(tires);
-    }
-
-    public void setTires(Set<Tire> tires) {
-        this.tires = tires;
-    }
-    */
 
     @Override
     public int hashCode() {

@@ -3070,7 +3070,7 @@
       <rect x="0" width="20" height="20" y="0" clip-path="url(#clipPath99)" stroke="none"/>
       <image x="2" y="2" clip-path="url(#clipPath99)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABcElEQVR42mNgoBAw&#13;&#10;ogvsmfVD7S8jgzOQaYAmdYH5P8NelzSOWzgN2DXre8J/RkZLfDb+/8+41yONfRWM&#13;&#10;zwxj7Jj1MwxonB1BJzMyKMX41nIt2dxyFcRngjmbkfG/M9H+BqoF6QGxWUAE1M8o&#13;&#10;oHNuiLsAr/jnD59f8oL49qaxVyz0/J/C5KF6brFA+QbYbNJQsnpqbxL98OCZpfLH&#13;&#10;zq/SQDYApocJn1MlhJU/w+jff36yYFMDNgAYPb1Af4FC9hup6YDlY6rSecbTWgb/&#13;&#10;gfF80vxqCTCawmCSB04v1gBSN0A0KDywGsAI9QuIZvrH+PgvUsqQl9Z/dezCGmVh&#13;&#10;AelP9mbRd9ETFtgAkM0gzSD6H9N/WYb/CBM8rNPu4HI6KFWCDeCffc8QnBYWfhL+&#13;&#10;/5OhGDNxY0+NLmns4CTN6LZC6Tw0Si4Ufr2SxfSPKYGUpMyElAYMPJO5joNiBOY/&#13;&#10;LJmpF1kzLCVegLkAJADNbbeIjUYA2pmF5mavNIQAAAAASUVORK5CYII=" height="16" preserveAspectRatio="none"/>
       <rect x="20" width="74" height="20" y="0" clip-path="url(#clipPath99)" stroke="none"/>
-      <text fill="rgb(187,187,187)" x="21" xml:space="preserve" y="15" clip-path="url(#clipPath99)" stroke="none">tireProperties</text>
+      <text fill="rgb(187,187,187)" x="21" xml:space="preserve" y="15" clip-path="url(#clipPath99)" stroke="none">tirePropertiesDTO</text>
     </g>
     <g fill="rgb(60,63,65)" font-family="'Segoe UI'" transform="matrix(1,0,0,1,20,20) translate(159,728)" stroke="rgb(60,63,65)">
       <rect x="0" width="358" height="22" y="0" clip-path="url(#clipPath205)" stroke="none"/>
@@ -3275,7 +3275,7 @@
       <rect x="0" width="20" height="20" y="0" clip-path="url(#clipPath99)" stroke="none"/>
       <image x="2" y="2" clip-path="url(#clipPath99)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABcElEQVR42mNgoBAw&#13;&#10;ogvsmfVD7S8jgzOQaYAmdYH5P8NelzSOWzgN2DXre8J/RkZLfDb+/8+41yONfRWM&#13;&#10;zwxj7Jj1MwxonB1BJzMyKMX41nIt2dxyFcRngjmbkfG/M9H+BqoF6QGxWUAE1M8o&#13;&#10;oHNuiLsAr/jnD59f8oL49qaxVyz0/J/C5KF6brFA+QbYbNJQsnpqbxL98OCZpfLH&#13;&#10;zq/SQDYApocJn1MlhJU/w+jff36yYFMDNgAYPb1Af4FC9hup6YDlY6rSecbTWgb/&#13;&#10;gfF80vxqCTCawmCSB04v1gBSN0A0KDywGsAI9QuIZvrH+PgvUsqQl9Z/dezCGmVh&#13;&#10;AelP9mbRd9ETFtgAkM0gzSD6H9N/WYb/CBM8rNPu4HI6KFWCDeCffc8QnBYWfhL+&#13;&#10;/5OhGDNxY0+NLmns4CTN6LZC6Tw0Si4Ufr2SxfSPKYGUpMyElAYMPJO5joNiBOY/&#13;&#10;LJmpF1kzLCVegLkAJADNbbeIjUYA2pmF5mavNIQAAAAASUVORK5CYII=" height="16" preserveAspectRatio="none"/>
       <rect x="20" width="74" height="20" y="0" clip-path="url(#clipPath99)" stroke="none"/>
-      <text fill="rgb(187,187,187)" x="21" xml:space="preserve" y="15" clip-path="url(#clipPath99)" stroke="none">tireProperties</text>
+      <text fill="rgb(187,187,187)" x="21" xml:space="preserve" y="15" clip-path="url(#clipPath99)" stroke="none">tirePropertiesDTO</text>
     </g>
     <g fill="rgb(60,63,65)" font-family="'Segoe UI'" transform="matrix(1,0,0,1,20,20) translate(159,728)" stroke="rgb(60,63,65)">
       <rect x="0" width="358" height="22" y="0" clip-path="url(#clipPath205)" stroke="none"/>
