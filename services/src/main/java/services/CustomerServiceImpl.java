@@ -2,6 +2,7 @@ package services;
 
 import cz.muni.fi.pa165.pneuservis.backend.dao.CustomerDao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Customer;
+import exceptions.NoSuchObjectInDatabaseException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,27 +22,47 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public Customer findById(Long id) {
-        return customerDao.findById(id);
+        Customer foundCustomer = customerDao.findById(id);
+        if (foundCustomer == null){
+            throw new NoSuchObjectInDatabaseException("No customer with this id in database.");
+        }
+        return foundCustomer;
     }
 
     @Override
     public List<Customer> findByName(String name, String surname) {
-        return customerDao.findByName(name, surname);
+        List<Customer> customers = customerDao.findByName(name, surname);
+        if (customers == null){
+            throw new NoSuchObjectInDatabaseException("No customer with this name and surname in database.");
+        }
+        return customers;
     }
 
     @Override
     public Customer findByEmail(String email) {
-        return customerDao.findByEmail(email);
+        Customer foundCustomer = customerDao.findByEmail(email);
+        if (foundCustomer == null){
+            throw new NoSuchObjectInDatabaseException("No customer with this email in database.");
+        }
+        return foundCustomer;
     }
 
     @Override
     public Customer findByPhone(String phoneNumber) {
-        return customerDao.findByPhone(phoneNumber);
+        Customer foundCustomer = customerDao.findByPhone(phoneNumber);
+        if (foundCustomer == null){
+            throw new NoSuchObjectInDatabaseException("No customer with this phoneNumber in database.");
+        }
+        return foundCustomer;
     }
 
     @Override
     public List<Customer> findByAddress(String city, String street, String country, String zipCode) {
-        return customerDao.findByAddress(city, street, country, zipCode);
+        List<Customer> customers = customerDao.findByAddress(city, street, country, zipCode);
+        if (customers == null){
+            throw new NoSuchObjectInDatabaseException("No customer with this address in database.");
+        }
+        return customers;
     }
 
     @Override

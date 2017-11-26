@@ -13,8 +13,9 @@ public interface CustomerFacade {
     /**
      * Find Customer according to given ID.
      * @param id
-     * @return Founded Customer or null if there was no customer with this ID in the database.
+     * @return Founded Customer or null
      * @throws IllegalArgumentException if given id is null
+     * @throws exceptions.NoSuchObjectInDatabaseException if there was no customer with this ID in the database.
      */
     CustomerDTO getCustomerById(Long id);
 
@@ -22,24 +23,27 @@ public interface CustomerFacade {
      * Find Customer according to given name.
      * @param name First name
      * @param surname
-     * @return Set of founded Customers with given name or null if there was no customer with this name in the database.
+     * @return Set of founded Customers with given name
      * @throws IllegalArgumentException if given name or surname is null
+     * @throws exceptions.NoSuchObjectInDatabaseException if there was no customer with this name in the database.
      */
     List<CustomerDTO> getCustomerByName(String name, String surname);
 
     /**
      * Find Customer according to given email.
      * @param email
-     * @return Customer with given email or null if there was no customer with this email in the database.
+     * @return Customer with given email
      * @throws IllegalArgumentException if given email is null
+     * @throws exceptions.NoSuchObjectInDatabaseException if there was no customer with this email in the database.
      */
     CustomerDTO getCustomerByEmail(String email);
 
     /**
      * Find Customer according to given telephone number.
      * @param phoneNumber
-     * @return Customer with given telephone number or null if there was no customer with this number in the database.
+     * @return Customer with given telephone number
      * @throws IllegalArgumentException if given telephone number is null
+     * @throws exceptions.NoSuchObjectInDatabaseException if there was no customer with this number in the database.
      */
     CustomerDTO getCustomerByPhone(String phoneNumber);
 
@@ -49,9 +53,10 @@ public interface CustomerFacade {
      * @param street
      * @param zipCode
      * @param country
-     * @return Set of founded customers with given address or null if there was no customer with this
-     *         adress in the database.
+     * @return Set of founded customers with given address
      * @throws IllegalArgumentException if given city, street or psč is null
+     * @throws exceptions.NoSuchObjectInDatabaseException if there was no customer with this
+     *         address in the database.
      */
     List<CustomerDTO> getCustomerByAddress(String city, String street, String country, String zipCode);
 
