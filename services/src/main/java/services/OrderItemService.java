@@ -14,11 +14,6 @@ public interface OrderItemService {
     OrderItem getOrderItem(long id);
 
     /**
-     * Finds all order items based on the search parameter which represents the search query.
-     */
-    List<OrderItem> findOrderItems(OrderItem search);
-
-    /**
      * Retrieves all order items.
      */
     List<OrderItem> getAllOrderItems();
