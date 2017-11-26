@@ -1,6 +1,8 @@
 package facade;
 
+import dto.CustomerDTO;
 import dto.OrderDTO;
+import dto.OrderItemDTO;
 
 import java.util.List;
 
@@ -17,6 +19,16 @@ public interface OrderFacade {
      * Finds all orders based on the search parameter which represents the search query.
      */
     List<OrderDTO> findOrders(OrderDTO search);
+
+    /**
+     * Finds all orders of a specified customer.
+     */
+    List<OrderDTO> findAllOrdersOfCustomer(CustomerDTO search);
+
+    /**
+     * Finds all orders containing a specified order item.
+     */
+    List<OrderDTO> findAllOrdersContainingOrderItem(OrderItemDTO search);
 
     /**
      * Retrieves all orders.
