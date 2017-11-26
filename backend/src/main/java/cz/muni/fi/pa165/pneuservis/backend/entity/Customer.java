@@ -53,7 +53,6 @@ public class Customer {
     private Set<Order> orders;
 
     public Customer(){
-        vip = false;
     }
 
     public Customer(String name, String surname, String city, String street, String zipCode, String country,
