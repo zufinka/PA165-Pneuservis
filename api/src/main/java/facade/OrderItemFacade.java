@@ -14,11 +14,6 @@ public interface OrderItemFacade {
     OrderItemDTO getOrderItem(long id);
 
     /**
-     * Finds all order items based on the search parameter which represents the search query.
-     */
-    List<OrderItemDTO> findOrderItems(OrderItemDTO search);
-
-    /**
      * Retrieves all order items.
      */
     List<OrderItemDTO> getAllOrderItems();
