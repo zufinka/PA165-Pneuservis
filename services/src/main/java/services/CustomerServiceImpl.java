@@ -2,6 +2,8 @@ package services;
 
 import cz.muni.fi.pa165.pneuservis.backend.dao.CustomerDao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Customer;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityExistsException;
 import java.util.List;
@@ -11,6 +13,8 @@ import javax.inject.Inject;
  * Implementation of service methods for access to {@link Customer} entity
  * @author Zuzana Žufanová, zufinka@mail.muni.cz
  */
+@Service
+@Transactional
 public class CustomerServiceImpl implements CustomerService{
     @Inject
     CustomerDao customerDao;
