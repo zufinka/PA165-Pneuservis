@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,11 +46,13 @@ public class ServiceDaoTest extends AbstractTestNGSpringContextTests {
         service.setName("baf");
         service.setPrice(BigDecimal.valueOf(2500));
         service.setServiceType(TypeOfServiceEnum.TIRECHANGE);
+        service.setProcessingTime(Duration.ofHours(8));
 
         service2 = new Service();
         service2.setName("lek");
         service2.setPrice(BigDecimal.valueOf(500));
         service2.setServiceType(TypeOfServiceEnum.OILCHANGE);
+        service2.setProcessingTime(Duration.ofHours(5));
     }
 
     @Test(expectedExceptions = NullPointerException.class)

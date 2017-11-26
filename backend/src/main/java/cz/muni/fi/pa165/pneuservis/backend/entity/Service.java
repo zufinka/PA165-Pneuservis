@@ -33,7 +33,7 @@ public class Service {
     @NotNull
     private TypeOfServiceEnum serviceType;
     
-    @NotNull
+
     private Duration processingTime;
   
     public Service() {
