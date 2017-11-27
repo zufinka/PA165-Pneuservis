@@ -49,7 +49,7 @@ public class Customer {
     @ElementCollection
     private Set<VehicleTypeEnum> typesOfCar;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Order> orders;
 
     public Customer(){
