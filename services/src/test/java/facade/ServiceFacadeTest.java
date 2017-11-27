@@ -1,11 +1,13 @@
 package facade;
 
 import config.ServiceConfiguration;
+import config.TireDataConfig;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
 import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
 import dto.ServiceDTO;
-import org.junit.Before;
 import org.mockito.Spy;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -17,10 +19,10 @@ import services.ServicesService;
 import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.testng.AssertJUnit.assertEquals;
@@ -29,27 +31,28 @@ import static org.testng.AssertJUnit.assertEquals;
  * @author Zuzana Žufanová, zufinka@mail.muni.cz
  */
 
-@ContextConfiguration(classes = ServiceConfiguration.class)
-public class ServiceFacadeTest {
+@ContextConfiguration(classes = {ServiceConfiguration.class, TireDataConfig.class})
+public class ServiceFacadeTest extends AbstractTestNGSpringContextTests {
     @Mock
     private ServicesService servicesService;
 
-    @Mock
+    @Spy
     @Inject
     private MappingService mappingService;
 
-    @Inject
-    @InjectMocks
-    private ServiceFacade serviceFacade;
     private Service service1, service2;
 
-    @Before
+    @InjectMocks
+    private ServiceFacade serviceFacade = new ServiceFacadeImpl();
+
+    @BeforeMethod
     public void setUp(){
         MockitoAnnotations.initMocks(this);
         createInitializedService();
 
-        when(servicesService.getService(service1.getId())).thenReturn(service1);
-        when(servicesService.getService(service2.getId())).thenReturn(service2);
+        when(servicesService.getService(1L)).thenReturn(service1);
+        when(servicesService.getService(2L)).thenReturn(service2);
+        doNothing().when(servicesService).delete(any(Service.class));
     }
 
     private void createInitializedService(){
@@ -58,32 +61,33 @@ public class ServiceFacadeTest {
         service1.setPrice(BigDecimal.valueOf(3000));
         service1.setServiceType(TypeOfServiceEnum.TIRECHANGE);
         service1.setProcessingTime(Duration.ofHours(8));
+        service1.setId(1L);
 
         service2 = new Service();
         service2.setName("lek");
         service2.setPrice(BigDecimal.valueOf(500));
         service2.setServiceType(TypeOfServiceEnum.OILCHANGE);
         service2.setProcessingTime(Duration.ofHours(5));
+        service2.setId(2L);
     }
 
     @Test
     public void getServiceTest(){
-        ServiceDTO serviceDTO = serviceFacade.getService(service2.getId());
-        Service service = mappingService.mapTo(serviceDTO, Service.class);
-        assertEquals(service, service2);
+        ServiceDTO serviceDTO = mappingService.mapTo(service2, ServiceDTO.class);
+        ServiceDTO service = serviceFacade.getService(2L);
+        assertEquals(service, serviceDTO);
     }
 
     @Test
     public void getAllServicesTest(){
-        List<ServiceDTO> servicesDTO = serviceFacade.getAllServices();
-        List<Service> services = mappingService.mapTo(servicesDTO, Service.class);
-        assertEquals(services, Arrays.asList(service1, service2));
+        List<ServiceDTO> services = serviceFacade.getAllServices();
+        verify(servicesService).getAllServices();
     }
 
     @Test
     public void createServiceTest(){
-        ServiceDTO service = mappingService.mapTo(service1, ServiceDTO.class);
-        serviceFacade.create(service);
+        ServiceDTO serviceDTO = mappingService.mapTo(service1, ServiceDTO.class);
+        serviceFacade.create(serviceDTO);
         verify(servicesService).create(service1);
     }
 
@@ -95,7 +99,7 @@ public class ServiceFacadeTest {
     @Test
     public void deleteServiceTest(){
         ServiceDTO service = mappingService.mapTo(service2, ServiceDTO.class);
-        serviceFacade.create(service);
+        //serviceFacade.create(service);
         serviceFacade.delete(service);
         verify(servicesService).delete(service2);
     }
