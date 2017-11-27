@@ -1,6 +1,12 @@
 package dto;
 
+import com.google.common.base.MoreObjects;
+import cz.muni.fi.pa165.pneuservis.backend.entity.Order;
+import cz.muni.fi.pa165.pneuservis.backend.enums.VehicleTypeEnum;
+
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 /**
  * @author Zuzana Žufanová, zufinka@mail.muni.cz
@@ -33,6 +39,10 @@ public class CustomerDTO {
     private String phoneNumber;
 
     private boolean vip;
+
+    private Set<VehicleTypeEnum> typesOfCar;
+
+    private Set<OrderDTO> orders;
 
     public CustomerDTO(){}
 
@@ -128,6 +138,22 @@ public class CustomerDTO {
         this.vip = vip;
     }
 
+    public Set<VehicleTypeEnum> getTypesOfCar() {
+        return typesOfCar;
+    }
+
+    public void setTypesOfCar(Set<VehicleTypeEnum> typesOfCar) {
+        this.typesOfCar = typesOfCar;
+    }
+
+    public Set<OrderDTO> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<OrderDTO> orders) {
+        this.orders = orders;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -152,16 +178,19 @@ public class CustomerDTO {
 
     @Override
     public String toString() {
-        return "CustomerDTO{" +
-                "email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", country='" + country + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", vip=" + vip +
-                '}';
+        return MoreObjects.toStringHelper(this)
+                .add("id", id)
+                .add("email", email)
+                .add("name", name)
+                .add("surname", surname)
+                .add("city", city)
+                .add("street", street)
+                .add("country", country)
+                .add("zipCode", zipCode)
+                .add("phoneNumber", phoneNumber)
+                .add("vip", vip)
+                .add("typesOfCar", typesOfCar)
+                .add("orders", orders)
+                .toString();
     }
 }

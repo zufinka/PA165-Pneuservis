@@ -14,9 +14,9 @@ public class TireDTO {
 
     private String name;
 
-    private TireManufacturerDTO manufacturerDTO;
+    private TireManufacturerDTO manufacturer;
 
-    private TirePropertiesDTO tirePropertiesDTO;
+    private TirePropertiesDTO tireProperties;
 
     private int onStock;
 
@@ -30,8 +30,8 @@ public class TireDTO {
 
     public TireDTO(String name, TireManufacturerDTO manufacturerDTO, TirePropertiesDTO tirePropertiesDTO, int onStock, BigDecimal price) {
         this.name = name;
-        this.manufacturerDTO = manufacturerDTO;
-        this.tirePropertiesDTO = tirePropertiesDTO;
+        this.manufacturer = manufacturerDTO;
+        this.tireProperties = tirePropertiesDTO;
         this.onStock = onStock;
         this.price = price;
     }
@@ -44,8 +44,8 @@ public class TireDTO {
         this.id = id;
     }
 
-    public void setManufacturerDTO(TireManufacturerDTO manufacturerDTO) {
-        this.manufacturerDTO = manufacturerDTO;
+    public void setManufacturer(TireManufacturerDTO manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public String getName() {
@@ -57,23 +57,23 @@ public class TireDTO {
     }
             
     public TireManufacturerDTO getTireManufacturer() {
-        return manufacturerDTO;
+        return manufacturer;
     }
 
     public void setTireManufacturer(TireManufacturerDTO manufacturer) {
-        this.manufacturerDTO = manufacturer;
+        this.manufacturer = manufacturer;
     }
 
-    public TireManufacturerDTO getManufacturerDTO() {
-        return manufacturerDTO;
+    public TireManufacturerDTO getManufacturer() {
+        return manufacturer;
     }
 
-    public TirePropertiesDTO getTirePropertiesDTO() {
-        return tirePropertiesDTO;
+    public TirePropertiesDTO getTireProperties() {
+        return tireProperties;
     }
 
-    public void setTirePropertiesDTO(TirePropertiesDTO tirePropertiesDTO) {
-        this.tirePropertiesDTO = tirePropertiesDTO;
+    public void setTireProperties(TirePropertiesDTO tireProperties) {
+        this.tireProperties = tireProperties;
         
     }
 
@@ -120,8 +120,8 @@ public class TireDTO {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.manufacturerDTO);
-        hash = 79 * hash + Objects.hashCode(this.tirePropertiesDTO);
+        hash = 79 * hash + Objects.hashCode(this.manufacturer);
+        hash = 79 * hash + Objects.hashCode(this.tireProperties);
         hash = 79 * hash + this.onStock;
         hash = 79 * hash + Objects.hashCode(this.price);
         return hash;
@@ -142,10 +142,10 @@ public class TireDTO {
         if (this.onStock != other.onStock) {
             return false;
         }
-        if (!Objects.equals(this.manufacturerDTO, other.manufacturerDTO)) {
+        if (!Objects.equals(this.manufacturer, other.manufacturer)) {
             return false;
         }
-        if (!Objects.equals(this.tirePropertiesDTO, other.tirePropertiesDTO)) {
+        if (!Objects.equals(this.tireProperties, other.tireProperties)) {
             return false;
         }
         if (!Objects.equals(this.price, other.price)) {
@@ -156,7 +156,7 @@ public class TireDTO {
 
     @Override
     public String toString() {
-        return "TireDTO{" + "manufacturerDTO=" + manufacturerDTO + ", tirePropertiesDTO=" + tirePropertiesDTO + ", onStock=" + onStock + ", price=" + price + '}' + '\n';
+        return "TireDTO{" + "manufacturer=" + manufacturer + ", tireProperties=" + tireProperties + ", onStock=" + onStock + ", price=" + price + '}' + '\n';
     }
     
     

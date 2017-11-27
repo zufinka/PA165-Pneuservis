@@ -99,7 +99,7 @@ public class TireFacadeImpl implements TireFacade {
         List<TireDTO> l2 = new ArrayList<>();
         for(Tire t: tires){
             TireDTO dto = mappingService.mapTo(t, TireDTO.class);
-            dto.setTirePropertiesDTO(mappingService.mapTo(t.getTireProperties(), TirePropertiesDTO.class));
+            dto.setTireProperties(mappingService.mapTo(t.getTireProperties(), TirePropertiesDTO.class));
             l2.add(dto);
         }
         return l2;
