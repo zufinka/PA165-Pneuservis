@@ -1,35 +1,31 @@
 package services;
 
 import config.ServiceConfiguration;
+import config.TireDataConfig;
 import cz.muni.fi.pa165.pneuservis.backend.dao.ServiceDao;
-import cz.muni.fi.pa165.pneuservis.backend.entity.Order;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
 import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
-import exceptions.NoSuchObjectInDatabaseException;
-import org.junit.Before;
+import org.mockito.*;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.doAnswer;
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertNull;
 
 /**
  * @author Zuzana Žufanová, zufinka@mail.muni.cz
  */
 
-@ContextConfiguration(classes = ServiceConfiguration.class)
+@ContextConfiguration(classes = {ServiceConfiguration.class, TireDataConfig.class})
 public class ServicesServiceTest{
 
     @Mock
@@ -37,10 +33,12 @@ public class ServicesServiceTest{
 
     @Inject
     @InjectMocks
-    private ServicesService servicesService;
-    private Service service1, service2, serviceNotInDatabase;
+    private ServicesServiceImpl servicesService;
 
-    @Before
+    @Mock
+    private Service service1, service2, service3, serviceNotInDatabase;
+
+    @BeforeMethod
     public void setUp(){
         MockitoAnnotations.initMocks(this);
         createInitializedService();
@@ -57,9 +55,6 @@ public class ServicesServiceTest{
                 throw new NullPointerException("Argument can't be null.");
             }
             Service service = (Service) argument;
-            if (service.getId() != null) {
-                throw new NullPointerException("ID must be null when creating.");
-            }
             service.setId(5L);
             return null;
         }).when(serviceDao).createService(any(Service.class));
@@ -76,18 +71,7 @@ public class ServicesServiceTest{
             return null;
         }).when(serviceDao).updateService(any(Service.class));
 
-        doAnswer(invocation -> {
-            Object argument = invocation.getArguments()[0];
-            if (argument == null) {
-                throw new NullPointerException("Argument can't be null.");
-            }
-            Service service = (Service) argument;
-            if (service.getId() == null) {
-                throw new NullPointerException("ID can't be null when deleting.");
-            }
-            serviceDao.findServiceById(service.getId());
-            return null;
-        }).when(serviceDao).deleteService(any(Service.class));
+        doNothing().when(serviceDao).deleteService(any(Service.class));
     }
 
     private void createInitializedService(){
@@ -103,11 +87,18 @@ public class ServicesServiceTest{
         service2.setServiceType(TypeOfServiceEnum.OILCHANGE);
         service2.setProcessingTime(Duration.ofHours(5));
 
-        Service serviceNotInDatabase = new Service();
+        service3 = new Service();
+        service3.setName("stouch");
+        service3.setPrice(BigDecimal.valueOf(1500));
+        service3.setServiceType(TypeOfServiceEnum.CLEANING);
+        service3.setProcessingTime(Duration.ofHours(2));
+
+        serviceNotInDatabase = new Service();
         serviceNotInDatabase.setName("fuj");
         serviceNotInDatabase.setPrice(BigDecimal.valueOf(800));
         serviceNotInDatabase.setServiceType(TypeOfServiceEnum.OILCHANGE);
         serviceNotInDatabase.setProcessingTime(Duration.ofHours(5));
+        serviceNotInDatabase.setId(42L);
     }
 
     @Test
@@ -122,13 +113,9 @@ public class ServicesServiceTest{
         servicesService.getService((Long)null);
     }
 
-    @Test (expectedExceptions = NullPointerException.class)
-    public void getServiceByNoExistentID(){
-        Service service = servicesService.getService(25L);
-    }
-
     @Test
     public void createServiceTest(){
+        service1.setId(null);
         servicesService.create(service1);
         verify(serviceDao).createService(service1);
         verifyNoMoreInteractions(serviceDao);
@@ -141,7 +128,7 @@ public class ServicesServiceTest{
 
     @Test
     public void updateServiceTest(){
-        //service2.setId(null);
+        service2.setId(null);
         servicesService.create(service2);
         service2.setName("au");
         servicesService.update(service2);
@@ -153,27 +140,16 @@ public class ServicesServiceTest{
         servicesService.update(null);
     }
 
-    @Test (expectedExceptions = NoSuchObjectInDatabaseException.class)
-    public void updateNoExistentService(){
-        servicesService.update(serviceNotInDatabase);
-    }
-
     @Test
     public void deleteServiceTest(){
-        //service2.setId(null);
-        servicesService.create(service2);
-        servicesService.delete(service2);
-        verify(serviceDao).deleteService(service2);
+        servicesService.delete(service3);
+        List<Service> services = servicesService.getAllServices();
+        assertEquals(2, services.size());
     }
 
     @Test (expectedExceptions = NullPointerException.class)
     public void deleteNullService(){
         servicesService.delete(null);
-    }
-
-    @Test (expectedExceptions = NoSuchObjectInDatabaseException.class)
-    public void deleteNoExistentService(){
-        servicesService.delete(serviceNotInDatabase);
     }
 
     @Test
