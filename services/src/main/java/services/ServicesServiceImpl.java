@@ -44,7 +44,7 @@ public class ServicesServiceImpl implements ServicesService{
     public void delete(Service service) {
         checkNotNull(service);
         try{
-        ServiceDao.updateService(service);}
+        ServiceDao.deleteService(service);}
         catch (IllegalArgumentException e){
             throw new NoSuchObjectInDatabaseException("This service isn't in database");
         }
