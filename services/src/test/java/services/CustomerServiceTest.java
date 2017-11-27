@@ -4,25 +4,20 @@ import config.ServiceConfiguration;
 import config.TireDataConfig;
 import cz.muni.fi.pa165.pneuservis.backend.dao.CustomerDao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Customer;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.inject.Inject;
 import org.mockito.InjectMocks;
-import static org.mockito.Matchers.any;
 import org.mockito.Mock;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNull;
-
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import javax.inject.Inject;
+import java.util.Arrays;
+import java.util.Collection;
+
+import static org.mockito.Mockito.when;
+import static org.testng.Assert.assertEquals;
 
 
 /***
