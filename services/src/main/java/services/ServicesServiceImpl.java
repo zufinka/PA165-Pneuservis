@@ -5,10 +5,14 @@ import cz.muni.fi.pa165.pneuservis.backend.dao.ServiceDao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.transaction.annotation.Transactional;
+import exceptions.NoSuchObjectInDatabaseException;
 
 /***
  * @author Róbert Ivan , 461468@mail.muni.cz
  */
+@org.springframework.stereotype.Service
+@Transactional
 public class ServicesServiceImpl implements ServicesService{
     
     @Inject
@@ -29,13 +33,21 @@ public class ServicesServiceImpl implements ServicesService{
     @Override
     public void update(Service service) {
         checkNotNull(service);
-        ServiceDao.updateService(service);
+        try{
+            ServiceDao.updateService(service);}
+        catch (IllegalArgumentException e){
+            throw new NoSuchObjectInDatabaseException("This service isn't in database");
+        }
     }
 
     @Override
     public void delete(Service service) {
         checkNotNull(service);
-        ServiceDao.updateService(service);
+        try{
+        ServiceDao.updateService(service);}
+        catch (IllegalArgumentException e){
+            throw new NoSuchObjectInDatabaseException("This service isn't in database");
+        }
     }
 
     @Override
