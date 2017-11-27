@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import services.ServicePackageMarker;
 
+import java.util.Collections;
+
 /**
  * @author Martin Zilak, 433372@mail.muni.cz
  */
@@ -22,6 +24,7 @@ public class ServiceConfiguration {
     @Bean
     public Mapper dozer(){
         DozerBeanMapper mapper = new DozerBeanMapper();
+        mapper.setMappingFiles(Collections.singletonList("dozerJdk8Converters.xml"));
         return mapper;
     }
 }
