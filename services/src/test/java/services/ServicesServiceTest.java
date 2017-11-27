@@ -6,24 +6,17 @@ import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
 import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
 import exceptions.NoSuchObjectInDatabaseException;
 import org.junit.Before;
-import org.mockito.ArgumentCaptor;
 import org.testng.annotations.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -37,6 +30,7 @@ import static org.testng.AssertJUnit.assertNull;
 
 @ContextConfiguration(classes = ServiceConfiguration.class)
 public class ServicesServiceTest extends AbstractTestNGSpringContextTests{
+
     @Mock
     private ServiceDao serviceDao;
 
@@ -85,7 +79,7 @@ public class ServicesServiceTest extends AbstractTestNGSpringContextTests{
 
     @Test (expectedExceptions = NullPointerException.class)
     public void getServiceByNullId(){
-        servicesService.getService(null);
+        servicesService.getService((Long)null);
     }
 
     @Test
