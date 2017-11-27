@@ -34,7 +34,7 @@ import static org.mockito.Mockito.when;
 /**
  * @author Jakub Palenik, 422453@mail.muni.cz
  */
-@ContextConfiguration(classes = ServiceConfiguration.class)
+@ContextConfiguration(classes = {ServiceConfiguration.class, TireDataConfig.class})
 public class OrderFacadeTest extends AbstractTestNGSpringContextTests {
 
     @Mock

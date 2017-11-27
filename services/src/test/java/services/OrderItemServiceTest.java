@@ -1,6 +1,7 @@
 package services;
 
 import config.ServiceConfiguration;
+import config.TireDataConfig;
 import cz.muni.fi.pa165.pneuservis.backend.dao.OrderItemDao;
 import cz.muni.fi.pa165.pneuservis.backend.entity.*;
 import cz.muni.fi.pa165.pneuservis.backend.enums.SeasonEnum;
@@ -28,7 +29,7 @@ import static org.testng.Assert.assertNull;
 /**
  * @author Jakub Palenik, 422453@mail.muni.cz
  */
-@ContextConfiguration(classes = ServiceConfiguration.class)
+@ContextConfiguration(classes = {ServiceConfiguration.class, TireDataConfig.class})
 public class OrderItemServiceTest extends AbstractTestNGSpringContextTests {
 
     public static final Long orderItem1Id = 31L;
