@@ -1,8 +1,7 @@
 package services;
 
 
-import config.TestConfig;
-import config.TireDataTestConfig;
+import config.TireDaoTestConfig;
 import config.TireServiceTestConfig;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
 import cz.muni.fi.pa165.pneuservis.backend.entity.TireManufacturer;
@@ -29,7 +28,7 @@ public class TireServiceTest {
 
     @BeforeClass
     public static void init() {
-        ApplicationContext apx = new AnnotationConfigApplicationContext(TireServiceTestConfig.class, TireDataTestConfig.class, TestConfig.class);
+        ApplicationContext apx = new AnnotationConfigApplicationContext(TireServiceTestConfig.class, TireDaoTestConfig.class);
         ts = apx.getBean(TireService.class);
     }
 
