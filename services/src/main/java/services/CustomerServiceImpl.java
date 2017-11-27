@@ -80,7 +80,7 @@ public class CustomerServiceImpl implements CustomerService{
         try {
             customerDao.updateCustomer(customer);
         }catch (IllegalArgumentException e){
-            throw new NoSuchObjectInDatabaseException("This customer in not database.");
+            throw new NoSuchObjectInDatabaseException("This customer is not in database.");
         }
 
     }

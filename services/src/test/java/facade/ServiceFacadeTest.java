@@ -34,14 +34,13 @@ public class ServiceFacadeTest {
     @Mock
     private ServicesService servicesService;
 
-    @Inject
-    @InjectMocks
-    private ServiceFacade serviceFacade;
-
     @Mock
     @Inject
     private MappingService mappingService;
 
+    @Inject
+    @InjectMocks
+    private ServiceFacade serviceFacade;
     private Service service1, service2;
 
     @Before
