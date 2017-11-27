@@ -1,6 +1,9 @@
 package dto;
 
 
+import com.google.common.base.MoreObjects;
+import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
+
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.Objects;
@@ -14,18 +17,22 @@ public class ServiceDTO {
     private String name;
     
     private BigDecimal price;
+
+    private TypeOfServiceEnum serviceType;
     
     private Duration processingTime;
     
     public ServiceDTO() {
     }
-    
-    public ServiceDTO(String name, BigDecimal price, Duration processingTime) {
+
+    public ServiceDTO(Long id, String name, BigDecimal price, TypeOfServiceEnum serviceType, Duration processingTime) {
+        this.id = id;
         this.name = name;
         this.price = price;
-        this.processingTime=processingTime;
+        this.serviceType = serviceType;
+        this.processingTime = processingTime;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -47,7 +54,15 @@ public class ServiceDTO {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-    
+
+    public TypeOfServiceEnum getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(TypeOfServiceEnum serviceType) {
+        this.serviceType = serviceType;
+    }
+
     public Duration getProcessingTime(){
         return processingTime;
     }
@@ -55,30 +70,32 @@ public class ServiceDTO {
     public void setProcessingTime(Duration time){
         this.processingTime= time;
     }
-    
+
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof ServiceDTO)) return false;
-        ServiceDTO service = (ServiceDTO) obj;
-        return Objects.equals(id, service.id) &&
-                Objects.equals(name, service.name) &&
-                Objects.equals(price, service.price) &&
-                Objects.equals(processingTime, service.processingTime);
-    }   
-    
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ServiceDTO)) return false;
+        ServiceDTO that = (ServiceDTO) o;
+        return com.google.common.base.Objects.equal(id, that.id) &&
+                com.google.common.base.Objects.equal(name, that.name) &&
+                com.google.common.base.Objects.equal(price, that.price) &&
+                serviceType == that.serviceType &&
+                com.google.common.base.Objects.equal(processingTime, that.processingTime);
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, price, processingTime);
+        return com.google.common.base.Objects.hashCode(id, name, price, serviceType, processingTime);
     }
-    
+
     @Override
     public String toString() {
-        return "ServiceDTO{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", processingTime=" + processingTime +
-                '}';
+        return MoreObjects.toStringHelper(this)
+                .add("id", id)
+                .add("name", name)
+                .add("price", price)
+                .add("serviceType", serviceType)
+                .add("processingTime", processingTime)
+                .toString();
     }
-    
 }

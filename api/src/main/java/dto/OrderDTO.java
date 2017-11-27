@@ -5,6 +5,7 @@ import com.google.common.base.Objects;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author Martin Zilak, 433372@mail.muni.cz
@@ -18,9 +19,14 @@ public class OrderDTO {
     @NotNull
     private CustomerDTO customer;
 
-    public OrderDTO(LocalDateTime date, CustomerDTO customer) {
+    @NotNull
+    private List<OrderItemDTO> orderItems;
+
+    @NotNull
+    public OrderDTO(LocalDateTime date, CustomerDTO customer, List<OrderItemDTO> orderItems) {
         this.date = date;
         this.customer = customer;
+        this.orderItems = orderItems;
     }
 
     public OrderDTO() {
@@ -51,6 +57,14 @@ public class OrderDTO {
         this.customer = customer;
     }
 
+    public List<OrderItemDTO> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItemDTO> orderItems) {
+        this.orderItems = orderItems;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -58,12 +72,13 @@ public class OrderDTO {
         OrderDTO orderDTO = (OrderDTO) o;
         return Objects.equal(id, orderDTO.id) &&
                 Objects.equal(date, orderDTO.date) &&
-                Objects.equal(customer, orderDTO.customer);
+                Objects.equal(customer, orderDTO.customer) &&
+                Objects.equal(orderItems, orderDTO.orderItems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, date, customer);
+        return Objects.hashCode(id, date, customer, orderItems);
     }
 
     @Override
@@ -72,6 +87,7 @@ public class OrderDTO {
                 .add("id", id)
                 .add("date", date)
                 .add("customer", customer)
+                .add("orderItems", orderItems)
                 .toString();
     }
 }
