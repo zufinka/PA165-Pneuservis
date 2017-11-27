@@ -2,34 +2,49 @@ package config;
 
 import cz.muni.fi.pa165.pneuservis.backend.dao.OrderItemDao;
 import cz.muni.fi.pa165.pneuservis.backend.dao.OrderItemDaoImpl;
-import cz.muni.fi.pa165.pneuservis.backend.entity.OrderItem;
+import cz.muni.fi.pa165.pneuservis.backend.entity.*;
+import cz.muni.fi.pa165.pneuservis.backend.enums.SeasonEnum;
+import cz.muni.fi.pa165.pneuservis.backend.enums.SpeedClassEnum;
+import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
+import cz.muni.fi.pa165.pneuservis.backend.enums.VehicleTypeEnum;
 import org.mockito.InjectMocks;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @Configuration
 public class OrderItemDaoTestConfig {
 
-    @InjectMocks
-    private OrderItem orderItem1;
-    private OrderItem orderItem2;
-
     @Bean
     OrderItemDao orderItemDao(){
-        OrderItemDao orderItemDao = mock(OrderItemDao.class);
+
+        TireManufacturer tireManufacturer = new TireManufacturer("Continental");
+        TireProperties tireProperties = new TireProperties(VehicleTypeEnum.P, 165, 95, 16, 95, SpeedClassEnum.H, SeasonEnum.WINTER);
+        Tire tire = new Tire("WXR", tireManufacturer, tireProperties, 10, new BigDecimal(10.568));
+
+        Service service = new Service("test service", TypeOfServiceEnum.TIRECHANGE);
+        service.setPrice(BigDecimal.ONE);
+
+        OrderItem orderItem1 = new OrderItem(tire, 5L);
+        OrderItem orderItem2 = new OrderItem(service, 4L);
 
         Long orderItem1Id = 31L;
         Long orderItem2Id = 9L;
+        Long nonExistentOrderItemId = 666L;
+
+        OrderItemDao orderItemDao = mock(OrderItemDao.class);
 
         when(orderItemDao.getById(orderItem1Id)).thenReturn(orderItem1);
         when(orderItemDao.getById(orderItem2Id)).thenReturn(orderItem2);
+        when(orderItemDao.getById(nonExistentOrderItemId)).thenReturn(null);
+
         when(orderItemDao.getAll()).thenReturn(Arrays.asList(orderItem1, orderItem2));
 
         doAnswer(invocation -> {
