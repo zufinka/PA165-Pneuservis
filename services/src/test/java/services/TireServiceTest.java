@@ -76,19 +76,19 @@ public class TireServiceTest {
     }
 
     @Test
-    public void fidTireByPropertiesNullTest() {
+    public void findTireByPropertiesNullTest() {
         List<Tire> t = ts.findTireByProperties(null, null);
         assertEquals(t.size(), 5);
     }
 
     @Test
-    public void fidTireByManufTest() {
+    public void findTireByManufTest() {
         List<Tire> t = ts.findTireByProperties(new TireManufacturer("Manuf 1"), null);
         assertEquals(t.size(), 2);
     }
 
     @Test
-    public void fidTireByBothTest() {
+    public void findTireByBothTest() {
         List<TireProperties> props = new ArrayList<>(ts.getAllTireProperties());
         List<Tire> t = ts.findTireByProperties(new TireManufacturer("Manuf 1"), props);
         assertEquals(t.size(), 2);

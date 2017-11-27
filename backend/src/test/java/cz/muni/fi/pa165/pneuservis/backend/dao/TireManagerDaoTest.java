@@ -82,17 +82,6 @@ public class TireManagerDaoTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void testDeleteTire() {
-        tireManagerDao.createTire(tire1);
-        tireManagerDao.createTire(tire2);
-        Assert.assertEquals(tireManagerDao.retrieveAllTires().size(), 2);
-        Assert.assertTrue(tireManagerDao.deleteTire(tire1));
-        Assert.assertEquals(tireManagerDao.retrieveAllTires().size(), 1);
-        Assert.assertTrue(tireManagerDao.deleteTire(tire2));
-        Assert.assertEquals(tireManagerDao.retrieveAllTires().size(), 0);
-    }
-
-    @Test
     public void testFindTireById() {
         tireManagerDao.createTire(tire1);
         Assert.assertEquals(tireManagerDao.findTireById(tire1.getId()), tire1);
