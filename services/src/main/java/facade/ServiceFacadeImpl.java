@@ -5,12 +5,16 @@ import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
 import dto.ServiceDTO;
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.transaction.annotation.Transactional;
 import services.MappingService;
 import services.ServicesService;
+
 
 /***
  * @author Róbert Ivan , 461468@mail.muni.cz
  */
+@org.springframework.stereotype.Service
+@Transactional
 public class ServiceFacadeImpl implements ServiceFacade{
 
     @Inject
