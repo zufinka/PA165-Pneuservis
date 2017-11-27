@@ -5,19 +5,17 @@ import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
 import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
 import dto.ServiceDTO;
 import org.junit.Before;
-import org.mockito.Spy;
-import org.testng.annotations.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
+import org.testng.annotations.Test;
 import services.MappingService;
 import services.ServicesService;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

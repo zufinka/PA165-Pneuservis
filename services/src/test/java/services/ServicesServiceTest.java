@@ -2,17 +2,15 @@ package services;
 
 import config.ServiceConfiguration;
 import cz.muni.fi.pa165.pneuservis.backend.dao.ServiceDao;
-import cz.muni.fi.pa165.pneuservis.backend.entity.Order;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Service;
 import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
 import exceptions.NoSuchObjectInDatabaseException;
 import org.junit.Before;
-import org.testng.annotations.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.Test;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
@@ -21,9 +19,7 @@ import java.util.Arrays;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.doAnswer;
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertNull;
 
 /**
  * @author Zuzana Žufanová, zufinka@mail.muni.cz
