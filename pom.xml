@@ -53,6 +53,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>1.1.4.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -60,7 +67,7 @@
         <module>backend</module>
         <module>api</module>
         <module>services</module>
-        <module>mvc</module>
+        <module>eshop-spring-mvc</module>
     </modules>
 
 </project>
