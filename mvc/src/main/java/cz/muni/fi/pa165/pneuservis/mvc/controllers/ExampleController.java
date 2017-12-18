@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.mvc.controllers;
+package cz.muni.fi.pa165.pneuservis.mvc.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
