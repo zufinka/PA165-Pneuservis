@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.mvc.config;
+package cz.muni.fi.pa165.pneuservis.mvc.config;
 
 import cz.muni.fi.pa165.sampledata.EshopWithSampleDataConfiguration;
 import org.slf4j.Logger;

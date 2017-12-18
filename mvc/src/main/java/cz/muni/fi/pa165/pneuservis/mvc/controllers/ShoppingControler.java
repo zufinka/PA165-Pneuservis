@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.mvc.controllers;
+package cz.muni.fi.pa165.pneuservis.mvc.controllers;
 
 import cz.fi.muni.pa165.dto.CategoryDTO;
 import cz.fi.muni.pa165.dto.ProductDTO;
