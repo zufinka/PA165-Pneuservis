@@ -60,6 +60,7 @@
         <module>backend</module>
         <module>api</module>
         <module>services</module>
+        <module>mvc</module>
     </modules>
 
 </project>
