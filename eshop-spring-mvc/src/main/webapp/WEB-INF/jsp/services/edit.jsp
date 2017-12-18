@@ -8,7 +8,7 @@
 <fmt:setBundle basename="Texts"/>
 <my:pagetemplate>
 <jsp:attribute name="body">
-    <form:form method="post" action="${pageContext.request.contextPath}/services/edit/${serviceEdit.id}"
+    <form:form method="post" action="${pageContext.request.contextPath}/services/edit/${service.id}"
                modelAttribute="serviceEdit">
         <div class="form-group ${name_error ? 'has-error' : ''}">
             <form:label path="name">Name</form:label>

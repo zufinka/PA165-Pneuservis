@@ -27,12 +27,6 @@
                 <td><c:out value="${service.name}"/></td>
                 <td><c:out value="${service.serviceType}"/></td>
                 <td><c:out value="${service.price}"/></td>
-                <td>
-                    <my:extraTag href="/services/edit/${service.id}" class='btn btn-primary'>
-                        <span class="glyphicon glyphicon-edit">
-                        </span> Edit
-                    </my:extraTag>
-                </td>
             </tr>
         </c:forEach>
         </tbody>
