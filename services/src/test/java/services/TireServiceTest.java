@@ -1,8 +1,7 @@
 package services;
 
 
-import config.TestConfig;
-import config.TireDataTestConfig;
+import config.TireDaoTestConfig;
 import config.TireServiceTestConfig;
 import cz.muni.fi.pa165.pneuservis.backend.entity.Tire;
 import cz.muni.fi.pa165.pneuservis.backend.entity.TireManufacturer;
@@ -29,7 +28,7 @@ public class TireServiceTest {
 
     @BeforeClass
     public static void init() {
-        ApplicationContext apx = new AnnotationConfigApplicationContext(TireServiceTestConfig.class, TireDataTestConfig.class, TestConfig.class);
+        ApplicationContext apx = new AnnotationConfigApplicationContext(TireServiceTestConfig.class, TireDaoTestConfig.class);
         ts = apx.getBean(TireService.class);
     }
 
@@ -77,19 +76,19 @@ public class TireServiceTest {
     }
 
     @Test
-    public void fidTireByPropertiesNullTest() {
+    public void findTireByPropertiesNullTest() {
         List<Tire> t = ts.findTireByProperties(null, null);
         assertEquals(t.size(), 5);
     }
 
     @Test
-    public void fidTireByManufTest() {
+    public void findTireByManufTest() {
         List<Tire> t = ts.findTireByProperties(new TireManufacturer("Manuf 1"), null);
         assertEquals(t.size(), 2);
     }
 
     @Test
-    public void fidTireByBothTest() {
+    public void findTireByBothTest() {
         List<TireProperties> props = new ArrayList<>(ts.getAllTireProperties());
         List<Tire> t = ts.findTireByProperties(new TireManufacturer("Manuf 1"), props);
         assertEquals(t.size(), 2);

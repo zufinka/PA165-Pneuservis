@@ -25,11 +25,11 @@ public class Order {
     private LocalDateTime date;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Customer customer;
 
     @NotNull
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
 
     public Order() {

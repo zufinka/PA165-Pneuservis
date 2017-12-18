@@ -21,10 +21,10 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Tire tire;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Service service;
 
     @NotNull
