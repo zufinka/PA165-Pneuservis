@@ -28,7 +28,7 @@ public class CustomerController {
     @Autowired
     private CustomerFacade customerFacade;
 
-    @RequestMapping(method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE,
+    @RequestMapping(value = "/customer/create", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public final CustomerDTO createCustomer(
             @PathVariable String name, @PathVariable String surname, @PathVariable String city,
