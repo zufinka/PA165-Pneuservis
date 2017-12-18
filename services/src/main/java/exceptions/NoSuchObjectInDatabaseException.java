@@ -1,7 +1,6 @@
 package exceptions;
 
 import org.springframework.dao.DataAccessException;
-import org.springframework.lang.Nullable;
 
 public class NoSuchObjectInDatabaseException extends DataAccessException {
 
@@ -9,7 +8,7 @@ public class NoSuchObjectInDatabaseException extends DataAccessException {
         super(msg);
     }
 
-    public NoSuchObjectInDatabaseException(@Nullable String msg, @Nullable Throwable cause) {
+    public NoSuchObjectInDatabaseException( String msg, Throwable cause) {
         super(msg, cause);
     }
 

@@ -1,10 +1,8 @@
 package dto;
 
 import com.google.common.base.MoreObjects;
-import cz.muni.fi.pa165.pneuservis.backend.entity.Order;
 import cz.muni.fi.pa165.pneuservis.backend.enums.VehicleTypeEnum;
 
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 

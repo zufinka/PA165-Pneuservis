@@ -20,11 +20,6 @@ public class ServiceDaoImpl implements ServiceDao{
     @PersistenceContext
     private EntityManager em;
     
-    public ServiceDaoImpl(EntityManager em) {
-        this.em = em;
-
-    }
-    
     @Override
     public void createService(Service service){
         checkNotNull(service);
