@@ -12,13 +12,11 @@
         <h1>Pneuservis project</h1>
         <p class="lead">We present our project. Authors:</p>
         <ul style="list-style-type:circle">
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
-            <li>Vodka</li>
-        </ul> 
-        <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/shopping/show"
-              role="button">Go shopping</a></p>
+            <li>Martin Žilák</li>
+            <li>Jakub Jozef Páleník</li>
+            <li>Róbert Ivan</li>
+            <li>Zuzana Žufanová</li>
+        </ul>
     </div>
 
 </jsp:attribute>
