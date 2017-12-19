@@ -1,9 +1,8 @@
 package cz.muni.fi.pa165.mvc.config;
 
-//import cz.muni.fi.pa165.sampledata.EshopWithSampleDataConfiguration;
 import config.ServiceConfiguration;
 import config.TireDataConfig;
-import cz.muni.fi.pa165.mvc.controllers.ExampleController;
+import cz.muni.fi.pa165.mvc.controllers.ShoppingControler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
@@ -18,7 +17,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.validation.Validator;
-import services.TireDataCache;
 
 /**
  * The central Spring context and Spring MVC configuration.
@@ -27,13 +25,14 @@ import services.TireDataCache;
  * see http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-config-enable
  *
  * @author Martin Kuba makub@ics.muni.cz
+ * 
+ * for project purposes edited Jakub Palenik
  */
 
 @EnableWebMvc
 @Configuration
-//@Import({EshopWithSampleDataConfiguration.class})
 @Import({TireDataConfig.class, ServiceConfiguration.class})
-@ComponentScan(basePackageClasses = ExampleController.class)
+@ComponentScan(basePackageClasses = ShoppingControler.class)
 public class MySpringMvcConfig extends WebMvcConfigurerAdapter {
 
     final static Logger log = LoggerFactory.getLogger(MySpringMvcConfig.class);
@@ -47,10 +46,7 @@ public class MySpringMvcConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         log.debug("mapping URL / to home view");
         registry.addViewController("/").setViewName("home");
-        registry.addViewController("/snoop").setViewName("snoop");
-        registry.addViewController("/praha").setViewName("praha");
     }
-
 
     /**
      * Enables default Tomcat servlet that serves static files.
@@ -92,6 +88,4 @@ public class MySpringMvcConfig extends WebMvcConfigurerAdapter {
         log.debug("registering JSR-303 validator");
         return new LocalValidatorFactoryBean();
     }
-
-
 }
