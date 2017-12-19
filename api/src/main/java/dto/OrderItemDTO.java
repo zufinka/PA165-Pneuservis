@@ -17,7 +17,7 @@ public class OrderItemDTO {
     private ServiceDTO service;
 
     @NotNull
-    @Min(1)
+    @Min(0)
     private Long quantity;
 
     public OrderItemDTO(TireDTO tire, ServiceDTO service, Long quantity) {

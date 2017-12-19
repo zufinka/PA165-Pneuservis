@@ -17,6 +17,7 @@ import java.util.Set;
  */
 public interface TireService {
 
+    Tire getById(Long id);
     /**
      * Returns list of all tires stored in db
      * @return

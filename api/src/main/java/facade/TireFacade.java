@@ -13,6 +13,8 @@ import java.util.Set;
 
 public interface TireFacade {
 
+    TireDTO getByID(Long id);
+    
     /**
      * Returns list of all tires in db
      * @return

@@ -73,6 +73,8 @@ public class TireDataConfig {
         t1.setTireManufacturer(tm1);
         t1.setTireProperties(tp1);
         t1.setPrice(new BigDecimal(3));
+        t1.setImageUrl("https://i5.walmartimages.com/dfw/4ff9c6c9-733e/k2-_395dec54-c054-45c9-afc1-4e0eaad320b1.v1.jpg");
+        t1.setDescription("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.");
 
         Tire t2 = new Tire();
         t2.setOnStock(20);
@@ -80,28 +82,40 @@ public class TireDataConfig {
         t2.setTireManufacturer(tm2);
         t2.setTireProperties(tp2);
         t2.setPrice(new BigDecimal(20));
+        t2.setImageUrl("https://i5.walmartimages.com/dfw/4ff9c6c9-733e/k2-_395dec54-c054-45c9-afc1-4e0eaad320b1.v1.jpg");
+        t2.setDescription("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.");
 
+        
         Tire t3 = new Tire();
         t3.setOnStock(30);
         t3.setName("Koleso 3");
         t3.setTireManufacturer(tm3);
         t3.setTireProperties(tp1);
         t3.setPrice(new BigDecimal(30));
+        t3.setImageUrl("https://i5.walmartimages.com/dfw/4ff9c6c9-733e/k2-_395dec54-c054-45c9-afc1-4e0eaad320b1.v1.jpg");
+        t3.setDescription("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.");
 
+        
         Tire t4 = new Tire();
         t4.setOnStock(40);
         t4.setName("Koleso 4");
         t4.setTireManufacturer(tm1);
         t4.setTireProperties(tp2);
         t4.setPrice(new BigDecimal(40));
+        t4.setImageUrl("https://i5.walmartimages.com/dfw/4ff9c6c9-733e/k2-_395dec54-c054-45c9-afc1-4e0eaad320b1.v1.jpg");
+        t4.setDescription("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.");
 
+        
         Tire t5 = new Tire();
         t5.setOnStock(50);
         t5.setName("Koleso 5");
         t5.setTireManufacturer(tm2);
         t5.setTireProperties(tp1);
         t5.setPrice(new BigDecimal(50));
+        t5.setImageUrl("https://i5.walmartimages.com/dfw/4ff9c6c9-733e/k2-_395dec54-c054-45c9-afc1-4e0eaad320b1.v1.jpg");
+        t5.setDescription("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.");
 
+        
         tireManagerDao.createTire(t1);
         tireManagerDao.createTire(t2);
         tireManagerDao.createTire(t3);

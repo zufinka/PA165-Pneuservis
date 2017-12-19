@@ -24,6 +24,8 @@ import java.util.Locale;
  * Example controller showing as much features as possible.
  *
  * @author Martin Kuba makub@ics.muni.cz
+ * 
+ * edited for project purposes by Jakub Palenik
  */
 @Controller
 @RequestMapping("/example")

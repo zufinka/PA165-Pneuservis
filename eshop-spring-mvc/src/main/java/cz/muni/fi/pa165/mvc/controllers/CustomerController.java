@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
-@RequestMapping("/newcustomer")
+@RequestMapping("/customer")
 public class CustomerController {
 
     private final static Logger logger = LoggerFactory.getLogger(CustomerController.class);
@@ -28,7 +28,7 @@ public class CustomerController {
     @Autowired
     private CustomerFacade customerFacade;
 
-    @RequestMapping(value = "/customer/create", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE,
+    @RequestMapping(value = "/create", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public final CustomerDTO createCustomer(
             @PathVariable String name, @PathVariable String surname, @PathVariable String city,
