@@ -38,18 +38,6 @@ public class CartController {
 
     @RequestMapping("/{id}")
     public String list(@PathVariable("id") Long id, Model model) {
-//        List<OrderItemDTO> allOrderItems = orderFacade.getOrder(id).getOrderItems();
-
-        /*Map<ServiceDTO, Long> orderServices = new HashMap<>();
-        Map<TireDTO, Long> orderTires = new HashMap<>();
-        for (OrderItemDTO orderItem : allOrderItems) {
-            if(orderItem.getService() != null) {
-                orderServices.put(orderItem.getService(), orderItem.getQuantity());
-            } else {
-                orderTires.put(orderItem.getTire(), orderItem.getQuantity());
-            }
-        }
-        model.addAttribute("orderServices", orderServices);*/
 
         model.addAttribute("order", orderFacade.getOrder(id));
 
@@ -57,15 +45,11 @@ public class CartController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public String setQuantity(@PathVariable("id") Long id,
+    public String edit(@PathVariable("id") Long id,
                               @Valid @ModelAttribute("order") OrderDTO data,
                               BindingResult bindingResult, Model model,
                               RedirectAttributes redirectAttributes,
                               UriComponentsBuilder uriComponentsBuilder) {
-
-        /*if(bindingResult.hasErrors()) {
-            return uriComponentsBuilder.path("/cart/{id}/edit").queryParam("id", id).toString();
-        }*/
 
         List<OrderItemDTO> newOrderItems = new ArrayList<>();
 
@@ -80,6 +64,6 @@ public class CartController {
 
         redirectAttributes.addFlashAttribute("alert_success", "Edit successful!");
 
-        return "redirect:" + uriComponentsBuilder.path("/{id}");
+        return "redirect:" + uriComponentsBuilder.path("cart/{id}");
     }
 }
