@@ -1,5 +1,7 @@
 package cz.muni.fi.pa165.mvc.controllers;
 
+import dto.TireDTO;
+import dto.TireManufacturerDTO;
 import facade.CustomerFacade;
 import facade.TireFacade;
 import org.slf4j.Logger;
@@ -17,6 +19,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.inject.Inject;
 
 /**
@@ -31,7 +34,7 @@ public class ShoppingControler {
     final static Logger log = LoggerFactory.getLogger(ShoppingControler.class);
 
     @Inject
-    private CustomerFacade customerFacade;
+    private TireFacade tireFacade;
 
     /**
      * Shows all categories and products.
@@ -41,41 +44,21 @@ public class ShoppingControler {
      */
     @RequestMapping("/show")
     public String list(Model model) {
-        /*log.debug("show()");
-        //get all categories
-        List<CategoryDTO> allCategories = categoryFacade.getAllCategories();
-        model.addAttribute("categories", allCategories);
+        
+        List<TireDTO> tires = tireFacade.getAllTires();
+        model.addAttribute("tires", tires);
+        
+        Set<TireManufacturerDTO> manufacturers = tireFacade.getAllTireManufacturers();
+        model.addAttribute("manufacturers", manufacturers);
+        
+        Map<TireManufacturerDTO, List<TireDTO>> tiresByManufs = new HashMap<>();
+        for (TireDTO t : tires){
+            tiresByManufs.put(t.getManufacturer(), tireFacade.findTireByProperties(t.getManufacturer(), null));
+        }        
+        model.addAttribute("tiresByManufs", tiresByManufs);
 
-        //for each category, get products, remember that as a map from category ids to products
-        Map<Long, List<ProductDTO>> categoriesToProductsMap = new HashMap<>();
-        for (CategoryDTO categoryDTO : allCategories) {
-            categoriesToProductsMap.put(categoryDTO.getId(), productFacade.getProductsByCategory(categoryDTO.getName()));
-        }
-        model.addAttribute("cat2prods", categoriesToProductsMap);
-*/
         //forward to /shopping/show.jsp
         return "shopping/show";
-    }
-
-    /**
-     * Shows a product image.
-     *
-     * @param id       product id
-     * @param response HTTP response
-     * @throws IOException
-     */
-    @RequestMapping("/productImage/{id}")
-    public void productImage(@PathVariable long id, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        /* productDTO = productFacade.getProductWithId(id);
-        byte[] image = productDTO.getImage();
-        if(image==null) {
-            response.sendRedirect(request.getContextPath()+"/no-image.png");
-        } else {
-            response.setContentType(productDTO.getImageMimeType());
-            ServletOutputStream out = response.getOutputStream();
-            out.write(image);
-            out.flush();
-        }*/
     }
 
     /**
@@ -87,8 +70,9 @@ public class ShoppingControler {
      */
     @RequestMapping("/product/{id}")
     public String product(@PathVariable long id, Model model) {
-        /*log.debug("product({})", id);
-        model.addAttribute("product", productFacade.getProductWithId(id));*/
+        log.info("DOBRA KOKOTINA");
+        log.debug("product({})", id);
+        model.addAttribute("product", tireFacade.getByID(id));
         return "shopping/product";
     }
 

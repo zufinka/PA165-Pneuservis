@@ -7,58 +7,42 @@
 
 <fmt:message var="title" key="shopping.product.title"><fmt:param value="${product.name}"/></fmt:message>
 <my:pagetemplate title="${title}">
-<jsp:attribute name="body">
+    <jsp:attribute name="body">
 
-    <div class="panel panel-default">
-        <div class="panel-heading">In categories</div>
-        <div class="panel-body">
-            <c:forEach items="${product.categories}" var="category">
-                <a href="${pageContext.request.contextPath}/shopping/category/${category.id}" class="btn btn-info">
-                    <c:out value="${category.name}"/>
-                </a>
-            </c:forEach>
+        <div class="row">
+            <div class="col-xs-8">
+                <h3><c:out value="${product.name}"/></h3>
+                <p align="justify"><c:out value="${product.description}"/></p>
+                Current price: <span style="color: red; font-weight: bold;"><c:out value="${product.price}"/>&nbsp;<c:out value="e"/></span>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-xs-6">
-            <h3><c:out value="${product.name}"/></h3>
-            <p>
-                <c:out value="${product.description}"/>
-            </p>
-            Current price: <span style="color: red; font-weight: bold;"><c:out value="${product.currentPrice.value}"/>&nbsp;<c:out
-                value="${product.currentPrice.currency}"/></span>
-        </div>
-        <div class="col-xs-6">
-            <table class="table">
-                <caption>Historic prices</caption>
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Price</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${product.priceHistory}" var="price">
-                    <tr>
-                        <td><fmt:formatDate value="${price.priceStart}" type="date" dateStyle="medium"/></td>
-                        <td><c:out value="${price.value}"/>&nbsp;<c:out value="${price.currency}"/></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12">
-            <%--<div class="panel panel-default">--%>
+        <div class="row">
+            <div class="col-xs-12">
+                <%--<div class="panel panel-default">--%>
                 <%--<div class="panel-body">--%>
-                    <img class="img-responsive img-rounded"
-                         src="${pageContext.request.contextPath}/shopping/productImage/${product.id}">
+                <img class="img-responsive img-rounded"
+                     src="${product.imageUrl}">
                 <%--</div>--%>
-            <%--</div>--%>
+                <%--</div>--%>
+            </div>
         </div>
-    </div>
-</jsp:attribute>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <h4><c:out value="shopping.product.properties"/></h4>
+                <p align="left"><c:out value="vehicle type: ${product.tireProperties.vehicleType}"/></p>
+                <p align="left"><c:out value="width: ${product.tireProperties.width}"/></p>
+                <p align="left"><c:out value="aspect ratio: ${product.tireProperties.aspectRatio}"/></p>
+                <p align="left"><c:out value="diameter: ${product.tireProperties.diameter}"/></p>
+                <p align="left"><c:out value="load index: ${product.tireProperties.loadIndex}"/></p>
+                <p align="left"><c:out value="speed class: ${product.tireProperties.speedClass}"/></p>
+                <p align="left"><c:out value="season: ${product.tireProperties.season}"/></p>
+            </div>
+        </div>
+
+        <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/shopping/show"
+              role="button">Buy</a> quantity: <input type="number" name="quantity" min="1" width="50px" height="20px"></p>
+
+    </jsp:attribute>
 </my:pagetemplate>

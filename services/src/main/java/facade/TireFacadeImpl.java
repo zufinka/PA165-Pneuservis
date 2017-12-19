@@ -104,4 +104,9 @@ public class TireFacadeImpl implements TireFacade {
         }
         return l2;
     }
+
+    @Override
+    public TireDTO getByID(Long id) {
+        return mappingService.mapTo(tireService.getById(id), TireDTO.class);
+    }
 }
