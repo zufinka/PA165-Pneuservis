@@ -59,7 +59,7 @@
                 <version>1.1.4.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
+            </dependency>       
         </dependencies>
     </dependencyManagement>
 
@@ -68,6 +68,7 @@
         <module>api</module>
         <module>services</module>
         <module>eshop-spring-mvc</module>
+        <module>eshop-rest</module>
     </modules>
 
 </project>
