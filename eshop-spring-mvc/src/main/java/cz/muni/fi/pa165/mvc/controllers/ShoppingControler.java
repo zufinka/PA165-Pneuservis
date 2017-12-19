@@ -32,6 +32,8 @@ import javax.inject.Inject;
  * Provides the public shopping interface.
  *
  * @author Martin Kuba makub@ics.muni.cz
+ * 
+ * edited for project purposes by Jakub Palenik
  */
 @Controller
 @RequestMapping("/shopping")
@@ -42,12 +44,7 @@ public class ShoppingControler {
     @Inject
     private TireFacade tireFacade;
 
-    /**
-     * Shows all categories and products.
-     *
-     * @param model data to display
-     * @return JSP page name
-     */
+
     @RequestMapping("/show")
     public String list(Model model) {
 
@@ -90,13 +87,7 @@ public class ShoppingControler {
         return "shopping/show";
     }
 
-    /**
-     * Shows product detail.
-     *
-     * @param id product id
-     * @param model data to display
-     * @return JSP page name
-     */
+ 
     @RequestMapping("/product/{id}")
     public String product(@PathVariable long id, Model model) {
         log.debug("product({})", id);
@@ -104,7 +95,7 @@ public class ShoppingControler {
         return "shopping/product";
     }
 
-   
+   //Dummy
     @RequestMapping("/filter")
     public String filter(Model model) {
            
@@ -114,9 +105,8 @@ public class ShoppingControler {
         return "shopping/filter";
     }
     
-/*
+/*  replace dummy filter
     //@RequestMapping("/category/{vehicle}/{width}/{aspectRatio}/{diameter}/{loadIndex}/{speed}/{season}/{manufacturer}")
-    @RequestMapping("/filter")
     public String filter(/*@PathVariable VehicleTypeEnum vehicle,
             @PathVariable int width,
             @PathVariable int aspectRatio,
@@ -127,18 +117,13 @@ public class ShoppingControler {
             @PathVariable String name,
             Model model) {
             
-            /* REPAIR
             TirePropertiesDTO tp = new TirePropertiesDTO(vehicle, width, aspectRatio, diameter, loadIndex, speed, season);
             TireManufacturerDTO tm = new TireManufacturerDTO(name);      
-            
-            TirePropertiesDTO tp = new TirePropertiesDTO(null, 10, 0, 10, 0, SpeedClassEnum.B, null);
-            TireManufacturerDTO tm = new TireManufacturerDTO(null);      
-            
+
             List<TireDTO> tires = tireFacade.findTireByProperties(tm, tp);
             model.addAttribute("tires", tires);
 
-        
         return "shopping/filter";
-    }
-            */
+    }*/
+            
 }

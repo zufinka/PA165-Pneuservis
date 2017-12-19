@@ -1,3 +1,5 @@
+<%-- From seminars edited by Jakub Palenik --%>
+
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" trimDirectiveWhitespaces="true" session="false" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,7 +18,7 @@
                     <c:choose>
                         <c:when test="${empty tiresByManufs[manuf]}">
                             <div class="col-xs-12">
-                                This category is empty.
+                                <c:out value="shopping.show.empty"/>
                             </div>
                         </c:when>
 
@@ -38,7 +40,6 @@
                         </c:otherwise>
                     </c:choose>
                 </div>
-
             </c:forEach>
         </div>
         <h2>Filter</h2>
