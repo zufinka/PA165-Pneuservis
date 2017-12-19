@@ -78,4 +78,9 @@ public class TireServiceImpl implements TireService{
 
     }
 
+    @Override
+    public Tire getById(Long id) {
+        return tireManagerDao.findTireById(id);
+    }
+
 }
