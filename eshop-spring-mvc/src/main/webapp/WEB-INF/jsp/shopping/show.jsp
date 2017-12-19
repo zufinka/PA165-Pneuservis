@@ -44,8 +44,9 @@
         </div>
         <h2>Filter</h2>
         <div class="col-md-4">
+            <form action="show.jsp">
             <p align="left"><c:out value="vehicle type: "/>
-                <select id="s_vehicle">
+                <select id="s_vehicle" name="s_vehicle">
                     <option selected></option>
                     <c:forEach var="item" items="${vehicle}">
                         <option>${item}</option>
@@ -53,10 +54,10 @@
                 </select>
             </p>
             <p align="left"><c:out value="width: "/>
-                <select id="s_width">
+                <select name="s_width">
                     <option selected></option>
                     <c:forEach var="item" items="${width}">
-                        <option>${item}</option>
+                        <option value="5">${item}</option>
                     </c:forEach>
                 </select>
             </p>
@@ -101,7 +102,7 @@
                 </select>
             </p>
             <p align="left"><c:out value="manufacturer: "/>
-                <select id="s_season">
+                <select id="s_manuf">
                     <option selected></option>
                     <c:forEach var="item" items="${manufacturers}">
                         <option value="${item.name}">${item.name}</option>
@@ -111,6 +112,7 @@
             <!-- repair this crap -->
             <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/shopping/filter/"
                   role="button">Filter</a></p>        
+        </form>
         </div>
 
     </jsp:attribute>

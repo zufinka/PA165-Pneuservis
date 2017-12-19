@@ -20,12 +20,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Provides the public shopping interface.
  *
- * @author Martin Kuba makub@ics.muni.cz
- * edited for project purposes by Jakub Palenik
+ * @author Martin Kuba makub@ics.muni.cz edited for project purposes by Jakub
+ * Palenik
  */
 @Controller
 @RequestMapping("/shopping")
@@ -36,6 +38,9 @@ public class ShoppingControler {
     @Inject
     private TireFacade tireFacade;
     
+    @Inject
+    private HttpServletRequest request;
+
     @RequestMapping("/show")
     public String list(Model model) {
 
@@ -84,35 +89,25 @@ public class ShoppingControler {
         return "shopping/product";
     }
 
-   //Dummy
+    //WHY ID DOES NOT WORK
     @RequestMapping("/filter")
     public String filter(Model model) {
-           
-            List<TireDTO> tires = tireFacade.getAllTires();
-            model.addAttribute("tires", tires);
+        //VehicleTypeEnum vehiclType = VehicleTypeEnum.valueOf(request.getParameter("s_vehicle"));
+//        int width = Integer.parseInt(request.getParameter("s_width"));
+//        int aspectRatio = Integer.parseInt(request.getParameter("s_aspectRatio"));
+//        int diameter = Integer.parseInt(request.getParameter("s_diameter"));
+//        int loadIndex = Integer.parseInt(request.getParameter("s_loadIndex"));
+        //SpeedClassEnum speedClass = SpeedClassEnum.valueOf(request.getParameter("s_speed"));
+        //SeasonEnum season = SeasonEnum.valueOf(request.getParameter("s_speed"));
+//        String manufName = request.getParameter("s_manuf");
+        
+        //TirePropertiesDTO tp = new TirePropertiesDTO(vehiclType, width, aspectRatio, diameter, loadIndex, speedClass, season);
+        //TireManufacturerDTO tm = new TireManufacturerDTO(manufName);
+        
+        List<TireDTO> tires = tireFacade.findTireByProperties(null, null);
+        model.addAttribute("tires", tires);
 
         return "shopping/filter";
     }
-    
-/*  replace dummy filter
-    //@RequestMapping("/category/{vehicle}/{width}/{aspectRatio}/{diameter}/{loadIndex}/{speed}/{season}/{manufacturer}")
-    public String filter(/*@PathVariable VehicleTypeEnum vehicle,
-            @PathVariable int width,
-            @PathVariable int aspectRatio,
-            @PathVariable int diameter,
-            @PathVariable int loadIndex,
-            @PathVariable SpeedClassEnum speed,
-            @PathVariable SeasonEnum season,
-            @PathVariable String name,
-            Model model) {
-            
-            TirePropertiesDTO tp = new TirePropertiesDTO(vehicle, width, aspectRatio, diameter, loadIndex, speed, season);
-            TireManufacturerDTO tm = new TireManufacturerDTO(name);      
 
-            List<TireDTO> tires = tireFacade.findTireByProperties(tm, tp);
-            model.addAttribute("tires", tires);
-
-        return "shopping/filter";
-    }*/
-            
 }
