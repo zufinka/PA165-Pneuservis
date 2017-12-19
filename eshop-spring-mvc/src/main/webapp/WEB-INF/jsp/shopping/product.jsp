@@ -42,7 +42,7 @@
         </div>
 
         <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/shopping/show"
-              role="button">Buy</a> quantity: <input type="number" name="quantity" min="1" width="50px" height="20px"></p>
+              role="button">Buy</a> quantity: <input type="number" name="quantity" min="1" max="${product.onStock}" width="50px" height="20px"></p>
 
     </jsp:attribute>
 </my:pagetemplate>

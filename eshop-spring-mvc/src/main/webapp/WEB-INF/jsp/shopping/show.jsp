@@ -44,51 +44,73 @@
         <h2>Filter</h2>
         <div class="col-md-4">
             <p align="left"><c:out value="vehicle type: "/>
-                <select>
-                    <c:forEach var="item" items="${manufacturers}">
+                <select id="s_vehicle">
+                    <option selected></option>
+                    <c:forEach var="item" items="${vehicle}">
                         <option>${item}</option>
                     </c:forEach>
                 </select>
             </p>
-            <p align="left"><c:out value="width: "/><select>
-                    <c:forEach var="item" items="${manufacturers}">
+            <p align="left"><c:out value="width: "/>
+                <select id="s_width">
+                    <option selected></option>
+                    <c:forEach var="item" items="${width}">
                         <option>${item}</option>
                     </c:forEach>
                 </select>
             </p>
-            <p align="left"><c:out value="aspect ratio: "/><select>
-                    <c:forEach var="item" items="${manufacturers}">
+            <p align="left"><c:out value="aspect ratio: "/>
+                <select id="s_aspectRatio">
+                    <option selected></option>
+                    <c:forEach var="item" items="${aspectRatio}">
                         <option>${item}</option>
                     </c:forEach>
                 </select>
             </p>
-            <p align="left"><c:out value="diameter: "/><select>
-                    <c:forEach var="item" items="${manufacturers}">
+            <p align="left"><c:out value="diameter: "/>
+                <select id="diameter">
+                    <option selected></option>
+                    <c:forEach var="item" items="${diameter}">
                         <option>${item}</option>
                     </c:forEach>
                 </select>
             </p>
-            <p align="left"><c:out value="load index: "/><select>
-                    <c:forEach var="item" items="${manufacturers}">
+            <p align="left"><c:out value="load index: "/>
+                <select id="loadIndex">
+                    <option selected></option>
+                    <c:forEach var="item" items="${loadIndex}">
                         <option>${item}</option>
                     </c:forEach>
                 </select>
             </p>
-            <p align="left"><c:out value="speed class: "/><select>
-                    <c:forEach var="item" items="${manufacturers}">
+            <p align="left"><c:out value="speed class: "/>
+                <select id="s_speed">
+                    <option selected></option>
+                    <c:forEach var="item" items="${speed}">
                         <option>${item}</option>
                     </c:forEach>
                 </select>
             </p>
-            <p align="left"><c:out value="season: "/><select>
-                    <c:forEach var="item" items="${manufacturers}">
-                        <option>${item}</option>
+            <p align="left"><c:out value="season: "/>
+                <select id="s_season">
+                    <option selected></option>
+                    <c:forEach var="item" items="${season}">
+                        <option value="${item}">${item}</option>
                     </c:forEach>
                 </select>
             </p>
-            <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/shopping/show"
-                  role="button">Filter</a></p>
+            <p align="left"><c:out value="manufacturer: "/>
+                <select id="s_season">
+                    <option selected></option>
+                    <c:forEach var="item" items="${manufacturers}">
+                        <option value="${item.name}">${item.name}</option>
+                    </c:forEach>
+                </select>
+            </p>
 
+            <!-- repair this crap -->
+            <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/shopping/filter/"
+                  role="button">Filter</a></p>        
 
         </div>
 
