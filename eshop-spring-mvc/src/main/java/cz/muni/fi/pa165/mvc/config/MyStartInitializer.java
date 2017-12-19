@@ -13,7 +13,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 import javax.servlet.jsp.jstl.core.Config;
-import java.io.IOException;
 
 /**
  * Replaces web.xml file, initializes Spring MVC dispatcher servlet, that in turn uses MySpringMvcConfig class
@@ -46,13 +45,6 @@ public class MyStartInitializer implements WebApplicationInitializer {
 
         //register message bundle properties also for JSTL fmt: tags which are not behind DispatcherServlet
         servletContext.setInitParameter(Config.FMT_LOCALIZATION_CONTEXT, MySpringMvcConfig.TEXTS);
-
-        //load eShop sample data to populate the database
-        //try {
-        //    ctx.getBean(SampleDataLoadingFacade.class).loadData();
-        //} catch (IOException e) {
-        //    log.error(e.getMessage(), e);
-       // }
 
     }
 }

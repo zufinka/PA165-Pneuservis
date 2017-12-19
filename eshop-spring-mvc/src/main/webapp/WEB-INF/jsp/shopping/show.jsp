@@ -108,11 +108,9 @@
                     </c:forEach>
                 </select>
             </p>
-
             <!-- repair this crap -->
             <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/shopping/filter/"
                   role="button">Filter</a></p>        
-
         </div>
 
     </jsp:attribute>

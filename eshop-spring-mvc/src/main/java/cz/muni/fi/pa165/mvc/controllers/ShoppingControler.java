@@ -6,21 +6,14 @@ import cz.muni.fi.pa165.pneuservis.backend.enums.VehicleTypeEnum;
 import dto.TireDTO;
 import dto.TireManufacturerDTO;
 import dto.TirePropertiesDTO;
-import facade.CustomerFacade;
 import facade.TireFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +25,6 @@ import javax.inject.Inject;
  * Provides the public shopping interface.
  *
  * @author Martin Kuba makub@ics.muni.cz
- * 
  * edited for project purposes by Jakub Palenik
  */
 @Controller
@@ -43,8 +35,7 @@ public class ShoppingControler {
 
     @Inject
     private TireFacade tireFacade;
-
-
+    
     @RequestMapping("/show")
     public String list(Model model) {
 
@@ -83,11 +74,9 @@ public class ShoppingControler {
         model.addAttribute("speed", speed);
         model.addAttribute("season", season);
 
-        //forward to /shopping/show.jsp
         return "shopping/show";
     }
 
- 
     @RequestMapping("/product/{id}")
     public String product(@PathVariable long id, Model model) {
         log.debug("product({})", id);
