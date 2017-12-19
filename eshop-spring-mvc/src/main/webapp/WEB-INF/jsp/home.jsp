@@ -19,6 +19,8 @@
             <li>Róbert Ivan</li>
             <li>Zuzana Žufanová</li>
         </ul>
+         <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/shopping/show"
+              role="button">Go shopping</a></p>
     </div>
 
 </jsp:attribute>
