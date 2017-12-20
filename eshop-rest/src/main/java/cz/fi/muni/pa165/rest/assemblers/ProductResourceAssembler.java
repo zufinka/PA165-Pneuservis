@@ -17,6 +17,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
  * http://docs.spring.io/spring-hateoas/docs/current/reference/html/
  *
  * @author brossi
+ * adjusted Jakub Palenik
  */
 @Component
 public class ProductResourceAssembler implements ResourceAssembler<TireDTO, Resource<TireDTO>> {

@@ -1,28 +1,12 @@
 package cz.fi.muni.pa165.rest.controllers;
 
-import cz.fi.muni.pa165.rest.exceptions.ResourceNotFoundException;
-import cz.fi.muni.pa165.rest.assemblers.ProductResourceAssembler;
-import cz.fi.muni.pa165.rest.exceptions.ResourceNotModifiedException;
 import dto.CustomerDTO;
-import java.util.ArrayList;
-import java.util.Collection;
-import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.ExposesResourceFor;
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.Resources;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import org.springframework.http.MediaType;
-import org.springframework.web.context.request.WebRequest;
 
 /**
  * REST HATEOAS Controller for Products

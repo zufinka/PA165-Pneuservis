@@ -13,6 +13,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  * DELETE, OPTIONS"
  *
  * @author brossi
+ * adjusted Jakub Palenik
  */
 public class AllowOriginInterceptor extends HandlerInterceptorAdapter {
 
