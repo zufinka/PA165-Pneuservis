@@ -51,24 +51,47 @@
         </pluginManagement>
     </build>
 
+    <parent>
+        <groupId>io.spring.platform</groupId>
+        <artifactId>platform-bom</artifactId>
+        <version>1.1.5.RELEASE</version>
+        <relativePath/>
+    </parent>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>io.spring.platform</groupId>
-                <artifactId>platform-bom</artifactId>
-                <version>1.1.4.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>       
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>2.0.2-beta</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>5.5.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <!--<dependencyManagement>-->
+        <!--<dependencies>-->
+            <!--<dependency>-->
+                <!--<groupId>io.spring.platform</groupId>-->
+                <!--<artifactId>platform-bom</artifactId>-->
+                <!--<version>1.1.4.RELEASE</version>-->
+                <!--<type>pom</type>-->
+                <!--<scope>import</scope>-->
+            <!--</dependency>       -->
+        <!--</dependencies>-->
+    <!--</dependencyManagement>-->
 
     <modules>
         <module>backend</module>
         <module>api</module>
         <module>services</module>
-        <module>eshop-spring-mvc</module>
-        <module>eshop-rest</module>
+        <module>web</module>
+        <module>rest</module>
     </modules>
 
 </project>

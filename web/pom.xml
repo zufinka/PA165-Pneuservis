@@ -8,19 +8,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     
-    <artifactId>eshop-spring-mvc</artifactId>
+    <artifactId>web</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-
-    <name>Web front end implemented in Spring MVC</name>
-
-    <developers>
-        <developer>
-            <name>Martin Kuba</name>
-            <email>makub@ics.muni.cz</email>
-            <organization>ÚVT MU Brno</organization>
-        </developer>
-    </developers>
+    <name>Web Layer</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,15 +19,8 @@
     </properties>
 
     <dependencies>
-        <!-- dependency on eshop sample data, other eshop parts are imported by transitive dependencies of this one-->
 
         <!-- servlet, JSP, JSTL -->
-        <dependency>
-            <groupId>cz.muni.fi.pa165.pneuservis</groupId>
-            <artifactId>services</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
-        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -46,6 +30,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
+            <version>1.1.2</version>
         </dependency>
         <dependency>
             <groupId>taglibs</groupId>
@@ -69,11 +54,31 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
 
-        <!-- must provide logging implementation, this is a runnable project -->
+        <!-- Logging implementation -->
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Dependency on sample data -->
+        <dependency>
+            <groupId>cz.muni.fi.pa165.pneuservis</groupId>
+            <artifactId>services</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -95,7 +100,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <path>/eshop</path>
+                    <path>/pa165</path>
                 </configuration>
             </plugin>
             <!-- Java language version -->
