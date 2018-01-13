@@ -15,20 +15,36 @@
 
     <c:forEach items="${order.orderItems}" var="orderItem" varStatus="ic">
         <div class="row">
-        <c:choose>
-            <c:when test="${empty orderItem.tire}">
-                <%--service part of the row (orderItem.service.name)--%>
-                <%--save price somehow--%>
-            </c:when>
-            <c:otherwise>
-                <%--tire part of the row (orderItem.tire.name)--%>
-                <%--save price somehow--%>
-            </c:otherwise>
-        </c:choose>
-            <%--show quantity here (orderItem.quantity)--%>
-            <%--show quantity * saved price, save it to total price--%>
+
         </div>
     </c:forEach>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th><fmt:message key="order.item"/></th>
+            <th><fmt:message key="order.quantity"/></th>
+            <th><fmt:message key="order.price"/></th>
+        </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${order.orderItems}" var="orderItem" varStatus="ic">
+                <tr>
+                    <c:choose>
+                        <c:when test="${empty orderItem.tire}">
+                            <td><c:out value="${orderItem.service.name}"/></td>
+                        </c:when>
+                        <c:otherwise>
+                            <td><c:out value="${orderItem.tire.name}"/></td>
+                        </c:otherwise>
+                    </c:choose>
+                    <td><c:out value="${orderItem.quantity}"/></td>
+                    <td><c:out value="${order.getPrice()}"/></td>
+                    <%--show quantity * saved price, save it to total price--%>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 
     <%--show total price--%>
 
