@@ -27,8 +27,7 @@
             <c:forEach items="${orders}" var="order">
                 <tr>
                     <td><c:out value="${order.date.toString()}"/></td>
-                    <%--<td><a href="${pageContext.request.contextPath}/TODO URL"><c:out value="${}"/></a></td>--%>
-                    <td><c:out value="${order.id}"/></td>
+                    <td><a href="${pageContext.request.contextPath}/order/${order.id}"><c:out value="${order.id}"/></a></td>
                     <td><c:out value="${order.customer.name} ${order.customer.name}"/></td>
                     <td><c:out value="${order.getPrice()}"/></td>
                 </tr>
