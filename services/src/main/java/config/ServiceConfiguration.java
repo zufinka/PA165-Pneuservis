@@ -12,8 +12,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import services.ServicePackageMarker;
-
-import java.awt.print.Book;
 import java.util.Collections;
 
 /**
