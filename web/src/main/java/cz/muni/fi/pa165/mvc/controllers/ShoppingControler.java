@@ -37,10 +37,11 @@ public class ShoppingControler {
 
     @Inject
     private TireFacade tireFacade;
-    
+
+    /*
     @Inject
     private HttpServletRequest request;
-
+     */
     @RequestMapping("/show")
     public String list(Model model) {
 
@@ -89,22 +90,23 @@ public class ShoppingControler {
         return "shopping/product";
     }
 
-    //WHY ID DOES NOT WORK
     @RequestMapping("/filter")
-    public String filter(Model model) {
-        //VehicleTypeEnum vehiclType = VehicleTypeEnum.valueOf(request.getParameter("s_vehicle"));
-//        int width = Integer.parseInt(request.getParameter("s_width"));
-//        int aspectRatio = Integer.parseInt(request.getParameter("s_aspectRatio"));
-//        int diameter = Integer.parseInt(request.getParameter("s_diameter"));
-//        int loadIndex = Integer.parseInt(request.getParameter("s_loadIndex"));
-        //SpeedClassEnum speedClass = SpeedClassEnum.valueOf(request.getParameter("s_speed"));
-        //SeasonEnum season = SeasonEnum.valueOf(request.getParameter("s_speed"));
-//        String manufName = request.getParameter("s_manuf");
+    public String filter(Model model, HttpServletRequest request) {
+  
+        VehicleTypeEnum vehiclType = (request.getParameter("s_vehicle").equals("")) ? null : VehicleTypeEnum.valueOf(request.getParameter("s_vehicle"));
+        int width = (request.getParameter("s_width").equals("")) ? 0 : Integer.parseInt(request.getParameter("s_width"));
+        int aspectRatio = (request.getParameter("s_aspectRatio").equals("")) ? 0 : Integer.parseInt(request.getParameter("s_aspectRatio"));
+        int diameter = (request.getParameter("s_diameter").equals("")) ? 0 : Integer.parseInt(request.getParameter("s_diameter"));
+        int loadIndex = (request.getParameter("s_loadIndex").equals("")) ? 0 : Integer.parseInt(request.getParameter("s_loadIndex"));
+        SpeedClassEnum speedClass = (request.getParameter("s_speed").equals("")) ? null : SpeedClassEnum.valueOf(request.getParameter("s_speed"));
+        SeasonEnum season = (request.getParameter("s_season").equals("")) ? null : SeasonEnum.valueOf(request.getParameter("s_season"));
+        String manufName = (request.getParameter("s_manuf").equals("")) ? null : request.getParameter("s_manuf");
+
+        TirePropertiesDTO tp = new TirePropertiesDTO(vehiclType, width, aspectRatio, diameter, loadIndex, speedClass, season);
+        TireManufacturerDTO tm = manufName == null ? null : new TireManufacturerDTO(manufName);
+        tm = null;
         
-        //TirePropertiesDTO tp = new TirePropertiesDTO(vehiclType, width, aspectRatio, diameter, loadIndex, speedClass, season);
-        //TireManufacturerDTO tm = new TireManufacturerDTO(manufName);
-        
-        List<TireDTO> tires = tireFacade.findTireByProperties(null, null);
+        List<TireDTO> tires = tireFacade.findTireByProperties(tm, tp);
         model.addAttribute("tires", tires);
 
         return "shopping/filter";

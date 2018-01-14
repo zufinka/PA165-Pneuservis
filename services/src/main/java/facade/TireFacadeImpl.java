@@ -58,8 +58,9 @@ public class TireFacadeImpl implements TireFacade {
     @Override
     public List<TireDTO> findTireByProperties(TireManufacturerDTO manufacturer, TirePropertiesDTO tireProperties) {
         if (manufacturer == null && tireProperties == null) return getAllTires();
+        
         TireManufacturer tm = mappingService.mapTo(manufacturer, TireManufacturer.class);
-
+                
         List<TireProperties> l = new ArrayList<>(tireService.getAllTireProperties());
         List<TireProperties> tp = new ArrayList<>();
 

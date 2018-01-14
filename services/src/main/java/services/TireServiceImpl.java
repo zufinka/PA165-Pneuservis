@@ -18,13 +18,13 @@ import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.*;
 
-/***
+/**
+ * *
  * @author Jakub Palenik, 422453@mail.muni.cz
  */
-
 @Service
 @Transactional
-public class TireServiceImpl implements TireService{
+public class TireServiceImpl implements TireService {
 
     @Inject
     private TireDataCache tdc;
@@ -48,15 +48,24 @@ public class TireServiceImpl implements TireService{
     }
 
     @Override
-    public boolean purchaseTire(Long tireID, int noPneus) throws NoSuchObjectInDatabaseException{
-        if (noPneus <= 0) throw new IllegalArgumentException("number of tires is negative or zero");
-        if (tireID == null) throw new IllegalArgumentException("Id is null");
-        if (tireID <= 0) throw new IllegalArgumentException("negative id");
+    public boolean purchaseTire(Long tireID, int noPneus) throws NoSuchObjectInDatabaseException {
+        if (noPneus <= 0) {
+            throw new IllegalArgumentException("number of tires is negative or zero");
+        }
+        if (tireID == null) {
+            throw new IllegalArgumentException("Id is null");
+        }
+        if (tireID <= 0) {
+            throw new IllegalArgumentException("negative id");
+        }
 
         Tire t = tireManagerDao.findTireById(tireID);
-        if (t == null) throw new NoSuchObjectInDatabaseException("object with id " + tireID + " not found");
-        if (t.getOnStock() <= noPneus) return false; //Insufficient number of pneus on stock
-
+        if (t == null) {
+            throw new NoSuchObjectInDatabaseException("object with id " + tireID + " not found");
+        }
+        if (t.getOnStock() <= noPneus) {
+            return false; //Insufficient number of pneus on stock
+        }
         t.setOnStock(t.getOnStock() - noPneus);
         tireManagerDao.updateTire(t);
 
@@ -67,12 +76,12 @@ public class TireServiceImpl implements TireService{
     public List<Tire> findTireByProperties(TireManufacturer manufacturer, List<TireProperties> tireProperties) {
 
         Set<Tire> set = new HashSet<>();
-        if(tireProperties != null) {
+        if (tireProperties != null) {
             for (TireProperties tp : tireProperties) {
                 set.addAll(tireManagerDao.findTiresByProperties(manufacturer, tp));
             }
             return Collections.unmodifiableList(new ArrayList<>(set));
-        }else{
+        } else {
             return Collections.unmodifiableList(tireManagerDao.findTiresByProperties(manufacturer, null));
         }
 

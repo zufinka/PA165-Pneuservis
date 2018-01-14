@@ -42,77 +42,77 @@
                 </div>
             </c:forEach>
         </div>
+        
         <h2>Filter</h2>
         <div class="col-md-4">
-            <form action="show.jsp">
-            <p align="left"><c:out value="vehicle type: "/>
-                <select id="s_vehicle" name="s_vehicle">
-                    <option selected></option>
-                    <c:forEach var="item" items="${vehicle}">
-                        <option>${item}</option>
-                    </c:forEach>
-                </select>
-            </p>
-            <p align="left"><c:out value="width: "/>
-                <select name="s_width">
-                    <option selected></option>
-                    <c:forEach var="item" items="${width}">
-                        <option value="5">${item}</option>
-                    </c:forEach>
-                </select>
-            </p>
-            <p align="left"><c:out value="aspect ratio: "/>
-                <select id="s_aspectRatio">
-                    <option selected></option>
-                    <c:forEach var="item" items="${aspectRatio}">
-                        <option>${item}</option>
-                    </c:forEach>
-                </select>
-            </p>
-            <p align="left"><c:out value="diameter: "/>
-                <select id="diameter">
-                    <option selected></option>
-                    <c:forEach var="item" items="${diameter}">
-                        <option>${item}</option>
-                    </c:forEach>
-                </select>
-            </p>
-            <p align="left"><c:out value="load index: "/>
-                <select id="loadIndex">
-                    <option selected></option>
-                    <c:forEach var="item" items="${loadIndex}">
-                        <option>${item}</option>
-                    </c:forEach>
-                </select>
-            </p>
-            <p align="left"><c:out value="speed class: "/>
-                <select id="s_speed">
-                    <option selected></option>
-                    <c:forEach var="item" items="${speed}">
-                        <option>${item}</option>
-                    </c:forEach>
-                </select>
-            </p>
-            <p align="left"><c:out value="season: "/>
-                <select id="s_season">
-                    <option selected></option>
-                    <c:forEach var="item" items="${season}">
-                        <option value="${item}">${item}</option>
-                    </c:forEach>
-                </select>
-            </p>
-            <p align="left"><c:out value="manufacturer: "/>
-                <select id="s_manuf">
-                    <option selected></option>
-                    <c:forEach var="item" items="${manufacturers}">
-                        <option value="${item.name}">${item.name}</option>
-                    </c:forEach>
-                </select>
-            </p>
-            <!-- repair this crap -->
-            <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/shopping/filter/"
-                  role="button">Filter</a></p>        
-        </form>
+            <form name ="form" action="${pageContext.request.contextPath}/shopping/filter/">
+                <p align="left"><c:out value="vehicle type: "/>
+                    <select name="s_vehicle">
+                        <option selected></option>
+                        <c:forEach var="item" items="${vehicle}">
+                            <option value="${item}">${item}</option>
+                        </c:forEach>
+                    </select>
+                </p>
+                <p align="left"><c:out value="width: "/>
+                    <select name="s_width">
+                        <option selected></option>
+                        <c:forEach var="item" items="${width}">
+                            <option value="${item}">${item}</option>
+                        </c:forEach>
+                    </select>
+                </p>
+                <p align="left"><c:out value="aspect ratio: "/>
+                    <select name="s_aspectRatio">
+                        <option selected></option>
+                        <c:forEach var="item" items="${aspectRatio}">
+                            <option value="${item}">${item}</option>
+                        </c:forEach>
+                    </select>
+                </p>
+                <p align="left"><c:out value="diameter: "/>
+                    <select name="s_diameter">
+                        <option selected></option>
+                        <c:forEach var="item" items="${diameter}">
+                            <option value="${item}">${item}</option>
+                        </c:forEach>
+                    </select>
+                </p>
+                <p align="left"><c:out value="load index: "/>
+                    <select name="s_loadIndex">
+                        <option selected></option>
+                        <c:forEach var="item" items="${loadIndex}">
+                            <option value="${item}">${item}</option>
+                        </c:forEach>
+                    </select>
+                </p>
+                <p align="left"><c:out value="speed class: "/>
+                    <select name="s_speed">
+                        <option selected></option>
+                        <c:forEach var="item" items="${speed}">
+                            <option value="${item}">${item}</option>
+                        </c:forEach>
+                    </select>
+                </p>
+                <p align="left"><c:out value="season: "/>
+                    <select name="s_season">
+                        <option selected></option>
+                        <c:forEach var="item" items="${season}">
+                            <option value="${item}">${item}</option>
+                        </c:forEach>
+                    </select>
+                </p>
+                <p align="left"><c:out value="manufacturer: "/>
+                    <select name="s_manuf">
+                        <option selected></option>
+                        <c:forEach var="item" items="${manufacturers}">
+                            <option value="${item.name}">${item.name}</option>
+                        </c:forEach>
+                    </select>
+                </p>
+                <input type="submit" value="Submit">
+                <!-- repair this crap -->
+            </form>
         </div>
 
     </jsp:attribute>
