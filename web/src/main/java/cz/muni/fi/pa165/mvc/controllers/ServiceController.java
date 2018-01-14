@@ -2,6 +2,8 @@ package cz.muni.fi.pa165.mvc.controllers;
 
 import dto.ServiceDTO;
 import facade.ServiceFacade;
+import cz.muni.fi.pa165.pneuservis.backend.enums.TypeOfServiceEnum;
+import java.util.HashSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 /***
  * @author Róbert Ivan , 461468@mail.muni.cz
@@ -65,7 +68,10 @@ public class ServiceController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String edit(Model model) {
+        Set<TypeOfServiceEnum>  typeOFServiceEnum= new HashSet<>();
+        typeOFServiceEnum.add(TypeOfServiceEnum.BRAKECALIBRATION);
         model.addAttribute("serviceCreate", new ServiceDTO());
+        model.addAttribute("typeOFServiceEnum", typeOFServiceEnum);
         return "services/create";
     }
 
