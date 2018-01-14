@@ -23,6 +23,12 @@
                 <form:input path="serviceType" cssClass="form-control"/>
                 <form:errors path="serviceType"/>
             </div>
+                <select id="s_vehicle" name="s_vehicle">
+                    <option selected></option>
+                    <c:forEach var="item" items="${typeOFServiceEnum}">
+                        <option value="${item}">${item}</option>
+                    </c:forEach>
+                </select>
         </div>
         <div class="form-group ${price_error ? 'has-error' : ''}">
             <form:label path="price">Price</form:label>
