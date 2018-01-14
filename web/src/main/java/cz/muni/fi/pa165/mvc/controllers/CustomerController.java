@@ -32,23 +32,12 @@ public class CustomerController {
     @Inject
     private CustomerFacade customerFacade;
 
-    @Inject
-    private HttpServletRequest request;
-
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String getCustomers(Model model) {
+    public String list(Model model) {
         List<CustomerDTO> customers = customerFacade.findAllCustomers();
         model.addAttribute("customers", customers);
         return "customer/list";
     }
-
-    /*@RequestMapping("/list")
-    public String list(Model model) {
-
-        model.addAttribute("customers", customerFacade.findAllCustomers());
-
-        return "customer/list";
-    }*/
 
     @RequestMapping(value = "/create", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

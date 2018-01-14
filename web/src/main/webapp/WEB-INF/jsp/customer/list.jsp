@@ -12,27 +12,36 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<fmt:setBundle basename="Texts"/>
 <fmt:message var="title" key="customer.list.title"/>
+<fmt:message var="buttonCreate" key="customer.button.create"/>
+
 <my:pagetemplate title="${title}">
 <jsp:attribute name="body">
+    <a class="btn btn-default" href="/pa165/customer/create">
+        <span class="glyphicon glyphicon-plus"
+              aria-hidden="true"></span>
+        ${buttonCreate}
+    </a>
 
     <table class="table">
         <thead>
         <tr>
-            <th><fmt:message key="order.date"/></th>
-            <th><fmt:message key="order.id"/></th>
-            <th><fmt:message key="order.customer"/></th>
-            <th><fmt:message key="order.price"/></th>
+            <th><fmt:message key="customer.name"/></th>
+            <th><fmt:message key="customer.address"/></th>
+            <th><fmt:message key="customer.email"/></th>
+            <th><fmt:message key="customer.phone"/></th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${customer}" var="customer">
-                <%--<tr>
-                    <td><c:out value="${order.date.toString()}"/></td>
-                    <td><a href="${pageContext.request.contextPath}/order/${order.id}"><c:out value="${order.id}"/></a></td>
-                    <td><c:out value="${order.customer.name} ${order.customer.name}"/></td>
-                    <td><c:out value="${order.getPrice()}"/></td>
-                </tr>--%>
+                <tr>
+                    <td><c:out value="${customer.getName()} ${customer.getSurname()}"/> </td>
+                    <td><c:out value="${customer.getStreet()} ${customer.getCity()} ${customer.getZipCode()}
+                        ${customer.getCountry()}"/></td>
+                    <td><c:out value="${customer.getEmail()}"/></td>
+                    <td><c:out value="${customer.getPhoneNumber()}"/></td>
+                </tr>
             </c:forEach>
         </tbody>
     </table>
