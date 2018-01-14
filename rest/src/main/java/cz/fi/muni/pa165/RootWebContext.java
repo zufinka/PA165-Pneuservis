@@ -5,10 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import config.ServiceConfiguration;
 import config.TireDataConfig;
-import cz.fi.muni.pa165.rest.assemblers.ProductResourceAssembler;
 import cz.fi.muni.pa165.rest.controllers.ProductsController;
-import cz.fi.muni.pa165.rest.mixin.ProductDTOMixin;
-import dto.TireDTO;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -26,12 +23,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * adjusted Jakub Palenik
- * @author Kubo
  */
 @EnableWebMvc
 @Configuration
 @Import({ServiceConfiguration.class, TireDataConfig.class})
-@ComponentScan(basePackageClasses = {ProductsController.class, ProductResourceAssembler.class})
+@ComponentScan(basePackageClasses = {ProductsController.class})
 public class RootWebContext extends WebMvcConfigurerAdapter {
 
     @Override
@@ -53,7 +49,7 @@ public class RootWebContext extends WebMvcConfigurerAdapter {
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         //objectMapper.setDateFormat(new ISO8601DateFormat());
         objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH));
-        objectMapper.addMixIn(TireDTO.class, ProductDTOMixin.class);
+        //objectMapper.addMixIn(TireDTO.class, ProductDTOMixin.class);
         
         jsonConverter.setObjectMapper(objectMapper);
         return jsonConverter;

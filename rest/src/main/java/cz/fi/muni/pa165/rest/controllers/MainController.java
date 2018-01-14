@@ -30,9 +30,9 @@ public class MainController {
         Map<String,String> resourcesMap = new HashMap<>();
         
         resourcesMap.put("products_uri", ApiUris.ROOT_URI_PRODUCTS);
-        resourcesMap.put("orders_uri", ApiUris.ROOT_URI_ORDERS);
-        resourcesMap.put("users_uri", ApiUris.ROOT_URI_USERS);
-        resourcesMap.put("categories_uri", ApiUris.ROOT_URI_CATEGORIES);
+        //resourcesMap.put("orders_uri", ApiUris.ROOT_URI_ORDERS);
+        //resourcesMap.put("users_uri", ApiUris.ROOT_URI_USERS);
+        //resourcesMap.put("categories_uri", ApiUris.ROOT_URI_CATEGORIES);
         
         return Collections.unmodifiableMap(resourcesMap);
         
