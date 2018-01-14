@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import cz.fi.muni.pa165.rest.exceptions.ResourceAlreadyExistingException;
 import cz.fi.muni.pa165.rest.exceptions.ResourceNotFoundException;
 import dto.TireDTO;
 import facade.TireFacade;
@@ -26,7 +25,6 @@ import org.springframework.http.MediaType;
  * this is only to test the REST API
  *
  * @author brossi
- * 
  * for project purposes Jakub Palenik
  */
 @RestController
@@ -40,7 +38,7 @@ public class ProductsController {
 
     /**
      * Get list of Products curl -i -X GET
-     * http://localhost:8080/eshop-rest/products
+     * http://localhost:8080/pa165/products
      *
      * @return ProductDTO
      */
@@ -53,7 +51,7 @@ public class ProductsController {
     /**
      *
      * Get Product by identifier id curl -i -X GET
-     * http://localhost:8080/eshop-rest/products/1
+     * http://localhost:8080/pa165/products/1
      *
      * @param id identifier for a product
      * @return ProductDTO
@@ -72,22 +70,18 @@ public class ProductsController {
     }
     
      /**
-     * Create a new product by POST method
-     * curl -X POST -i -H "Content-Type: application/json" --data 
-     * '{"name":"test","description":"test","color":"UNDEFINED","price":"200",
-     * "currency":"CZK", "categoryId":"1"}' 
-     * http://localhost:8080/eshop-rest/products/create
+     * http://localhost:8080/pa165/products/purchase/
      * 
      * @param product ProductCreateDTO with required fields for creation
      * @param quantity number of tires to purchase
      * @return the created product ProductDTO
-     * @throws ResourceAlreadyExistingException
+     * @throws 
      */
     @RequestMapping(value = "/purchase", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public final void createProduct(@RequestBody TireDTO product, @RequestBody int quantity) throws Exception {
+    public final void purchaseProduct(@RequestBody TireDTO product, @RequestBody int quantity) throws Exception {
 
-        logger.debug("rest createProduct()");
+        logger.debug("rest purchaseProduct()");
         tireFacade.purchaseTire(product.getId(), quantity);
         
     }

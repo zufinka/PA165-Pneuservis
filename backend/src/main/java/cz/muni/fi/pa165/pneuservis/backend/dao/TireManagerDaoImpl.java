@@ -142,7 +142,7 @@ public class TireManagerDaoImpl implements TireManagerDao {
         if (tireManufacturer != null && tireProperties == null) return findTireByManufacturer(tireManufacturer);
         if (tireManufacturer == null && tireProperties != null) return (findTireByTireProperties(tireProperties));
         if (tireManufacturer != null && tireProperties != null) return (findTireByTirePropertiesandTireManufacturer(tireManufacturer, tireProperties));
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
