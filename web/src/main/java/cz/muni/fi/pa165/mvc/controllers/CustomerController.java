@@ -15,27 +15,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * @author Zuzana Žufanová, zufinka@mail.muni.cz
  */
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/customer")
 public class CustomerController {
 
     private final static Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
-    @Autowired
+    @Inject
     private CustomerFacade customerFacade;
 
-    @RequestMapping("/list")
+    @Inject
+    private HttpServletRequest request;
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String getCustomers(Model model) {
+        List<CustomerDTO> customers = customerFacade.findAllCustomers();
+        model.addAttribute("customers", customers);
+        return "customer/list";
+    }
+
+    /*@RequestMapping("/list")
     public String list(Model model) {
 
         model.addAttribute("customers", customerFacade.findAllCustomers());
 
-        return "user/list";
-    }
+        return "customer/list";
+    }*/
 
     @RequestMapping(value = "/create", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

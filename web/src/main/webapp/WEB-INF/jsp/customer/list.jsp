@@ -16,11 +16,26 @@
 <my:pagetemplate title="${title}">
 <jsp:attribute name="body">
 
-    <c:forEach items="${customer}" var="customer" varStatus="ic">
-        <div class="row">
-                <%--doplnit tabulku--%>
-        </div>
-    </c:forEach>
+    <table class="table">
+        <thead>
+        <tr>
+            <th><fmt:message key="order.date"/></th>
+            <th><fmt:message key="order.id"/></th>
+            <th><fmt:message key="order.customer"/></th>
+            <th><fmt:message key="order.price"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${customer}" var="customer">
+                <%--<tr>
+                    <td><c:out value="${order.date.toString()}"/></td>
+                    <td><a href="${pageContext.request.contextPath}/order/${order.id}"><c:out value="${order.id}"/></a></td>
+                    <td><c:out value="${order.customer.name} ${order.customer.name}"/></td>
+                    <td><c:out value="${order.getPrice()}"/></td>
+                </tr>--%>
+            </c:forEach>
+        </tbody>
+    </table>
 
 </jsp:attribute>
 </my:pagetemplate>
