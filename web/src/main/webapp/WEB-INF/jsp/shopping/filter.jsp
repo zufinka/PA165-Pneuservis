@@ -7,7 +7,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<fmt:message var="title" key="shopping.show.title"/>
+<fmt:message var="title" key="shopping.show.filter"/>
 <my:pagetemplate title="${title}">
     <jsp:attribute name="body">
 
