@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Zuzka
-  Date: 13.01.2018
-  Time: 12:12
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" trimDirectiveWhitespaces="true" session="false" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -18,11 +12,6 @@
 
 <my:pagetemplate title="${title}">
 <jsp:attribute name="body">
-    <a class="btn btn-default" href="/pa165/customer/create">
-        <span class="glyphicon glyphicon-plus"
-              aria-hidden="true"></span>
-        ${buttonCreate}
-    </a>
 
     <table class="table">
         <thead>
@@ -45,6 +34,12 @@
             </c:forEach>
         </tbody>
     </table>
+
+    <a class="btn btn-default" href="/pa165/customer/create">
+        <span class="glyphicon glyphicon-plus"
+              aria-hidden="true"></span>
+            ${buttonCreate}
+    </a>
 
 </jsp:attribute>
 </my:pagetemplate>
